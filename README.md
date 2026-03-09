@@ -1,28 +1,28 @@
-# Desenvolvimento para Dispositivos Moveis (React Native)
+# Desenvolvimento para Dispositivos Móveis (React Native)
 
-Repositorio estruturado para a disciplina de **Desenvolvimento para Dispositivos Moveis**
-do curso de graduacao em **Tecnologia em Sistemas para Internet (TSI)**.
+Repositório estruturado para a disciplina de **Desenvolvimento para Dispositivos Móveis**
+do curso de graduação em **Tecnologia em Sistemas para Internet (TSI)**.
 
-## Estrutura do repositorio
+## Estrutura do repositório
 
-- `docs/`: documentos academicos e de planejamento da disciplina.
-- `unidades/`: detalhamento pedagogico das 3 unidades do semestre.
+- `docs/`: documentos acadêmicos e de planejamento da disciplina.
+- `unidades/`: detalhamento pedagógico das 3 unidades do semestre.
 - `aulas/`: modelos e planos de encontro.
-- `praticas/`: atividades praticas guiadas.
+- `praticas/`: atividades práticas guiadas.
 - `projetos/`: projeto integrador semestral.
 
-## Carga horaria e organizacao
+## Carga horária e organização
 
-- Carga horaria total: **60h**
+- Carga horária total: **60h**
 - Total de aulas: **80 aulas de 45 min**
 - Ritmo semanal: **4 aulas/semana** (2 dias com 2 aulas por dia)
 - Total de encontros no semestre: **40 encontros**
-- Organizacao em **3 unidades**
+- Organização em **3 unidades**
 
 ## Documentos principais
 
-- [Visao Geral da Disciplina](docs/visao-geral-disciplina.md)
-- [Visao Geral do Professor](docs/visao-geral-professor.md)
+- [Visão Geral da Disciplina](docs/visao-geral-disciplina.md)
+- [Visão Geral do Professor](docs/visao-geral-professor.md)
 - [Plano de Ensino](docs/plano-de-ensino.md)
 - [Cronograma Semestral (40 encontros)](docs/cronograma-semestral.md)
 - [Ementa e Objetivos](docs/ementa-e-objetivos.md)

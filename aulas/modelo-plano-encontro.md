@@ -1,11 +1,11 @@
 # Modelo de Plano de Encontro
 
-## Identificacao
+## Identificação
 
 - Encontro:
 - Unidade:
 - Tema:
-- Duracao: 2 aulas (90 minutos)
+- Duração: 2 aulas (90 minutos)
 
 ## Objetivos do encontro
 
@@ -23,16 +23,16 @@
 ## Recursos
 
 - Ferramentas:
-- Repositorio:
+- Repositório:
 - Material de apoio:
 
-## Atividade pratica
+## Atividade prática
 
-- Descricao:
+- Descrição:
 - Entrega:
-- Criterio de avaliacao:
+- Critério de avaliação:
 
 ## Fechamento
 
-- Sintese:
-- Proximo encontro:
+- Síntese:
+- Próximo encontro:

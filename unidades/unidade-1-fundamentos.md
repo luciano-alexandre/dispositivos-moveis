@@ -1,25 +1,25 @@
-# Unidade 1 - Fundamentos, Interfaces e Navegacao
+# Unidade 1 - Fundamentos, Interfaces e Navegação
 
-## Periodo
+## Período
 
 Encontros 1 a 14
 
-## Competencias
+## Competências
 
 - Configurar ambiente de desenvolvimento React Native.
-- Construir interfaces com formularios e listas.
-- Implementar navegacao multijanelas.
+- Construir interfaces com formulários e listas.
+- Implementar navegação multijanelas.
 
-## Conteudos
+## Conteúdos
 
-1. Introducao a programacao movel.
-2. Programacao de interfaces.
-   1. Estilo formulario.
+1. Introdução à programação móvel.
+2. Programação de interfaces.
+   1. Estilo formulário.
    2. Formato de listas.
-3. Tecnicas de navegacao em aplicativos multijanelas.
+3. Técnicas de navegação em aplicativos multijanelas.
 
 ## Produtos de aprendizagem
 
-- App com multiplas telas.
-- Cadastro via formulario.
-- Listagem dinamica de dados.
+- App com múltiplas telas.
+- Cadastro via formulário.
+- Listagem dinâmica de dados.

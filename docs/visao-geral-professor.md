@@ -1,30 +1,30 @@
-# Visao Geral do Professor
+# Visão Geral do Professor
 
 ## Papel docente na disciplina
 
-Conduzir a progressao tecnica da turma do basico ao projeto final, equilibrando fundamentacao teorica, demonstracao pratica e acompanhamento de laboratorio.
+Conduzir a progressão técnica da turma do básico ao projeto final, equilibrando fundamentação teórica, demonstração prática e acompanhamento de laboratório.
 
 ## Responsabilidades principais
 
 1. Planejar e executar os 40 encontros conforme o cronograma.
-2. Preparar praticas orientadas e checkpoints por unidade.
-3. Avaliar desempenho tecnico com criterios claros e consistentes.
-4. Acompanhar evolucao das equipes no projeto integrador.
-5. Realizar feedback continuo (codigo, arquitetura e processo).
+2. Preparar práticas orientadas e checkpoints por unidade.
+3. Avaliar desempenho técnico com critérios claros e consistentes.
+4. Acompanhar evolução das equipes no projeto integrador.
+5. Realizar feedback contínuo (código, arquitetura e processo).
 
 ## Rotina recomendada por semana
 
 - Antes da aula:
   - Revisar plano dos encontros da semana.
-  - Validar ambiente/laboratorio e materiais.
-  - Publicar roteiro e criterios da atividade.
+  - Validar ambiente/laboratório e materiais.
+  - Publicar roteiro e critérios da atividade.
 - Durante a aula:
-  - Exposicao curta e demonstracao guiada.
-  - Bloco principal de pratica com monitoria ativa.
-  - Fechamento com sintese tecnica e proximos passos.
+  - Exposição curta e demonstração guiada.
+  - Bloco principal de prática com monitoria ativa.
+  - Fechamento com síntese técnica e próximos passos.
 - Depois da aula:
-  - Registrar frequencia e evidencias de aprendizagem.
-  - Consolidar feedback e pendencias.
+  - Registrar frequência e evidências de aprendizagem.
+  - Consolidar feedback e pendências.
   - Ajustar planejamento da semana seguinte.
 
 ## Checkpoints docentes por unidade
@@ -32,17 +32,17 @@ Conduzir a progressao tecnica da turma do basico ao projeto final, equilibrando 
 ### Unidade 1
 
 - Verificar setup de todos os estudantes.
-- Garantir dominio basico de componentes, formularios, listas e navegacao.
+- Garantir domínio básico de componentes, formulários, listas e navegação.
 
 ### Unidade 2
 
-- Confirmar implementacao funcional de persistencia local.
-- Validar integracao com API e ao menos um recurso embarcado.
+- Confirmar implementação funcional de persistência local.
+- Validar integração com API e ao menos um recurso embarcado.
 
 ### Unidade 3
 
 - Acompanhar maturidade do projeto integrador por sprint.
-- Cobrar qualidade minima: testes, tratamento de erro e consistencia de UX.
+- Cobrar qualidade mínima: testes, tratamento de erro e consistência de UX.
 
 ## Artefatos que o professor deve manter atualizados
 
@@ -52,20 +52,20 @@ Conduzir a progressao tecnica da turma do basico ao projeto final, equilibrando 
 - `praticas/` (enunciados, starters e gabaritos)
 - `projetos/projeto-integrador.md`
 
-## Riscos comuns e mitigacao
+## Riscos comuns e mitigação
 
-1. Turma heterogenea em programacao.
-   - Mitigacao: trilhas de nivelamento e pares programando.
+1. Turma heterogênea em programação.
+   - Mitigação: trilhas de nivelamento e pares programando.
 2. Problemas de ambiente/dispositivo.
-   - Mitigacao: padrao minimo de setup e plano B com emulador.
+   - Mitigação: padrão mínimo de setup e plano B com emulador.
 3. Atraso no projeto final.
-   - Mitigacao: sprints curtas com entregas parciais obrigatorias.
-4. Codigo sem padrao.
-   - Mitigacao: checklist de qualidade e revisoes tecnicas rapidas.
+   - Mitigação: sprints curtas com entregas parciais obrigatórias.
+4. Código sem padrão.
+   - Mitigação: checklist de qualidade e revisões técnicas rápidas.
 
 ## Indicadores de acompanhamento
 
 - Taxa de entregas no prazo.
-- Evolucao tecnica por unidade.
-- Reducao de erros recorrentes.
+- Evolução técnica por unidade.
+- Redução de erros recorrentes.
 - Qualidade e completude do projeto final.

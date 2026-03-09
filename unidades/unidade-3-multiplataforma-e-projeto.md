@@ -1,24 +1,24 @@
 # Unidade 3 - Multiplataforma e Projeto Integrador
 
-## Periodo
+## Período
 
 Encontros 28 a 40
 
-## Competencias
+## Competências
 
-- Comparar abordagens multiplataforma para apps moveis.
-- Aplicar tecnicas de qualidade, testes e performance.
-- Entregar projeto de app movel completo em equipe.
+- Comparar abordagens multiplataforma para apps móveis.
+- Aplicar técnicas de qualidade, testes e performance.
+- Entregar projeto de app móvel completo em equipe.
 
-## Conteudos
+## Conteúdos
 
-5. Tecnologias de programacao multiplataformas.
+5. Tecnologias de programação multiplataforma.
 
 Complementos:
-- Build e distribuicao.
-- Testes e depuracao.
+- Build e distribuição.
+- Testes e depuração.
 - Projeto integrador.
 
 ## Produtos de aprendizagem
 
-- Projeto integrador completo com documentacao e apresentacao.
+- Projeto integrador completo com documentação e apresentação.

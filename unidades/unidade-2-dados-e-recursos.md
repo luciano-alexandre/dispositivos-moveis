@@ -1,24 +1,24 @@
-# Unidade 2 - Dados, Servicos e Recursos Embarcados
+# Unidade 2 - Dados, Serviços e Recursos Embarcados
 
-## Periodo
+## Período
 
 Encontros 15 a 27
 
-## Competencias
+## Competências
 
 - Persistir dados localmente no dispositivo.
-- Consumir servicos web em app movel.
-- Integrar recursos embarcados com seguranca e boas praticas.
+- Consumir serviços web em app móvel.
+- Integrar recursos embarcados com segurança e boas práticas.
 
-## Conteudos
+## Conteúdos
 
-4. Programacao de aplicativos.
+4. Programação de aplicativos.
    1. Acesso a banco de dados local no dispositivo.
-   2. Consumindo servicos web.
-   3. Utilizando recursos embarcados: camera, localizacao, bluetooth, dentre outros.
+   2. Consumo de serviços web.
+   3. Utilização de recursos embarcados: câmera, localização, bluetooth, entre outros.
 
 ## Produtos de aprendizagem
 
 - App CRUD local.
 - App integrado a API REST.
-- Prototipo com recurso embarcado funcional.
+- Protótipo com recurso embarcado funcional.

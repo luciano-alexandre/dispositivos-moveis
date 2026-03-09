@@ -1,78 +1,78 @@
 # Plano de Ensino
 
-## Identificacao
+## Identificação
 
-- Disciplina: Desenvolvimento para Dispositivos Moveis
+- Disciplina: Desenvolvimento para Dispositivos Móveis
 - Curso: Tecnologia em Sistemas para Internet
-- Abordagem tecnica: React Native
-- Carga horaria: 60h (80 aulas de 45 minutos)
-- Organizacao semanal: 4 aulas/semana (2 encontros semanais com 2 aulas cada)
-- Duracao: 40 encontros
+- Abordagem técnica: React Native
+- Carga horária: 60h (80 aulas de 45 minutos)
+- Organização semanal: 4 aulas/semana (2 encontros semanais com 2 aulas cada)
+- Duração: 40 encontros
 
 ## Ementa
 
-Tecnicas de programacao para redes sem fio e redes celular; Programacao usando tecnologias para dispositivos moveis.
+Técnicas de programação para redes sem fio e redes celulares; programação usando tecnologias para dispositivos móveis.
 
 ## Objetivo geral
 
-- Programar em ambiente movel embarcado.
+- Programar em ambiente móvel embarcado.
 
-## Objetivos especificos
+## Objetivos específicos
 
-1. Compreender o ecossistema de desenvolvimento movel multiplataforma.
-2. Construir interfaces moveis com componentes nativos via React Native.
-3. Implementar navegacao entre telas em aplicativos multijanelas.
+1. Compreender o ecossistema de desenvolvimento móvel multiplataforma.
+2. Construir interfaces móveis com componentes nativos via React Native.
+3. Implementar navegação entre telas em aplicativos multijanelas.
 4. Persistir e recuperar dados locais no dispositivo.
-5. Consumir APIs REST e integrar servicos web.
-6. Utilizar recursos embarcados (camera, localizacao, bluetooth).
-7. Estruturar, testar e publicar um aplicativo movel funcional.
+5. Consumir APIs REST e integrar serviços web.
+6. Utilizar recursos embarcados (câmera, localização, bluetooth).
+7. Estruturar, testar e publicar um aplicativo móvel funcional.
 
 ## Unidades de ensino
 
-### Unidade 1 - Fundamentos, interfaces e navegacao (Encontros 1 a 14)
+### Unidade 1 - Fundamentos, interfaces e navegação (Encontros 1 a 14)
 
-- Introducao a programacao movel e React Native.
+- Introdução à programação móvel e React Native.
 - Ambiente de desenvolvimento, emuladores e dispositivos reais.
-- Componentes basicos, estilo formulario e listas.
+- Componentes básicos, estilo formulário e listas.
 - Estado, props e ciclo de desenvolvimento.
-- Navegacao em aplicativos multijanelas.
+- Navegação em aplicativos multijanelas.
 
-### Unidade 2 - Dados, servicos e recursos embarcados (Encontros 15 a 27)
+### Unidade 2 - Dados, serviços e recursos embarcados (Encontros 15 a 27)
 
-- Persistencia local (AsyncStorage e SQLite).
-- Consumo de servicos web e tratamento de erros.
-- Arquitetura de app, organizacao por camadas.
-- Recursos embarcados: camera, geolocalizacao, bluetooth.
-- Boas praticas de seguranca e permissao.
+- Persistência local (AsyncStorage e SQLite).
+- Consumo de serviços web e tratamento de erros.
+- Arquitetura de app, organização por camadas.
+- Recursos embarcados: câmera, geolocalização e bluetooth.
+- Boas práticas de segurança e permissão.
 
 ### Unidade 3 - Multiplataforma e projeto integrador (Encontros 28 a 40)
 
-- Tecnologias multiplataformas e comparativos.
-- Qualidade de software movel (testes, depuracao e performance).
-- Preparacao para build e distribuicao.
+- Tecnologias multiplataforma e comparativos.
+- Qualidade de software móvel (testes, depuração e performance).
+- Preparação para build e distribuição.
 - Projeto integrador em equipe.
-- Apresentacoes finais e fechamento.
+- Apresentações finais e fechamento.
 
 ## Metodologia
 
-- Aulas expositivo-dialogadas com demonstracoes praticas.
-- Praticas orientadas em laboratorio.
-- Desafios de implementacao progressivos.
+- Aulas expositivo-dialogadas com demonstrações práticas.
+- Práticas orientadas em laboratório.
+- Desafios de implementação progressivos.
 - Projeto integrador com checkpoints.
-- Revisoes tecnicas e code review em sala.
+- Revisões técnicas e code review em sala.
 
-## Recursos didaticos
+## Recursos didáticos
 
 - Computadores com Node.js, Android Studio e/ou Xcode.
 - React Native CLI e/ou Expo.
-- Dispositivos moveis para testes.
-- Repositorio Git da disciplina.
+- Dispositivos móveis para testes.
+- Repositório Git da disciplina.
 
-## Avaliacao (visao geral)
+## Avaliação (visão geral)
 
 - Unidade 1: 30 pontos.
 - Unidade 2: 30 pontos.
-- Unidade 3 (projeto e apresentacao): 40 pontos.
+- Unidade 3 (projeto e apresentação): 40 pontos.
 - Total: 100 pontos.
 
 Detalhamento em `docs/avaliacao.md`.

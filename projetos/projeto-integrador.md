@@ -2,28 +2,28 @@
 
 ## Objetivo
 
-Desenvolver, em equipe, um aplicativo movel multiplataforma usando React Native, contemplando interface, navegacao, dados locais, consumo de API e ao menos um recurso embarcado.
+Desenvolver, em equipe, um aplicativo móvel multiplataforma usando React Native, contemplando interface, navegação, dados locais, consumo de API e ao menos um recurso embarcado.
 
-## Requisitos minimos
+## Requisitos mínimos
 
-1. Minimo de 4 telas com navegacao funcional.
-2. Ao menos 1 formulario com validacao.
-3. Ao menos 1 lista dinamica.
-4. Persistencia local (AsyncStorage ou SQLite).
-5. Consumo de servico web (GET + POST, quando aplicavel).
-6. Integracao com 1 recurso embarcado (camera, localizacao ou bluetooth).
-7. Tratamento basico de erros e estados de carregamento.
+1. Mínimo de 4 telas com navegação funcional.
+2. Ao menos 1 formulário com validação.
+3. Ao menos 1 lista dinâmica.
+4. Persistência local (AsyncStorage ou SQLite).
+5. Consumo de serviço web (GET + POST, quando aplicável).
+6. Integração com 1 recurso embarcado (câmera, localização ou bluetooth).
+7. Tratamento básico de erros e estados de carregamento.
 
 ## Entregas
 
-- Entrega parcial 1: escopo e prototipo de telas.
-- Entrega parcial 2: fluxo navegavel + dados locais.
-- Entrega parcial 3: integracao com API e recurso embarcado.
-- Entrega final: app funcional, repositorio e apresentacao.
+- Entrega parcial 1: escopo e protótipo de telas.
+- Entrega parcial 2: fluxo navegável + dados locais.
+- Entrega parcial 3: integração com API e recurso embarcado.
+- Entrega final: app funcional, repositório e apresentação.
 
-## Criterios de avaliacao
+## Critérios de avaliação
 
 - Atendimento aos requisitos funcionais.
-- Qualidade tecnica do codigo.
-- Experiencia de uso e consistencia de interface.
-- Clareza da apresentacao e defesa tecnica.
+- Qualidade técnica do código.
+- Experiência de uso e consistência de interface.
+- Clareza da apresentação e defesa técnica.
