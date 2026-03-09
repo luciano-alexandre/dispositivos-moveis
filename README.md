@@ -21,10 +21,10 @@ do curso de graduacao em **Tecnologia em Sistemas para Internet (TSI)**.
 
 ## Documentos principais
 
-- [Visao geral da disciplina](docs/visao-geral-disciplina.md)
-- [Visao geral do professor](docs/visao-geral-professor.md)
-- [Plano de ensino](docs/plano-de-ensino.md)
-- [Cronograma semestral (40 encontros)](docs/cronograma-semestral.md)
-- [Ementa e objetivos](docs/ementa-e-objetivos.md)
-- [Avaliacao](docs/avaliacao.md)
-- [Projeto integrador](projetos/projeto-integrador.md)
+- [Visao Geral da Disciplina](docs/visao-geral-disciplina.md)
+- [Visao Geral do Professor](docs/visao-geral-professor.md)
+- [Plano de Ensino](docs/plano-de-ensino.md)
+- [Cronograma Semestral (40 encontros)](docs/cronograma-semestral.md)
+- [Ementa e Objetivos](docs/ementa-e-objetivos.md)
+- [Avaliação](docs/avaliacao.md)
+- [Projeto Integrador](projetos/projeto-integrador.md)
