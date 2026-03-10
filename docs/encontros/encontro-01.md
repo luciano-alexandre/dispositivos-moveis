@@ -15,7 +15,7 @@
 5. Desenvolvimento multiplataforma.
 6. Comparação entre tecnologias e escolha de stack.
 7. Ferramentas básicas do fluxo de trabalho.
-8. Exercícios de revisão e consolidação.
+8. Exercícios de revisão.
 
 ## 1. O que é desenvolvimento para dispositivos móveis
 
