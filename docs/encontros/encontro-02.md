@@ -41,7 +41,7 @@ A ideia central do React é simples:
 
 Em vez de manipular manualmente cada detalhe visual da tela, você descreve o que deve aparecer. Essa abordagem é chamada de declarativa.
 
-### Exemplo conceitual em React
+### Exemplo
 
 ```tsx
 function Saudacao() {
