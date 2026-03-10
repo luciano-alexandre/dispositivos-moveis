@@ -1,11 +1,11 @@
 # Encontro 27 - Avaliação da Unidade 2
 
-## Finalidade
+## Objetivos do encontro
 
 - Verificar domínio sobre persistência, APIs e recursos embarcados.
 - Avaliar capacidade de integrar múltiplos conceitos em uma aplicação.
 
-## Sugestão de desafio
+## Desafio proposto
 
 Criar um app que:
 
@@ -21,8 +21,8 @@ Criar um app que:
 - tratamento de estados;
 - experiência de uso.
 
-## Orientação ao professor
+## Como se preparar
 
-- Preparar rubrica objetiva.
-- Separar itens obrigatórios e itens de bônus.
-- Registrar evidências para feedback posterior.
+- Ler novamente os requisitos antes de começar.
+- Separar itens obrigatórios e itens de bônus para organizar melhor o tempo.
+- Guardar evidências do funcionamento para apoiar sua revisão posterior.

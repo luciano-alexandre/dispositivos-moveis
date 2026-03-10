@@ -20,7 +20,7 @@ src/
   utils/
 ```
 
-## Perguntas orientadoras
+## Perguntas para revisar o conteúdo
 
 - Onde fica a chamada de API?
 - Quem valida dados?

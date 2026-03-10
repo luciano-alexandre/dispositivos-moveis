@@ -8,7 +8,7 @@
 
 ## Explicação didática
 
-Distribuir um app envolve requisitos técnicos e documentais. Além do binário, é preciso pensar em descrição, capturas de tela, classificação indicativa, política de privacidade e estratégia de atualização. Este encontro ajuda o estudante a enxergar o ciclo completo do produto.
+Distribuir um app envolve requisitos técnicos e documentais. Além do binário, é preciso pensar em descrição, capturas de tela, classificação indicativa, política de privacidade e estratégia de atualização. Este encontro ajuda você a enxergar o ciclo completo do produto.
 
 ## Itens para cobrir
 

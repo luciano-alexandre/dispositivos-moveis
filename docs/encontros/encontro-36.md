@@ -6,9 +6,9 @@
 - Integrar persistência e serviços necessários.
 - Reduzir débitos técnicos iniciais.
 
-## Foco pedagógico
+## Ponto de atenção
 
-Nesta fase, a turma tende a acumular código rápido e pouco organizado. O professor deve intervir em arquitetura, clareza de componentes e gestão de estados antes que o projeto se torne difícil de manter.
+Nesta fase, é comum acumular código rápido e pouco organizado. Por isso, vale revisar arquitetura, clareza de componentes e gestão de estados antes que o projeto se torne difícil de manter.
 
 ## Entregáveis
 

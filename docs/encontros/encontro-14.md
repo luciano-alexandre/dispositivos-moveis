@@ -1,8 +1,8 @@
 # Encontro 14 - Avaliação da Unidade 1
 
-## Finalidade
+## Objetivos do encontro
 
-- Verificar autonomia do estudante na construção de interfaces e fluxos de navegação.
+- Verificar sua autonomia na construção de interfaces e fluxos de navegação.
 - Medir domínio técnico e organização do código.
 
 ## Sugestão de formato
@@ -35,7 +35,7 @@ Construir um app simples de catálogo acadêmico com:
 - Organização dos componentes.
 - Consistência visual.
 
-## Pós-avaliação
+## Depois da avaliação
 
-- Reservar os minutos finais para orientar a autoavaliação.
-- Registrar dificuldades recorrentes para retroalimentar a Unidade 2.
+- Fazer uma autoavaliação honesta sobre os pontos fortes e as dificuldades encontradas.
+- Registrar os tópicos que ainda precisam de reforço para chegar melhor preparado à Unidade 2.

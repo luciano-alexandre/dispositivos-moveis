@@ -36,7 +36,7 @@ export function Card({ titulo, descricao, destaque = false }: CardProps) {
 ## Atividade
 
 - Refatorar uma tela construída nos encontros anteriores.
-- Criar uma pequena biblioteca local de componentes da turma.
+- Criar uma pequena biblioteca local de componentes reutilizáveis.
 
 ## Materiais complementares
 

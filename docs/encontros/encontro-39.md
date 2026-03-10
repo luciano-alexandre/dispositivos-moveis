@@ -22,4 +22,4 @@
 
 ## Atividade complementar
 
-- Cada estudante registra uma lição aprendida a partir dos outros projetos.
+- Registrar pelo menos uma lição aprendida a partir dos outros projetos.

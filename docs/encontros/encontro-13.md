@@ -1,10 +1,10 @@
 # Encontro 13 - Revisão da Unidade 1 e laboratório assistido
 
-## Propósito
+## Objetivos do encontro
 
 - Consolidar fundamentos de interface e navegação.
 - Identificar lacunas de compreensão.
-- Preparar a turma para a avaliação da unidade.
+- Preparar você para a avaliação da unidade.
 
 ## Organização sugerida
 

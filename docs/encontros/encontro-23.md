@@ -8,7 +8,7 @@
 
 ## Conteúdo técnico
 
-Recursos embarcados exigem negociação explícita com o sistema operacional. O estudante deve aprender que permissão negada não é exceção improvável; é fluxo normal da aplicação e precisa ser tratado com interface clara.
+Recursos embarcados exigem negociação explícita com o sistema operacional. É essencial entender que permissão negada não é exceção improvável; é fluxo normal da aplicação e precisa ser tratado com interface clara.
 
 ```tsx
 const [permission, requestPermission] = useCameraPermissions();

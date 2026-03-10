@@ -23,7 +23,7 @@ function RotasPrincipais() {
 }
 ```
 
-## Discussão orientada
+## Pontos para reflexão
 
 - Quando usar abas fixas?
 - Quando o drawer melhora a escalabilidade?

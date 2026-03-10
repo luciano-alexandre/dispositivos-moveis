@@ -8,7 +8,7 @@
 
 ## Conteúdo técnico
 
-Este encontro é excelente para amadurecer visão de engenharia. O estudante deve entender que não existe stack universalmente melhor; existe tecnologia mais adequada ao contexto. Comparar React Native, Flutter, Kotlin Multiplatform e desenvolvimento nativo ajuda a desenvolver critério técnico.
+Este encontro ajuda a amadurecer sua visão de engenharia. Não existe stack universalmente melhor; existe tecnologia mais adequada ao contexto. Comparar React Native, Flutter, Kotlin Multiplatform e desenvolvimento nativo ajuda a desenvolver critério técnico.
 
 ## Quadro comparativo sugerido
 
@@ -21,8 +21,8 @@ Este encontro é excelente para amadurecer visão de engenharia. O estudante dev
 
 ## Atividade
 
-- Debate técnico em grupos.
-- Cada grupo defende uma stack para um cenário de negócio.
+- Organizar um quadro comparativo entre as stacks estudadas.
+- Defender uma stack para um cenário de negócio com base em critérios técnicos.
 
 ## Materiais complementares
 

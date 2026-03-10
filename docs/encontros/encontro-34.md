@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Projetos fracassam menos por tecnologia e mais por escopo mal definido. O encontro deve orientar a turma a transformar ideia ampla em produto mínimo viável. O professor pode trabalhar com a lógica "objetivo, usuário, fluxo principal, restrições técnicas".
+Projetos fracassam menos por tecnologia e mais por escopo mal definido. O objetivo deste encontro é ajudar você a transformar uma ideia ampla em produto mínimo viável. Uma forma útil de pensar nisso é usar a lógica "objetivo, usuário, fluxo principal, restrições técnicas".
 
 ## Artefatos esperados
 

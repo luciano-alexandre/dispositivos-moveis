@@ -6,7 +6,7 @@
 - Validar estrutura, navegação e primeira funcionalidade principal.
 - Estabelecer rotina de acompanhamento.
 
-## Sugestão de condução
+## Etapas recomendadas de estudo
 
 1. Revisão rápida do escopo.
 2. Organização das tarefas da sprint.

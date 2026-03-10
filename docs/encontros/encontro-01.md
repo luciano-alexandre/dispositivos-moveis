@@ -3,8 +3,8 @@
 ## Visão do encontro
 
 - Carga horária: 90 minutos.
-- Objetivo central: alinhar expectativas, apresentar a trilha da disciplina e preparar o estudante para um fluxo de trabalho profissional.
-- Resultado esperado: estudante entende a organização do semestre, instala as ferramentas-base e reconhece o ciclo editar -> executar -> depurar.
+- Objetivo central: compreender a trilha da disciplina e começar a montar um fluxo de trabalho profissional.
+- Resultado esperado: você entende a organização do semestre, instala as ferramentas-base e reconhece o ciclo editar -> executar -> depurar.
 
 ## Roteiro didático
 
@@ -16,7 +16,7 @@
 
 ## Explicação técnica
 
-Desenvolvimento móvel multiplataforma exige uma cadeia de ferramentas integrada. O código-fonte é escrito em JavaScript ou TypeScript, processado por um bundler, executado em um runtime JavaScript e conectado à camada nativa do dispositivo. O estudante precisa compreender desde o primeiro encontro que produtividade depende menos de decorar comandos e mais de dominar o fluxo de trabalho.
+Desenvolvimento móvel multiplataforma exige uma cadeia de ferramentas integrada. O código-fonte é escrito em JavaScript ou TypeScript, processado por um bundler, executado em um runtime JavaScript e conectado à camada nativa do dispositivo. Desde o primeiro encontro, o ponto central é perceber que produtividade depende menos de decorar comandos e mais de dominar o fluxo de trabalho.
 
 ```mermaid
 flowchart LR
@@ -34,11 +34,11 @@ cd app-mobile
 npm run start
 ```
 
-Explique que `npx` executa pacotes sem instalação global, `create-expo-app` gera a estrutura inicial e `npm run start` inicia o servidor de desenvolvimento.
+Neste exemplo, `npx` executa pacotes sem instalação global, `create-expo-app` gera a estrutura inicial e `npm run start` inicia o servidor de desenvolvimento.
 
-## Atividade em sala
+## Exercícios de estudo
 
-- Mapear, em duplas, quais ferramentas cada estudante já usa.
+- Mapear quais ferramentas você já usa no seu dia a dia.
 - Montar um checklist de ambiente com sistema operacional, editor, Node.js e emulador.
 - Registrar no repositório uma primeira anotação em Markdown sobre expectativas na disciplina.
 

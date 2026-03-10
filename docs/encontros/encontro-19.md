@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Apps móveis frequentemente funcionam como clientes de APIs REST. O estudante deve entender verbo HTTP, status code, cabeçalhos e corpo da resposta. JSON é a estrutura de dados mais comum na troca entre app e servidor.
+Apps móveis frequentemente funcionam como clientes de APIs REST. É importante entender verbo HTTP, status code, cabeçalhos e corpo da resposta. JSON é a estrutura de dados mais comum na troca entre app e servidor.
 
 ```tsx
 async function carregarPosts() {

@@ -8,7 +8,7 @@
 
 ## Desenvolvimento do conteúdo
 
-Formulários são essenciais em apps móveis porque concentram cadastro, login, busca e configuração. O estudante precisa aprender não apenas a capturar texto, mas também a validar dados, orientar o usuário e evitar estados inconsistentes.
+Formulários são essenciais em apps móveis porque concentram cadastro, login, busca e configuração. O objetivo aqui é aprender não apenas a capturar texto, mas também a validar dados, orientar o usuário e evitar estados inconsistentes.
 
 ```tsx
 import { useState } from 'react';
@@ -40,7 +40,7 @@ export default function Formulario() {
 - Configurar `secureTextEntry` para senha.
 - Validar cedo, mas sem poluir a experiência.
 
-## Atividade em sala
+## Exercícios de estudo
 
 - Criar formulário de cadastro com nome, e-mail e senha.
 - Bloquear envio enquanto existir erro.

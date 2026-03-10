@@ -22,7 +22,7 @@ const resposta = await fetch('/login', {
 const headers = { Authorization: `Bearer ${token}` };
 ```
 
-## Debate técnico
+## Pontos para reflexão
 
 - Token em AsyncStorage vs armazenamento seguro.
 - Expiração de sessão.

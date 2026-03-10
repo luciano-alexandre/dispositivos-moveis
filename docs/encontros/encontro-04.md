@@ -36,7 +36,7 @@ flowchart LR
   D --> E[Interface atualizada]
 ```
 
-## Estratégia pedagógica
+## Como estudar este tema
 
 - Começar com um contador.
 - Evoluir para seleção de cor ou alternância de tema.

@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Estado em memória desaparece quando o app fecha. Persistência local preserva preferências, cache, sessões e registros criados offline. O professor deve destacar o trade-off entre simplicidade e estrutura: chave-valor é rápido para dados simples; banco relacional atende melhor cenários estruturados.
+Estado em memória desaparece quando o app fecha. Persistência local preserva preferências, cache, sessões e registros criados offline. O ponto central aqui é entender o trade-off entre simplicidade e estrutura: chave-valor é rápido para dados simples; banco relacional atende melhor cenários estruturados.
 
 ```mermaid
 flowchart LR
@@ -29,7 +29,7 @@ Discutir onde esse objeto vive em memória e onde ele deveria ser salvo.
 
 ## Atividade
 
-- Classificar tipos de dados do app da turma em memória, cache ou banco local.
+- Classificar tipos de dados de um aplicativo em memória, cache ou banco local.
 
 ## Materiais complementares
 

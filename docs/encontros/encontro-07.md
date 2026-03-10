@@ -27,7 +27,7 @@ function formatarTelefone(valor: string) {
 />
 ```
 
-## Estratégia pedagógica
+## Como estudar este tema
 
 - Mostrar primeiro um campo sem máscara.
 - Demonstrar a melhoria de legibilidade com máscara.

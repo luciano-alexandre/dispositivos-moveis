@@ -8,18 +8,18 @@
 
 ## Explicação técnica
 
-Teste automatizado reduz regressão e melhora confiança para refatorar. Na disciplina, o foco deve ser pragmático: testar comportamentos importantes, sem transformar a turma em especialista em infraestrutura de teste neste momento.
+Teste automatizado reduz regressão e melhora confiança para refatorar. O foco deve ser pragmático: testar comportamentos importantes, sem tentar dominar toda a infraestrutura de testes de uma só vez.
 
 ```tsx
 import { render, screen } from '@testing-library/react-native';
 
 test('exibe mensagem inicial', () => {
-  render(<Text>Olá turma</Text>);
-  expect(screen.getByText('Olá turma')).toBeTruthy();
+  render(<Text>Olá mundo</Text>);
+  expect(screen.getByText('Olá mundo')).toBeTruthy();
 });
 ```
 
-## Estratégia pedagógica
+## Como estudar este tema
 
 - Começar por função pura.
 - Evoluir para componente simples.

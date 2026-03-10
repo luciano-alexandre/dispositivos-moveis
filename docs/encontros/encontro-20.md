@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Consumir API sem tratamento adequado produz experiências ruins. O estudante precisa estruturar pelo menos três estados: carregando, dados disponíveis e erro. Isso é parte da qualidade da interface, não um detalhe opcional.
+Consumir API sem tratamento adequado produz experiências ruins. Você precisa estruturar pelo menos três estados: carregando, dados disponíveis e erro. Isso é parte da qualidade da interface, não um detalhe opcional.
 
 ```tsx
 const [dados, setDados] = useState<any[]>([]);

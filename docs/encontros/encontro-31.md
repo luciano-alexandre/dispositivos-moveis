@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Depurar é formular hipótese, coletar evidência e testar correção. O estudante precisa abandonar a ideia de tentativa aleatória. Logs estruturados, inspeção de requisições e leitura de stack trace fazem parte do método.
+Depurar é formular hipótese, coletar evidência e testar correção. É importante abandonar a ideia de tentativa aleatória. Logs estruturados, inspeção de requisições e leitura de stack trace fazem parte do método.
 
 ```tsx
 console.log('estado atual', { carregando, erro, quantidade: itens.length });

@@ -8,7 +8,7 @@
 
 ## Conceitos centrais
 
-`FlatList` renderiza itens sob demanda, evitando custo alto de memória. Esse ponto é crítico em dispositivos móveis. A turma deve compreender que desempenho não é apenas velocidade percebida, mas também consumo de bateria e responsividade.
+`FlatList` renderiza itens sob demanda, evitando custo alto de memória. Esse ponto é crítico em dispositivos móveis. É importante compreender que desempenho não é apenas velocidade percebida, mas também consumo de bateria e responsividade.
 
 ```tsx
 import { FlatList, Text, View } from 'react-native';

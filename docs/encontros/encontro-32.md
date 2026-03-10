@@ -8,7 +8,7 @@
 
 ## Conteúdo técnico
 
-Uma build de release remove dependências do modo dev, otimiza artefatos e exige configuração mais cuidadosa. O estudante deve entender que publicar não é apenas apertar um botão; é produzir um pacote confiável, identificável e configurado corretamente.
+Uma build de release remove dependências do modo dev, otimiza artefatos e exige configuração mais cuidadosa. É importante entender que publicar não é apenas apertar um botão; é produzir um pacote confiável, identificável e configurado corretamente.
 
 ## Tópicos essenciais
 
@@ -20,7 +20,7 @@ Uma build de release remove dependências do modo dev, otimiza artefatos e exige
 ## Atividade
 
 - Revisar arquivo de configuração do projeto.
-- Montar checklist de release da turma.
+- Montar seu checklist de release.
 
 ## Materiais complementares
 

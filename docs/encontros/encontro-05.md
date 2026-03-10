@@ -8,7 +8,7 @@
 
 ## Conteúdo técnico
 
-Em React Native, o layout padrão é Flexbox com direção de eixo principal em coluna. Isso difere do CSS web, em que a direção padrão é linha. Esse detalhe precisa ser enfatizado porque afeta o raciocínio do estudante ao organizar blocos na tela.
+Em React Native, o layout padrão é Flexbox com direção de eixo principal em coluna. Isso difere do CSS web, em que a direção padrão é linha. Esse detalhe é importante porque afeta diretamente a forma como você organiza blocos na tela.
 
 ```tsx
 const styles = StyleSheet.create({

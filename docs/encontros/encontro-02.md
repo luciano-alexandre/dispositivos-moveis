@@ -48,9 +48,9 @@ graph TD
 
 ## Exercício orientado
 
-- Criar o projeto da turma.
+- Criar seu primeiro projeto da disciplina.
 - Executar no simulador.
-- Alterar o texto inicial para exibir nome do estudante e curso.
+- Alterar o texto inicial para exibir seu nome e curso.
 
 ## Materiais complementares
 

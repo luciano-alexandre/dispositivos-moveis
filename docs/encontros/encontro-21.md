@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-Sincronizar dados significa decidir quem é a fonte de verdade em cada momento. Em apps móveis, latência e ausência de conexão tornam esse problema mais interessante. O professor pode apresentar o modelo "offline first" em contraste com o modelo estritamente online.
+Sincronizar dados significa decidir quem é a fonte de verdade em cada momento. Em apps móveis, latência e ausência de conexão tornam esse problema mais interessante. Vale comparar o modelo "offline first" com o modelo estritamente online para entender vantagens e limitações de cada abordagem.
 
 ```mermaid
 flowchart LR

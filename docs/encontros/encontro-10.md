@@ -8,7 +8,7 @@
 
 ## Explicação técnica
 
-No padrão stack, cada nova tela é empilhada sobre a anterior. O estudante deve visualizar isso como uma pilha de execução de interface: entrar adiciona uma tela, voltar remove a tela do topo. Esse modelo combina muito bem com fluxos sequenciais, detalhes e formulários.
+No padrão stack, cada nova tela é empilhada sobre a anterior. Você pode visualizar isso como uma pilha de execução de interface: entrar adiciona uma tela, voltar remove a tela do topo. Esse modelo combina muito bem com fluxos sequenciais, detalhes e formulários.
 
 ```tsx
 import { NavigationContainer } from '@react-navigation/native';

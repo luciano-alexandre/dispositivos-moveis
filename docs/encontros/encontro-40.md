@@ -3,22 +3,22 @@
 ## Objetivos
 
 - Encerrar o ciclo da disciplina com reflexão técnica e pedagógica.
-- Coletar feedback.
+- Refletir criticamente sobre sua trajetória na disciplina.
 - Organizar recuperação e pendências finais.
 
-## Conteúdo sugerido
+## O que você deve revisar
 
 - retrospectiva do semestre;
 - síntese das competências desenvolvidas;
 - pontos fortes e fracos observados;
 - orientações para continuidade dos estudos.
 
-## Dinâmica recomendada
+## Roteiro de fechamento
 
 1. Relembrar a trajetória dos 40 encontros.
-2. Pedir feedback escrito sobre metodologia e conteúdo.
-3. Explicar critérios e formato da recuperação.
-4. Indicar trilhas de aprofundamento pós-disciplina.
+2. Registrar feedback escrito sobre metodologia e conteúdo.
+3. Revisar critérios e formato da recuperação.
+4. Organizar trilhas de aprofundamento pós-disciplina.
 
 ## Materiais complementares
 
