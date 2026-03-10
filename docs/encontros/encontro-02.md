@@ -494,7 +494,7 @@ Observe que, com poucas linhas a mais, o código fica mais legível e a interfac
 - Altere o texto do app principal para mostrar seu nome, curso e uma frase de apresentação.
 - Adicione um segundo texto e centralize os elementos da tela com `StyleSheet`.
 
-## 19. Síntese do encontro
+## 19. Resumo do encontro
 
 Neste encontro, o objetivo foi sair do panorama geral do desenvolvimento móvel e entrar em uma stack concreta. Você estudou que React é a base conceitual de componentes e renderização declarativa, React Native leva essa lógica para Android e iOS, e Expo simplifica bastante o início do desenvolvimento. Também viu como nasce um projeto, como ele é executado, quais arquivos são importantes e como ler um app inicial linha por linha.
 
