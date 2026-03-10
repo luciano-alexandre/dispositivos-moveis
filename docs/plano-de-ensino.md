@@ -50,7 +50,7 @@ Técnicas de programação para redes sem fio e redes celulares; programação u
 - Tecnologias multiplataforma e comparativos.
 - Qualidade de software móvel (testes, depuração e performance).
 - Preparação para build e distribuição.
-- Projeto integrador em equipe.
+- Projeto em equipe.
 - Apresentações finais e fechamento.
 
 ## Metodologia
@@ -75,4 +75,4 @@ Técnicas de programação para redes sem fio e redes celulares; programação u
 - Unidade 3 (projeto e apresentação): 40 pontos.
 - Total: 100 pontos.
 
-Detalhamento em `docs/avaliacao.md`.
+Detalhamento em [Avaliação](./avaliacao.md).
