@@ -73,6 +73,10 @@ Os dois sistemas operacionais móveis dominantes no mercado são Android e iOS. 
 
 Android é desenvolvido principalmente pelo Google e usado por diversos fabricantes. Por isso, existe grande variedade de aparelhos, preços, tamanhos de tela e características de hardware.
 
+<p align="center">
+  <img src="https://cdn.simpleicons.org/android/3DDC84" alt="Logo do Android" height="72" />
+</p>
+
 Pontos importantes do Android:
 
 - maior diversidade de dispositivos;
@@ -83,6 +87,10 @@ Pontos importantes do Android:
 ### iOS
 
 iOS é o sistema operacional da Apple para iPhone. O ecossistema é mais controlado, com menor variedade de hardware e maior padronização de comportamento entre dispositivos.
+
+<p align="center">
+  <img src="https://cdn.simpleicons.org/apple/000000" alt="Logo da Apple iOS" height="72" />
+</p>
 
 Pontos importantes do iOS:
 
@@ -195,29 +203,13 @@ Essa abordagem pode ser útil em alguns contextos, mas muitas aplicações moder
 
 ## 8. Principais tecnologias do mercado
 
-## Logos das tecnologias citadas
-
-As imagens abaixo ajudam a associar visualmente cada tecnologia ao seu ecossistema. Isso é útil porque, no mercado e na documentação oficial, essas logos aparecem com frequência em sites, repositórios, vídeos, artigos e vagas.
-
-<p align="center">
-  <img src="https://cdn.simpleicons.org/android/3DDC84" alt="Logo do Android" height="72" />
-  <img src="https://cdn.simpleicons.org/apple/000000" alt="Logo da Apple iOS" height="72" />
-  <img src="https://cdn.simpleicons.org/react/61DAFB" alt="Logo do React Native" height="72" />
-  <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Logo do Flutter" height="72" />
-  <img src="https://cdn.simpleicons.org/kotlin/7F52FF" alt="Logo do Kotlin Multiplatform" height="72" />
-</p>
-
-Legenda rápida:
-
-- Android: sistema operacional móvel amplamente usado em dispositivos de diversos fabricantes.
-- iOS: sistema operacional móvel da Apple para iPhone.
-- React Native: framework multiplataforma baseado em React.
-- Flutter: framework multiplataforma mantido pelo Google.
-- Kotlin: linguagem fortemente associada ao Android e também ao Kotlin Multiplatform.
-
 ### React Native
 
 React Native usa JavaScript ou TypeScript e o modelo de componentes do React para construir interfaces móveis. É a base principal desta disciplina.
+
+<p align="center">
+  <img src="https://cdn.simpleicons.org/react/61DAFB" alt="Logo do React Native" height="72" />
+</p>
 
 Características:
 
@@ -244,6 +236,10 @@ export default function App() {
 
 Flutter usa a linguagem Dart e oferece um motor gráfico próprio. É conhecido por alto controle visual e consistência entre plataformas.
 
+<p align="center">
+  <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Logo do Flutter" height="72" />
+</p>
+
 Características:
 
 - UI fortemente customizável;
@@ -265,6 +261,10 @@ Widget build(BuildContext context) {
 ### Kotlin Multiplatform
 
 Kotlin Multiplatform compartilha principalmente lógica de negócio entre plataformas, preservando partes nativas de UI.
+
+<p align="center">
+  <img src="https://cdn.simpleicons.org/kotlin/7F52FF" alt="Logo do Kotlin Multiplatform" height="72" />
+</p>
 
 Características:
 
