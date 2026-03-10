@@ -18,7 +18,7 @@
 8. Emulador, simulador e dispositivo físico no fluxo com React Native.
 9. Exercícios de revisão.
 
-## 1. Ligando este encontro ao conteúdo anterior
+## 1. Revisão
 
 No encontro anterior, você estudou o panorama geral do desenvolvimento para dispositivos móveis, incluindo sistemas operacionais, tipos de dispositivos e diferenças entre desenvolvimento nativo e multiplataforma.
 
