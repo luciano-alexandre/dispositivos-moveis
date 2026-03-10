@@ -1,12 +1,12 @@
 # Encontro 01 - Apresentação da disciplina, ementa, ferramentas e fluxo de trabalho
 
-## Visão do encontro
+## Visão do Encontro
 
 - Carga horária: 90 minutos.
 - Objetivo central: compreender a trilha da disciplina e começar a montar um fluxo de trabalho profissional.
-- Resultado esperado: você entende a organização do semestre, instala as ferramentas-base e reconhece o ciclo editar -> executar -> depurar.
 
-## Roteiro didático
+
+## Roteiro
 
 1. Abertura e contexto da disciplina.
 2. Apresentação da ementa, unidades e critérios de avaliação.
