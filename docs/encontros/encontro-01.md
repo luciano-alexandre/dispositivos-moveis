@@ -13,7 +13,7 @@
 3. Demonstração do ecossistema: Node.js, editor, emulador e dispositivo físico.
 4. Introdução ao Git e ao repositório da disciplina.
 
-## Explicação técnica
+## Explicação
 
 Desenvolvimento móvel multiplataforma exige uma cadeia de ferramentas integrada. O código-fonte é escrito em JavaScript ou TypeScript, processado por um bundler, executado em um runtime JavaScript e conectado à camada nativa do dispositivo. Desde o primeiro encontro, o ponto central é perceber que produtividade depende menos de decorar comandos e mais de dominar o fluxo de trabalho.
 
