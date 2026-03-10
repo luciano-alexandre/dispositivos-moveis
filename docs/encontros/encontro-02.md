@@ -350,7 +350,7 @@ No React Native:
 
 ## 12. Componentes básicos mais usados no início
 
-Alguns componentes aparecem com frequência já nas primeiras semanas:
+Alguns componentes aparecem com frequência:
 
 | Componente | Função |
 |---|---|
