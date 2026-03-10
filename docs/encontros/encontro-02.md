@@ -72,6 +72,8 @@ React Native aplica a mesma ideia de componentes e interface declarativa ao ambi
 | Estilo | CSS | objetos JavaScript com `StyleSheet` |
 | Saída final | DOM | componentes nativos |
 
+Observação: `DOM` significa `Document Object Model`. Na prática, é a estrutura em árvore que representa os elementos de uma página web no navegador, permitindo que o JavaScript leia e altere esses elementos dinamicamente.
+
 ### Exemplo simples em React Native
 
 ```tsx
