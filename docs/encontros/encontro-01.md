@@ -12,7 +12,6 @@
 2. Apresentação da ementa, unidades e critérios de avaliação.
 3. Demonstração do ecossistema: Node.js, editor, emulador e dispositivo físico.
 4. Introdução ao Git e ao repositório da disciplina.
-5. Encerramento com checklist de preparação.
 
 ## Explicação técnica
 
