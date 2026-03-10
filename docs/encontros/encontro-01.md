@@ -6,7 +6,7 @@
 - Objetivo central: construir uma visão geral sólida sobre o que é desenvolvimento móvel, quais tecnologias existem e quais são os principais desafios desse tipo de software.
 - Ao final deste encontro, você deve ser capaz de explicar a diferença entre desenvolvimento nativo e multiplataforma, reconhecer o papel dos sistemas operacionais móveis e identificar os principais elementos do ecossistema de desenvolvimento.
 
-## Roteiro sugerido para 90 minutos
+## Roteiro
 
 1. O que são dispositivos móveis e por que o desenvolvimento móvel é um campo próprio.
 2. Características dos sistemas operacionais móveis.
