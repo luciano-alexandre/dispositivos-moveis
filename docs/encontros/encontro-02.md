@@ -478,7 +478,7 @@ const styles = StyleSheet.create({
 
 Observe que, com poucas linhas a mais, o código fica mais legível e a interface já ganha melhor estrutura visual.
 
-## 17. Perguntas para revisar o conteúdo
+## 17. Exercícios de Revisão
 
 1. Qual é a diferença entre React, React Native e Expo?
 2. Por que `View` e `Text` são componentes tão importantes?
@@ -486,7 +486,7 @@ Observe que, com poucas linhas a mais, o código fica mais legível e a interfac
 4. Qual é a função do `StyleSheet.create`?
 5. Em que situações o dispositivo físico é mais confiável do que o simulador?
 
-## 18. Exercícios de estudo
+## 18. Exercícios de Estudo
 
 - Explique com suas palavras a relação entre React, React Native e Expo.
 - Crie um pequeno quadro comparando elementos web (`div`, `p`, `button`) com seus equivalentes mais comuns em React Native.
