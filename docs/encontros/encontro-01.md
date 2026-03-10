@@ -433,7 +433,7 @@ mindmap
       Permissões
 ```
 
-## 16. Perguntas para revisar o conteúdo
+## 16. Exercícios de Revisão
 
 1. O que diferencia um software móvel de um software desktop tradicional?
 2. Quais recursos do dispositivo podem ser explorados por um app móvel?
@@ -441,7 +441,7 @@ mindmap
 4. Em quais situações o desenvolvimento nativo tende a ser mais indicado?
 5. Por que um dispositivo físico continua importante mesmo quando existem emuladores?
 
-## 17. Exercícios de estudo
+## 17. Exercícios de Estudo
 
 - Escreva com suas palavras o que é desenvolvimento móvel e cite três diferenças em relação ao desenvolvimento web tradicional.
 - Monte uma tabela comparando Android e iOS em termos de ecossistema, linguagem nativa e perfil de dispositivos.
@@ -449,7 +449,7 @@ mindmap
 - Explique qual abordagem você adotaria para construir um app acadêmico simples e por quê.
 - Pesquise um exemplo de aplicativo que provavelmente exigiria desenvolvimento nativo e justifique sua resposta.
 
-## 18. Síntese do encontro
+## 18. Resumo do encontro
 
 Neste primeiro encontro, a ideia principal é construir repertório. Antes de aprender componentes, navegação e banco local, você precisa entender o ambiente em que o software móvel existe. Dispositivos móveis têm contexto de uso próprio, sistemas operacionais específicos, limitações reais e recursos poderosos. A escolha entre desenvolvimento nativo e multiplataforma depende do problema que você quer resolver, do prazo, da equipe e do nível de integração necessário com a plataforma.
 
