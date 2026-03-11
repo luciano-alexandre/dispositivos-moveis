@@ -54,7 +54,7 @@ Veja alguns exemplos de dispositivos e características relevantes:
       <strong>Smartphone</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tablet_computer.jpg/960px-Tablet_computer.jpg" alt="Foto de um tablet" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Tablet_PC.jpg/1024px-Tablet_PC.jpg" alt="Foto de um tablet" width="140" /><br />
       <strong>Tablet</strong>
     </td>
     <td align="center">
@@ -71,6 +71,8 @@ Veja alguns exemplos de dispositivos e características relevantes:
     </td>
   </tr>
 </table>
+
+O smartwatch e um tipo de dispositivo vestível. A diferença é de categoria: smartwatch e um relogio inteligente, enquanto dispositivo vestível e um termo mais amplo, que inclui pulseiras fitness, oculos inteligentes, aneis inteligentes e outros dispositivos usados no corpo.
 
 ## 3. O que torna o software móvel diferente
 
