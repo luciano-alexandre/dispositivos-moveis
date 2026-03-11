@@ -5,7 +5,7 @@ Cada encontro corresponde a 2 aulas de 45 minutos (90 minutos por encontro).
 | Encontro | Unidade | Tema | Entrega/Checkpoint |
 |---|---|---|---|
 | [1](./encontros/encontro-01.md) | U1 | Apresentação da disciplina, ementa, ferramentas e fluxo de trabalho | - |
-| [2](./encontros/encontro-02.md) | U1 | Introdução ao React Native e ecossistema | Setup concluído |
+| [2](./encontros/encontro-02.md) | U1 | Introdução ao React Native e ecossistema | - |
 | [3](./encontros/encontro-03.md) | U1 | Estrutura de projeto, componentes e JSX | Prática 01 |
 | [4](./encontros/encontro-04.md) | U1 | Props, estado e eventos | Prática 02 |
 | [5](./encontros/encontro-05.md) | U1 | Layout com Flexbox e estilos | Prática 03 |
