@@ -50,23 +50,23 @@ Veja alguns exemplos de dispositivos e características relevantes:
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/phone.svg" alt="Ícone de smartphone" width="72" height="72" /><br />
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Polaroid%20Selfie%205%2C5%22%20Android%20Smartphone%20%2816862282522%29.jpg" alt="Foto de um smartphone" width="140" /><br />
       <strong>Smartphone</strong>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/tablet.svg" alt="Ícone de tablet" width="72" height="72" /><br />
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tablet%20computer.jpg" alt="Foto de um tablet" width="140" /><br />
       <strong>Tablet</strong>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/smartwatch.svg" alt="Ícone de smartwatch" width="72" height="72" /><br />
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fitness%20Tracking%20Smartwatch.jpg" alt="Foto de um smartwatch" width="140" /><br />
       <strong>Smartwatch</strong>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/upc-scan.svg" alt="Ícone representando coletor de dados" width="72" height="72" /><br />
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bar%20code%20scanner.jpg" alt="Foto de um coletor de dados com leitor de codigo de barras" width="140" /><br />
       <strong>Coletor de dados</strong>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/eyeglasses.svg" alt="Ícone representando dispositivo vestível" width="72" height="72" /><br />
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fitbit%20Alta%20HR%20landscape.jpg" alt="Foto de um dispositivo vestivel do tipo pulseira fitness" width="140" /><br />
       <strong>Dispositivo vestível</strong>
     </td>
   </tr>
