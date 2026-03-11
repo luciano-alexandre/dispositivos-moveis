@@ -45,6 +45,33 @@ Veja alguns exemplos de dispositivos e características relevantes:
 | Coletor de dados | logística, estoque | hardware especializado | leitor de código, rede corporativa |
 | Dispositivo vestível | saúde, fitness | pouca entrada de dados | sensores biométricos, bluetooth |
 
+### Imagens de referência dos dispositivos
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/phone.svg" alt="Ícone de smartphone" width="72" height="72" /><br />
+      <strong>Smartphone</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/tablet.svg" alt="Ícone de tablet" width="72" height="72" /><br />
+      <strong>Tablet</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/smartwatch.svg" alt="Ícone de smartwatch" width="72" height="72" /><br />
+      <strong>Smartwatch</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/upc-scan.svg" alt="Ícone representando coletor de dados" width="72" height="72" /><br />
+      <strong>Coletor de dados</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/twbs/icons/main/icons/eyeglasses.svg" alt="Ícone representando dispositivo vestível" width="72" height="72" /><br />
+      <strong>Dispositivo vestível</strong>
+    </td>
+  </tr>
+</table>
+
 ## 3. O que torna o software móvel diferente
 
 Uma aplicação móvel precisa conviver com limitações e oportunidades que não aparecem com a mesma intensidade em outros ambientes.
