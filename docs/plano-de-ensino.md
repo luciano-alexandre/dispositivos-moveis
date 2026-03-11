@@ -75,4 +75,3 @@ Técnicas de programação para redes sem fio e redes celulares; programação u
 - Unidade 3 (projeto e apresentação): 40 pontos.
 - Total: 100 pontos.
 
-Detalhamento em [Avaliação](./avaliacao.md).
