@@ -50,23 +50,23 @@ Veja alguns exemplos de dispositivos e características relevantes:
 <table>
   <tr>
     <td align="center">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Polaroid%20Selfie%205%2C5%22%20Android%20Smartphone%20%2816862282522%29.jpg" alt="Foto de um smartphone" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Smartphone_%2854235969009%29.jpg/960px-Smartphone_%2854235969009%29.jpg" alt="Foto de um smartphone" width="140" /><br />
       <strong>Smartphone</strong>
     </td>
     <td align="center">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tablet%20computer.jpg" alt="Foto de um tablet" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tablet_computer.jpg/960px-Tablet_computer.jpg" alt="Foto de um tablet" width="140" /><br />
       <strong>Tablet</strong>
     </td>
     <td align="center">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fitness%20Tracking%20Smartwatch.jpg" alt="Foto de um smartwatch" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fitness_Tracking_Smartwatch.jpg" alt="Foto de um smartwatch" width="140" /><br />
       <strong>Smartwatch</strong>
     </td>
     <td align="center">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bar%20code%20scanner.jpg" alt="Foto de um coletor de dados com leitor de codigo de barras" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Package_tracking_barcode_scanner_3.jpg/960px-Package_tracking_barcode_scanner_3.jpg" alt="Foto de um coletor de dados com leitor de codigo de barras" width="140" /><br />
       <strong>Coletor de dados</strong>
     </td>
     <td align="center">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fitbit%20Alta%20HR%20landscape.jpg" alt="Foto de um dispositivo vestivel do tipo pulseira fitness" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Fitbit_Alta_HR_landscape.jpg/960px-Fitbit_Alta_HR_landscape.jpg" alt="Foto de um dispositivo vestivel do tipo pulseira fitness" width="140" /><br />
       <strong>Dispositivo vestível</strong>
     </td>
   </tr>
