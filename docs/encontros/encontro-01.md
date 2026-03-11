@@ -41,9 +41,8 @@ Veja alguns exemplos de dispositivos e características relevantes:
 |---|---|---|---|
 | Smartphone | apps bancários, redes sociais, delivery | tela pequena, bateria, conexão móvel | câmera, GPS, notificações, biometria |
 | Tablet | educação, atendimento, catálogos | rotação de tela, múltiplos tamanhos | multitarefa, caneta, tela maior |
-| Smartwatch | monitoramento, alertas rápidos | interface mínima, bateria muito limitada | sensores, vibração, proximidade |
 | Coletor de dados | logística, estoque | hardware especializado | leitor de código, rede corporativa |
-| Dispositivo vestível | saúde, fitness | pouca entrada de dados | sensores biométricos, bluetooth |
+| Dispositivo vestível | saúde, fitness, alertas rápidos | pouca entrada de dados, interface reduzida, bateria limitada | sensores biométricos, bluetooth, vibração, proximidade |
 
 ### Imagens de referência dos dispositivos
 
@@ -54,25 +53,21 @@ Veja alguns exemplos de dispositivos e características relevantes:
       <strong>Smartphone</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Tablet_PC.jpg/1024px-Tablet_PC.jpg" alt="Foto de um tablet" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/IPAD.JPG/1024px-IPAD.JPG" alt="Foto de um tablet" width="140" /><br />
       <strong>Tablet</strong>
-    </td>
-    <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fitness_Tracking_Smartwatch.jpg" alt="Foto de um smartwatch" width="140" /><br />
-      <strong>Smartwatch</strong>
     </td>
     <td align="center">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Package_tracking_barcode_scanner_3.jpg/960px-Package_tracking_barcode_scanner_3.jpg" alt="Foto de um coletor de dados com leitor de codigo de barras" width="140" /><br />
       <strong>Coletor de dados</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Fitbit_Alta_HR_landscape.jpg/960px-Fitbit_Alta_HR_landscape.jpg" alt="Foto de um dispositivo vestivel do tipo pulseira fitness" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fitness_Tracking_Smartwatch.jpg" alt="Foto de um dispositivo vestivel do tipo smartwatch" width="140" /><br />
       <strong>Dispositivo vestível</strong>
     </td>
   </tr>
 </table>
 
-O smartwatch e um tipo de dispositivo vestível. A diferença é de categoria: smartwatch e um relogio inteligente, enquanto dispositivo vestível e um termo mais amplo, que inclui pulseiras fitness, oculos inteligentes, aneis inteligentes e outros dispositivos usados no corpo.
+Nesta classificação, smartwatch aparece como exemplo de dispositivo vestível, e não como categoria separada. Dispositivo vestível é o termo mais amplo, que inclui relógios inteligentes, pulseiras fitness, óculos inteligentes, anéis inteligentes e outros dispositivos usados no corpo.
 
 ## 3. O que torna o software móvel diferente
 
