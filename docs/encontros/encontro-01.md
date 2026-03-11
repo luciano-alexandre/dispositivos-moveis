@@ -55,17 +55,15 @@ Veja alguns exemplos de dispositivos e características relevantes:
       <strong>Tablet</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Package_tracking_barcode_scanner_3.jpg/960px-Package_tracking_barcode_scanner_3.jpg" alt="Foto de um coletor de dados com leitor de codigo de barras" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Package_tracking_barcode_scanner_3.jpg/960px-Package_tracking_barcode_scanner_3.jpg" alt="Foto de um coletor de dados com leitor de código de barras" width="140" /><br />
       <strong>Coletor de dados</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fitness_Tracking_Smartwatch.jpg" alt="Foto de um dispositivo vestivel do tipo smartwatch" width="140" /><br />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Fitness_Tracking_Smartwatch.jpg" alt="Foto de um dispositivo vestível do tipo smartwatch" width="140" /><br />
       <strong>Dispositivo vestível</strong>
     </td>
   </tr>
 </table>
-
-Nesta classificação, smartwatch aparece como exemplo de dispositivo vestível, e não como categoria separada. Dispositivo vestível é o termo mais amplo, que inclui relógios inteligentes, pulseiras fitness, óculos inteligentes, anéis inteligentes e outros dispositivos usados no corpo.
 
 ## 3. O que torna o software móvel diferente
 
