@@ -1,4 +1,4 @@
-# Desenvolvimento para Dispositivos Móveis (React Native)
+# Desenvolvimento para Dispositivos Móveis 
 
 Repositório estruturado para a disciplina de **Desenvolvimento para Dispositivos Móveis**
 do curso de graduação em **Tecnologia em Sistemas para Internet (TSI)**.

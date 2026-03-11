@@ -46,14 +46,12 @@ Persistência local, consumo de serviços web e integração com recursos embarc
 
 Multiplataforma, qualidade (testes/performance/build) e projeto integrador final.
 
-## Avaliação (resumo)
+## Avaliação
 
 - U1: 30 pontos
 - U2: 30 pontos
 - U3: 40 pontos
 - Total: 100 pontos
-
-Ver detalhes em `docs/avaliacao.md`.
 
 ## Produtos Finais Esperados
 
