@@ -53,7 +53,7 @@ Veja alguns exemplos de dispositivos e características relevantes:
       <strong>Smartphone</strong>
     </td>
     <td align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/IPAD.JPG/1024px-IPAD.JPG" alt="Foto de um tablet" width="140" /><br />
+      <img src="https://images.pexels.com/photos/3727456/pexels-photo-3727456.jpeg?cs=srgb&dl=pexels-shvetsa-3727456.jpg&fm=jpg" alt="Foto de um tablet" width="140" /><br />
       <strong>Tablet</strong>
     </td>
     <td align="center">
