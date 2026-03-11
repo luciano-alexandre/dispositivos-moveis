@@ -44,8 +44,6 @@ Veja alguns exemplos de dispositivos e características relevantes:
 | Coletor de dados | logística, estoque | hardware especializado | leitor de código, rede corporativa |
 | Dispositivo vestível | saúde, fitness, alertas rápidos | pouca entrada de dados, interface reduzida, bateria limitada | sensores biométricos, bluetooth, vibração, proximidade |
 
-### Imagens de referência dos dispositivos
-
 <table>
   <tr>
     <td align="center">
