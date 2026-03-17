@@ -34,23 +34,18 @@ Capacitar o estudante para desenvolver aplicativos móveis multiplataforma, com 
 
 ## Estrutura por Unidades
 
-### Unidade 1 (Encontros 1 a 14)
+### Unidade 1 (Encontros 1 a 20)
 
-Fundamentos de desenvolvimento móvel, interfaces (formulários e listas) e navegação entre telas.
+Fundamentos de desenvolvimento móvel, interfaces (formulários e listas), navegação entre telas e Persistência local e consumo de serviços web.
 
-### Unidade 2 (Encontros 15 a 27)
+### Unidade 2 (Encontros 21 a 40)
 
-Persistência local, consumo de serviços web e integração com recursos embarcados.
-
-### Unidade 3 (Encontros 28 a 40)
-
-Multiplataforma, qualidade (testes/performance/build) e projeto integrador final.
+Integração com recursos embarcados, multiplataforma, qualidade (testes/performance/build) e projeto final.
 
 ## Avaliação
 
-- U1: 30 pontos
-- U2: 30 pontos
-- U3: 40 pontos
+- U1: 50 pontos
+- U2: 50 pontos
 - Total: 100 pontos
 
 ## Produtos Finais Esperados
