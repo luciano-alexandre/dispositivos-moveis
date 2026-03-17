@@ -2,7 +2,7 @@
 
 Cada encontro corresponde a 2 aulas de 45 minutos (90 minutos por encontro).
 
-| Encontro | Unidade | Tema | Entrega/Checkpoint |
+| Encontro | Unidade | Tema | Entrega |
 |---|---|---|---|
 | [1](./encontros/encontro-01.md) | U1 | Apresentação da disciplina, ementa, ferramentas e fluxo de trabalho | - |
 | [2](./encontros/encontro-02.md) | U1 | Introdução ao React Native e ecossistema | - |
