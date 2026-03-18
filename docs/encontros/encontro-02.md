@@ -208,7 +208,7 @@ app-mobile/
 
 ### `app/`
 
-Guarda telas e rotas quando o projeto usa Expo Router.
+Guarda telas e rotas quando o projeto usa Expo Router (sistema de roteamento do Expo baseado em arquivos e pastas, no qual cada arquivo representa uma rota/tela).
 
 ### `assets/`
 
