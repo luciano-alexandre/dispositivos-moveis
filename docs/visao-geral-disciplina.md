@@ -8,6 +8,7 @@
 - Formato: 80 aulas de 45 minutos
 - Organização: 40 encontros (2 aulas por encontro)
 - Abordagem: React Native (multiplataforma)
+- Google Sala de Aula: **goj6mn6k**
 
 ## Propósito da Disciplina
 
