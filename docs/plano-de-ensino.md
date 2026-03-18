@@ -29,29 +29,23 @@ Técnicas de programação para redes sem fio e redes celulares; programação u
 
 ## Unidades de ensino
 
-### Unidade 1 - Fundamentos, interfaces e navegação (Encontros 1 a 14)
+### Unidade 1 - Fundamentos, interfaces, navegação e dados (Encontros 1 a 20)
 
 - Introdução à programação móvel e React Native.
 - Ambiente de desenvolvimento, emuladores e dispositivos reais.
 - Componentes básicos, estilo formulário e listas.
-- Estado, props e ciclo de desenvolvimento.
-- Navegação em aplicativos multijanelas.
-
-### Unidade 2 - Dados, serviços e recursos embarcados (Encontros 15 a 27)
-
+- Estado, props e fluxo de navegação em aplicativos multijanelas.
 - Persistência local (AsyncStorage e SQLite).
-- Consumo de serviços web e tratamento de erros.
-- Arquitetura de app, organização por camadas.
+- Consumo inicial de serviços web e tratamento de estados de requisição.
+
+### Unidade 2 - Recursos embarcados, qualidade e projeto integrador (Encontros 21 a 40)
+
+- Integração local-remoto e autenticação básica.
 - Recursos embarcados: câmera, geolocalização e bluetooth.
-- Boas práticas de segurança e permissão.
-
-### Unidade 3 - Multiplataforma e projeto integrador (Encontros 28 a 40)
-
-- Tecnologias multiplataforma e comparativos.
-- Qualidade de software móvel (testes, depuração e performance).
-- Preparação para build e distribuição.
-- Projeto em equipe.
-- Apresentações finais e fechamento.
+- Arquitetura de app, organização por camadas e boas práticas.
+- Multiplataforma, testes, depuração, performance e build de release.
+- Publicação, distribuição e desenvolvimento do projeto integrador.
+- Apresentações finais, fechamento e recuperação.
 
 ## Metodologia
 
@@ -70,8 +64,6 @@ Técnicas de programação para redes sem fio e redes celulares; programação u
 
 ## Avaliação (visão geral)
 
-- Unidade 1: 30 pontos.
-- Unidade 2: 30 pontos.
-- Unidade 3 (projeto e apresentação): 40 pontos.
+- Unidade 1: 50 pontos.
+- Unidade 2: 50 pontos.
 - Total: 100 pontos.
-

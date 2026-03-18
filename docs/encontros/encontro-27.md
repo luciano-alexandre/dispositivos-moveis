@@ -1,4 +1,4 @@
-# Encontro 27 - Avaliação da Unidade 2
+# Encontro 27 - Avaliação parcial da Unidade 2 (etapa 1)
 
 ## Objetivos do encontro
 

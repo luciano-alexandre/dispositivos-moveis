@@ -1,4 +1,4 @@
-# Encontro 14 - Avaliação da Unidade 1
+# Encontro 14 - Avaliação parcial da Unidade 1 (etapa 1)
 
 ## Objetivos do encontro
 
@@ -38,4 +38,4 @@ Construir um app simples de catálogo acadêmico com:
 ## Depois da avaliação
 
 - Fazer uma autoavaliação honesta sobre os pontos fortes e as dificuldades encontradas.
-- Registrar os tópicos que ainda precisam de reforço para chegar melhor preparado à Unidade 2.
+- Registrar os tópicos que ainda precisam de reforço para a etapa final da Unidade 1.

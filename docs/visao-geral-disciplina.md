@@ -36,11 +36,11 @@ Capacitar o estudante para desenvolver aplicativos móveis multiplataforma, com 
 
 ### Unidade 1 (Encontros 1 a 20)
 
-Fundamentos de desenvolvimento móvel, interfaces (formulários e listas), navegação entre telas e Persistência local e consumo de serviços web.
+Fundamentos de desenvolvimento móvel, interfaces (formulários e listas), navegação entre telas, persistência local e consumo de serviços web.
 
 ### Unidade 2 (Encontros 21 a 40)
 
-Integração com recursos embarcados, multiplataforma, qualidade (testes/performance/build) e projeto final.
+Integração local-remoto, recursos embarcados, arquitetura e qualidade (testes/performance/build), além do projeto final.
 
 ## Avaliação
 

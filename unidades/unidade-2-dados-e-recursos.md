@@ -1,24 +1,26 @@
-# Unidade 2 - Dados, Serviços e Recursos Embarcados
+# Unidade 2 - Recursos Embarcados, Qualidade e Projeto Integrador
 
 ## Período
 
-Encontros 15 a 27
+Encontros 21 a 40
 
 ## Competências
 
-- Persistir dados localmente no dispositivo.
-- Consumir serviços web em app móvel.
-- Integrar recursos embarcados com segurança e boas práticas.
+- Integrar dados locais e remotos com autenticação básica.
+- Utilizar recursos embarcados com segurança e boas práticas.
+- Aplicar organização arquitetural e práticas de qualidade.
+- Planejar, desenvolver e entregar um projeto integrador funcional.
 
 ## Conteúdos
 
-4. Programação de aplicativos.
-   1. Acesso a banco de dados local no dispositivo.
-   2. Consumo de serviços web.
-   3. Utilização de recursos embarcados: câmera, localização, bluetooth, entre outros.
+1. Integração local-remoto e autenticação.
+2. Recursos embarcados: câmera, localização, bluetooth, entre outros.
+3. Arquitetura de aplicativos, serviços e boas práticas de código.
+4. Multiplataforma, testes, depuração, performance e build.
+5. Publicação, distribuição e projeto integrador em equipe.
 
 ## Produtos de aprendizagem
 
-- App CRUD local.
-- App integrado a API REST.
-- Protótipo com recurso embarcado funcional.
+- App com integração de recursos embarcados.
+- App com melhorias de qualidade (testes/depuração/performance).
+- Projeto integrador completo com documentação e apresentação.
