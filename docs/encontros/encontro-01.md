@@ -2,7 +2,6 @@
 
 ## Visão do encontro
 
-- Carga horária: 90 minutos.
 - Objetivo central: construir uma visão geral sólida sobre o que é desenvolvimento móvel, quais tecnologias existem e quais são os principais desafios desse tipo de software.
 - Ao final deste encontro, você deve ser capaz de explicar a diferença entre desenvolvimento nativo e multiplataforma, reconhecer o papel dos sistemas operacionais móveis e identificar os principais elementos do ecossistema de desenvolvimento.
 

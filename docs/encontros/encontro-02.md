@@ -2,8 +2,7 @@
 
 ## Visão do encontro
 
-- Carga horária: 90 minutos.
-- Objetivo central: compreender como o React Native se posiciona no ecossistema de desenvolvimento móvel e aprender os primeiros elementos práticos para criar, executar e entender um projeto inicial.
+- **Objetivo:** compreender como o React Native se posiciona no ecossistema de desenvolvimento móvel e aprender os primeiros elementos práticos para criar, executar e entender um projeto inicial.
 - Ao final deste encontro, você deve ser capaz de diferenciar `React`, `React Native` e `Expo`, entender a função do componente principal da aplicação e reconhecer a estrutura básica de um projeto.
 
 ## Roteiro
