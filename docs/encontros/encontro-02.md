@@ -228,7 +228,7 @@ Armazena configurações da aplicação, como nome, slug, ícone e outras opçõ
 
 ## 9. O componente principal da aplicação
 
-Todo aplicativo precisa de um ponto de entrada. Em projetos mais simples, isso costuma ser um arquivo principal com um componente chamado `App`. Em projetos com roteamento, pode haver uma estrutura baseada em pastas e rotas.
+Todo aplicativo precisa de um ponto de entrada. Em projetos mais simples, isso costuma ser um arquivo principal com um componente chamado `App`. 
 
 Veja um exemplo simples:
 
@@ -395,29 +395,7 @@ export default function Perfil() {
 }
 ```
 
-## 13. Ambiente de execução: emulador, simulador e celular
-
-Ao desenvolver com React Native, você pode rodar o app em:
-
-- emulador Android;
-- simulador iOS;
-- celular físico com Expo Go ou build específica.
-
-### Vantagens de cada opção
-
-Emulador ou simulador:
-
-- praticidade;
-- testes rápidos;
-- facilidade de depuração.
-
-Dispositivo físico:
-
-- resultado mais fiel;
-- validação real de toque, câmera, GPS e desempenho;
-- observação do comportamento em rede móvel.
-
-## 14. Estrutura mental correta para começar
+## 13. Estrutura mental correta para começar
 
 Ao iniciar seus estudos em React Native, tente organizar o raciocínio nesta ordem:
 
