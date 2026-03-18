@@ -256,10 +256,6 @@ const styles = StyleSheet.create({
 
 ### Onde criar esse componente `App` na prática
 
-Use esta regra para não se perder no início:
-
-### Cenário A - Projeto sem Expo Router (arquivo único de entrada)
-
 Crie o arquivo `App.tsx` na raiz do projeto, no mesmo nível de `package.json`.
 
 Estrutura esperada:
@@ -273,46 +269,9 @@ app-mobile/
   app.json
 ```
 
-Nesse cenário, o componente `App` do exemplo deve ficar dentro de `App.tsx`.
+O componente `App` do exemplo deve ficar dentro de `App.tsx`.
 
-### Cenário B - Projeto com Expo Router (pasta `app/`)
-
-Quando o projeto usa rotas por pasta, a tela inicial costuma ser `app/index.tsx`.
-
-Estrutura esperada:
-
-```text
-app-mobile/
-  app/
-    index.tsx
-  assets/
-  node_modules/
-  package.json
-  app.json
-```
-
-Nesse caso, você pode:
-
-- colocar o código diretamente em `app/index.tsx`; ou
-- criar um componente em `src/components/App.tsx` e importá-lo em `app/index.tsx`.
-
-Exemplo de uso com componente separado:
-
-```tsx
-// app/index.tsx
-import App from '../src/components/App';
-
-export default function Index() {
-  return <App />;
-}
-```
-
-Resumo rápido:
-
-- sem roteador por pastas: use `App.tsx` na raiz;
-- com Expo Router: use `app/index.tsx` como entrada da primeira tela.
-
-## 10. Lendo esse código linha por linha
+# 10. Lendo esse código linha por linha
 
 ### Importações
 
