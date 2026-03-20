@@ -274,6 +274,120 @@ app-mobile/
 
 Essa organização melhora legibilidade e prepara terreno para projetos maiores.
 
+### Conteúdo de cada arquivo separado
+
+`src/components/Cabecalho.tsx`
+
+```tsx
+import { StyleSheet, Text, View } from 'react-native';
+
+export function Cabecalho() {
+  return (
+    <View style={styles.cabecalho}>
+      <Text style={styles.titulo}>Desenvolvimento Mobile</Text>
+      <Text style={styles.subtitulo}>Encontro 03</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  cabecalho: {
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  titulo: {
+    fontSize: 22,
+    fontWeight: '700',
+  },
+  subtitulo: {
+    fontSize: 14,
+    color: '#4b5563',
+  },
+});
+```
+
+`src/components/CardDisciplina.tsx`
+
+```tsx
+import { StyleSheet, Text, View } from 'react-native';
+
+export function CardDisciplina() {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cardTitulo}>Tema da aula</Text>
+      <Text>Estrutura de projeto, componentes e JSX.</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 16,
+  },
+  cardTitulo: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 6,
+  },
+});
+```
+
+`src/components/Rodape.tsx`
+
+```tsx
+import { StyleSheet, Text, View } from 'react-native';
+
+export function Rodape() {
+  return (
+    <View style={styles.rodape}>
+      <Text>Curso TSI • 2026</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  rodape: {
+    alignItems: 'center',
+    marginTop: 8,
+  },
+});
+```
+
+### Como importar no `App.tsx`
+
+`App.tsx`
+
+```tsx
+import { StyleSheet, View } from 'react-native';
+import { Cabecalho } from './src/components/Cabecalho';
+import { CardDisciplina } from './src/components/CardDisciplina';
+import { Rodape } from './src/components/Rodape';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Cabecalho />
+      <CardDisciplina />
+      <Rodape />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    gap: 12,
+    justifyContent: 'center',
+    backgroundColor: '#f5f7fa',
+  },
+});
+```
+
+Com esse padrão, cada componente cuida da sua responsabilidade, e o `App.tsx` fica mais limpo para orquestrar a tela.
+
 ## 10. Erros comuns neste encontro
 
 ### Esquecer `export`
@@ -296,21 +410,24 @@ Antes de rotas, garanta domínio de componentes e JSX.
 
 ### Objetivo
 
-Criar um app institucional simples da disciplina usando componentes separados.
+Criar uma tela de **painel do estudante** com componentes separados, diferente do exemplo guiado da aula.
 
 ### Requisitos mínimos
 
 1. Projeto criado com Expo sem Expo Router.
-2. Componente `Cabecalho` com título e subtítulo.
-3. Componente `CardDisciplina` com tema e breve descrição.
-4. Componente `Rodape` com nome do curso.
-5. Estilização básica com `StyleSheet`.
+2. Criar componente `BoasVindas` com nome do aluno e curso.
+3. Criar componente `CardProximaAula` com título da próxima aula e uma descrição curta.
+4. Criar componente `CardPendencia` com ao menos 2 pendências em formato de texto.
+5. Criar componente `Rodape` com semestre ou turma.
+6. Organizar os componentes em `src/components/`.
+7. Estilização básica com `StyleSheet`.
 
 ### Critérios de avaliação
 
 - organização de arquivos;
 - legibilidade do código;
 - uso correto de JSX;
+- separação correta entre componentes;
 - execução do app sem erros.
 
 ## 12. Checklist de validação do aluno
@@ -319,7 +436,7 @@ Criar um app institucional simples da disciplina usando componentes separados.
 - se necessário, as dependências web foram instaladas com `npx expo install react-dom react-native-web`;
 - o app abre no navegador com `npm run web` (ou tecla `w` no terminal);
 - a tela aparece no dispositivo/emulador;
-- os três componentes são renderizados;
+- os componentes da prática são renderizados corretamente;
 - não há erro de importação ou exportação;
 - o código está organizado em pastas.
 
@@ -334,8 +451,8 @@ Criar um app institucional simples da disciplina usando componentes separados.
 ## 14. Exercícios de estudo
 
 - Reescreva a tela da prática trocando os textos por dados do seu perfil acadêmico.
-- Adicione um segundo card com "Objetivos da semana".
-- Crie uma variação de estilo para o `Cabecalho` (cor, espaçamento e fonte).
+- Adicione um card extra chamado `CardMetaDaSemana`.
+- Crie uma variação de estilo para o componente `BoasVindas` (cor, espaçamento e fonte).
 - Explique, em 5 linhas, por que a abordagem sem Router é melhor para o início.
 
 ## 15. Resumo do encontro
