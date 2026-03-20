@@ -430,7 +430,7 @@ Antes de rotas, garanta domínio de componentes e JSX.
 
 ### Objetivo
 
-Criar uma tela de **painel do estudante** com componentes separados, diferente do exemplo guiado da aula.
+Criar uma tela de **painel do estudante** com componentes separados.
 
 ### Requisitos mínimos
 
