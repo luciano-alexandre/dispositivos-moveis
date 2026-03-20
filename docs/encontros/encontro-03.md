@@ -51,14 +51,14 @@ Perceba que esse template não depende da pasta `app/` com rotas por arquivo. Is
 
 ## 3. Por que começar sem Expo Router neste início
 
-Escolha pedagógica para o começo da disciplina:
+Escolha para o começo da disciplina:
 
 - menor carga cognitiva: o aluno aprende primeiro componentes, props, estado e estilo;
 - ponto de entrada único (`App.tsx`), facilitando leitura;
 - menos abstrações no debug inicial;
 - separa duas habilidades diferentes: primeiro construir tela, depois navegar entre telas.
 
-Resumo didático:
+Resumo:
 
 - primeiro aprendemos a **construir peças** da UI;
 - depois aprendemos a **conectar telas** (navegação).
