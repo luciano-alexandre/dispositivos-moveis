@@ -442,14 +442,6 @@ Criar uma tela de **painel do estudante** com componentes separados.
 6. Organizar os componentes em `src/components/`.
 7. Estilização básica com `StyleSheet`.
 
-### Critérios de avaliação
-
-- organização de arquivos;
-- legibilidade do código;
-- uso correto de JSX;
-- separação correta entre componentes;
-- execução do app sem erros.
-
 ## 12. Checklist de validação do aluno
 
 - o projeto inicia com `npm run start`;
