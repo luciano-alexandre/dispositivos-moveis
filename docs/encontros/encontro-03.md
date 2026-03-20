@@ -49,6 +49,46 @@ app-mobile/
 
 Perceba que esse template não depende da pasta `app/` com rotas por arquivo. Isso reduz complexidade no começo.
 
+### Quando faltar suporte web: instalando dependências
+
+Em alguns ambientes, o projeto inicia normalmente para mobile, mas não consegue abrir no navegador porque faltam dependências web.
+
+Comando para corrigir:
+
+```bash
+npx expo install react-dom react-native-web
+```
+
+Por que esse comando é importante:
+
+- `react-dom` permite renderizar a aplicação React no navegador;
+- `react-native-web` adapta componentes React Native (`View`, `Text`, etc.) para ambiente web.
+
+Se essas dependências não estiverem instaladas, é comum aparecer erro ao tentar rodar no navegador.
+
+### Como testar o app no navegador
+
+Com o projeto criado e dependências instaladas:
+
+```bash
+npm run web
+```
+
+Alternativa equivalente:
+
+```bash
+npx expo start --web
+```
+
+Fluxo esperado:
+
+1. o terminal inicia o bundler;
+2. uma aba do navegador é aberta (normalmente em `http://localhost:8081` ou porta informada no terminal);
+3. o app React Native é renderizado no navegador via React Native Web;
+4. ao salvar alterações no código, a página atualiza automaticamente.
+
+Se estiver usando `npm run start`, também é possível pressionar `w` no terminal para abrir a versão web.
+
 ## 3. Por que começar sem Expo Router neste início
 
 Escolha para o começo da disciplina:
@@ -276,6 +316,8 @@ Criar um app institucional simples da disciplina usando componentes separados.
 ## 12. Checklist de validação do aluno
 
 - o projeto inicia com `npm run start`;
+- se necessário, as dependências web foram instaladas com `npx expo install react-dom react-native-web`;
+- o app abre no navegador com `npm run web` (ou tecla `w` no terminal);
 - a tela aparece no dispositivo/emulador;
 - os três componentes são renderizados;
 - não há erro de importação ou exportação;
