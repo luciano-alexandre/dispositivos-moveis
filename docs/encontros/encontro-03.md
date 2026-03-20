@@ -164,6 +164,26 @@ export default function App() {
 }
 ```
 
+### JSX x TSX: qual a diferença
+
+Esse ponto gera dúvida no início, então vale separar bem:
+
+- `JSX` é a sintaxe de interface (`<View>`, `<Text>`, `<Card />` etc.).
+- `.jsx` é arquivo JavaScript que pode conter JSX.
+- `.tsx` é arquivo TypeScript que pode conter JSX.
+
+Na prática:
+
+- `jsx` = JavaScript + JSX;
+- `tsx` = TypeScript + JSX (com tipagem estática).
+
+Como este projeto da disciplina usa TypeScript (`blank-typescript`), os componentes devem ficar em arquivos `.tsx`.
+
+Regra prática:
+
+- use `.tsx` quando o arquivo tiver interface JSX;
+- use `.ts` quando não tiver JSX (por exemplo, tipos, funções utilitárias e serviços).
+
 ## 7. Diferenças importantes para quem vem da web
 
 ### Não existe `div`
