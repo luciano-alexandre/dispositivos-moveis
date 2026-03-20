@@ -15,16 +15,6 @@
 6. Prática 01 guiada.
 7. Revisão e exercícios de fixação.
 
-## Plano de 90 minutos
-
-| Bloco | Tempo | Foco |
-|---|---|---|
-| Bloco 1 | 15 min | Revisão, contexto e preparação do ambiente |
-| Bloco 2 | 20 min | Criação do projeto com Expo sem Router |
-| Bloco 3 | 25 min | Componentes e JSX com exemplo guiado |
-| Bloco 4 | 25 min | Prática 01 (mãos no teclado) |
-| Bloco 5 | 5 min | Fechamento e exercícios de estudo |
-
 ## 1. Revisão do encontro 02
 
 No encontro anterior, você viu a relação entre `React`, `React Native` e `Expo`, além do fluxo básico de execução do app.
