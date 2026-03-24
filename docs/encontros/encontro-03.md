@@ -198,7 +198,7 @@ Em React Native, texto não deve ficar solto fora de um componente de texto.
 
 Usamos objetos JavaScript com `StyleSheet`.
 
-## 8. Exemplo guiado: tela institucional simples
+## 8. Exemplo: tela institucional simples
 
 Objetivo: montar uma tela com três partes reutilizáveis (`Cabecalho`, `CardDisciplina`, `Rodape`).
 
@@ -426,7 +426,7 @@ No começo, mantenha foco em estrutura visual limpa e legível.
 
 Antes de rotas, garanta domínio de componentes e JSX.
 
-## 11. Prática 01 (entrega do encontro)
+## 11. Prática 01 
 
 ### Objetivo
 
