@@ -175,13 +175,10 @@ function atualizarCampo(campo: 'nome' | 'email' | 'turma', valor: string) {
 ### Leitura do Código
 
 1. `const [form, setForm] = useState({`: cria estado único para agrupar campos.
-2. `nome: '',`: campo `nome` inicial vazio.
-3. `email: '',`: campo `email` inicial vazio.
-4. `turma: '',`: campo `turma` inicial vazio.
-5. `function atualizarCampo(campo: 'nome' | 'email' | 'turma', valor: string) {`: cria função para atualizar qualquer campo permitido.
-6. `setForm((estadoAnterior) => ({`: atualiza estado com base no valor anterior.
-7. `...estadoAnterior,`: mantém os campos que não foram alterados.
-8. `[campo]: valor,`: sobrescreve apenas o campo recebido.
+2. `function atualizarCampo(campo: 'nome' | 'email' | 'turma', valor: string) {`: cria função para atualizar qualquer campo permitido.
+3. `setForm((estadoAnterior) => ({`: atualiza estado com base no valor anterior.
+4. `...estadoAnterior,`: mantém os campos que não foram alterados.
+5. `[campo]: valor,`: sobrescreve apenas o campo recebido.
 
 Vantagens:
 
@@ -259,7 +256,7 @@ function validar(dados: FormData): FormErrors {
 
 ## 6. Feedback de erro na interface
 
-Boa validação não é apenas regra de código. O aluno precisa mostrar erro no lugar certo e com mensagem clara.
+Boa validação não é apenas regra de código. O desenvolvedor precisa mostrar erro no lugar certo e com mensagem clara.
 
 Estratégia prática:
 
