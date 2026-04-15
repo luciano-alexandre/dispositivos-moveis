@@ -7,76 +7,16 @@
 
 ## Roteiro
 
-1. Docker no contexto da disciplina e execução do projeto.
-2. O que caracteriza um formulário em React Native.
-3. `TextInput`: propriedades essenciais no início.
-4. Formulário controlado com estado.
-5. Validação básica de campos.
-6. Exibição de mensagens de erro e feedback visual.
-7. Exemplo completo de formulário.
-8. Prática 04 guiada.
-9. Revisão e exercícios de fixação.
+1. O que caracteriza um formulário em React Native.
+2. `TextInput`: propriedades essenciais no início.
+3. Formulário controlado com estado.
+4. Validação básica de campos.
+5. Exibição de mensagens de erro e feedback visual.
+6. Exemplo completo de formulário.
+7. Prática 04 guiada.
+8. Revisão e exercícios de fixação.
 
-## 1. Docker no contexto do React Native
-
-Docker ajuda a padronizar o ambiente da turma: todos usam a mesma versão de Node e as mesmas dependências.
-
-Resumo prático para este encontro:
-
-- use Docker para instalar dependências e iniciar o bundler;
-- para testar no celular, prefira Expo Go;
-- em ambiente de container, use `--tunnel` no Expo para facilitar conexão;
-- em geral, emulador Android/iOS não roda dentro do container da aula.
-
-Passo a passo rápido (Expo):
-
-1. Crie (ou use) um `Dockerfile` na raiz do projeto:
-
-```dockerfile
-FROM node:20-bullseye
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 8081 19000 19001 19002
-CMD ["npx", "expo", "start", "--tunnel"]
-```
-
-2. Crie um arquivo `docker-compose.yml` na raiz do projeto:
-
-```yaml
-services:
-  app:
-    build: .
-    container_name: rn-formulario-aula
-    command: npx expo start --tunnel
-    ports:
-      - "8081:8081"
-      - "19000:19000"
-      - "19001:19001"
-      - "19002:19002"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    stdin_open: true
-    tty: true
-```
-
-3. Suba o projeto:
-
-```bash
-docker compose up --build
-```
-
-4. Leia o QR Code no terminal com o app Expo Go e abra o projeto no celular.
-
-5. Para encerrar:
-
-```bash
-docker compose down
-```
-
-## 2. O que caracteriza um formulário em React Native
+## 1. O que caracteriza um formulário em React Native
 
 Um formulário é um conjunto de campos para entrada, validação e envio de dados.
 
@@ -100,7 +40,7 @@ flowchart LR
   E --> F[Envio]
 ```
 
-## 3. `TextInput`: propriedades essenciais
+## 2. `TextInput`: propriedades essenciais
 
 `TextInput` é o componente principal para entrada de dados no React Native.
 
@@ -151,7 +91,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 4. Formulário controlado com estado
+## 3. Formulário controlado com estado
 
 Formulário controlado significa que o valor exibido no campo vem do estado.
 
@@ -187,7 +127,7 @@ Vantagens:
 - envio com dados organizados;
 - facilidade para resetar formulário.
 
-## 5. Validação básica de campos
+## 4. Validação básica de campos
 
 Neste estágio inicial, vamos começar com validações manuais simples.
 
@@ -254,7 +194,7 @@ function validar(dados: FormData): FormErrors {
 15. `if (!dados.vagas || Number.isNaN(vagasNumero) || vagasNumero <= 0) {`: verifica vazio, não numérico ou valor inválido.
 16. `erros.vagas = 'Informe um número de vagas maior que zero.';`: registra erro de vagas.
 
-## 6. Feedback de erro na interface
+## 5. Feedback de erro na interface
 
 Boa validação não é apenas regra de código. O desenvolvedor precisa mostrar erro no lugar certo e com mensagem clara.
 
@@ -279,7 +219,7 @@ Exemplo de estilo condicional:
 {erros.email ? <Text style={styles.textoErro}>{erros.email}</Text> : null}
 ```
 
-## 7. Exemplo completo: formulário de inscrição
+## 6. Exemplo completo: formulário de inscrição
 
 `App.tsx`
 
@@ -431,7 +371,7 @@ const styles = StyleSheet.create({
 ```
 
 
-## 8. Prática 04
+## 7. Prática 04
 
 ### Objetivo
 
@@ -455,7 +395,7 @@ Construir uma tela chamada **Cadastro de Participação em Oficina** com formul�
 - feedback visual dos erros;
 - código organizado e legível.
 
-## 9. Checklist de validação do aluno
+## 8. Checklist de validação do aluno
 
 - o app inicia com `npm run start`;
 - todos os campos atualizam o estado corretamente;
@@ -464,7 +404,7 @@ Construir uma tela chamada **Cadastro de Participação em Oficina** com formul�
 - após envio válido, os campos são limpos;
 - a interface mantém padrão visual consistente.
 
-## 10. Erros comuns
+## 9. Erros comuns
 
 ### Não controlar o valor do `TextInput`
 
@@ -482,7 +422,7 @@ Tipo de teclado errado piora experiência de digitação no celular.
 
 Mensagem específica acelera correção pelo usuário.
 
-## 11. Exercícios de revisão
+## 10. Exercícios de revisão
 
 1. O que é um formulário controlado?
 2. Qual o papel de `onChangeText` no fluxo de dados?
@@ -490,14 +430,14 @@ Mensagem específica acelera correção pelo usuário.
 4. Como destacar visualmente um campo com erro?
 5. Em que casos usar `keyboardType="numeric"`?
 
-## 12. Exercícios de estudo
+## 11. Exercícios de estudo
 
 - Adicione campo de senha com `secureTextEntry` e validação de tamanho mínimo.
 - Inclua botão "Limpar" para resetar formulário manualmente.
 - Faça validação em tempo real no campo de e-mail (durante digitação).
 - Explique, em até 10 linhas, a diferença entre feedback visual e validação de regra.
 
-## 13. Resumo do encontro
+## 12. Resumo do encontro
 
 Neste encontro, você evoluiu para um dos blocos mais importantes de interfaces móveis: formulários. Praticou `TextInput`, controle de estado por campo, validações manuais e apresentação de erros de forma clara. Essa base será usada no próximo encontro para formulários mais completos, com padrões de controle e refinamentos de entrada.
 
