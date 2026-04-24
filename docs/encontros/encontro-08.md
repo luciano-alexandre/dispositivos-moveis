@@ -363,7 +363,7 @@ Nesse ponto, o app já mostra o topo da interface enquanto os próximos blocos s
 
 ## 7. Arquivo `src/components/SeletorCondicao.tsx`
 
-Para deixar a correção mais simples, o controle da condição será feito com **um único botão de alternância**. Cada toque muda o estado entre `integra` e `avaria`.
+O controle da condição será feito com **um único botão de alternância**. Cada toque muda o estado entre `integra` e `avaria`.
 
 ```tsx
 import { Pressable, Text, View } from 'react-native';
@@ -406,7 +406,7 @@ export function SeletorCondicao({ condicao, onToggle }: SeletorCondicaoProps) {
 - mostra o status atual com clareza;
 - evita espalhar a troca de estado pelo `App.tsx`.
 
-### Atualize o `App.tsx` imediatamente
+### Atualize o `App.tsx`
 
 Depois de criar o seletor, já vale conectar o estado da condição no `App.tsx`:
 
