@@ -66,7 +66,7 @@ Nesta correção, vamos seguir a divisão abaixo:
 - `types.ts`: centraliza os tipos compartilhados;
 - `styles.ts`: centraliza a aparência;
 - `CabecalhoApp`: mostra o topo da tela;
-- `SeletorCondicao`: alterna entre entrega íntegra e entrega com avaria;
+- `SeletorCondicao`: alterna a condição da entrega com um toque simples;
 - `ResumoVistoria`: mostra o resumo em tempo real e o último registro salvo;
 - `BotaoAcao`: padroniza os botões principais;
 - `Footer`: renderiza o rodapé com nome e matrícula do aluno.
@@ -336,7 +336,7 @@ export function CabecalhoApp({ titulo, subtitulo }: CabecalhoAppProps) {
 - usa `props` tipadas;
 - permite reutilização em outra tela, se necessário.
 
-### Atualize o `App.tsx` imediatamente
+### Atualize o `App.tsx`
 
 Assim que o componente for criado, já podemos começar a usá-lo no arquivo principal:
 
@@ -363,7 +363,7 @@ Nesse ponto, o app já mostra o topo da interface enquanto os próximos blocos s
 
 ## 7. Arquivo `src/components/SeletorCondicao.tsx`
 
-O enunciado exige um controle por toque para a condição da entrega.
+Para deixar a correção mais simples, o controle da condição será feito com **um único botão de alternância**. Cada toque muda o estado entre `integra` e `avaria`.
 
 ```tsx
 import { Pressable, Text, View } from 'react-native';
@@ -372,47 +372,29 @@ import type { CondicaoEntrega } from '../types';
 
 type SeletorCondicaoProps = {
   condicao: CondicaoEntrega;
-  onChange: (condicao: CondicaoEntrega) => void;
+  onToggle: () => void;
 };
 
-export function SeletorCondicao({
-  condicao,
-  onChange,
-}: SeletorCondicaoProps) {
-  const opcoes: Array<{ label: string; value: CondicaoEntrega }> = [
-    { label: 'Entrega integra', value: 'integra' },
-    { label: 'Entrega com avaria', value: 'avaria' },
-  ];
+function obterTextoCondicao(condicao: CondicaoEntrega) {
+  return condicao === 'integra' ? 'Entrega integra' : 'Entrega com avaria';
+}
 
+export function SeletorCondicao({ condicao, onToggle }: SeletorCondicaoProps) {
   return (
     <View style={styles.fieldGroup}>
       <Text style={styles.label}>Condicao da entrega</Text>
 
-      <View style={styles.selectorOptions}>
-        {opcoes.map((opcao) => {
-          const ativa = condicao === opcao.value;
-
-          return (
-            <Pressable
-              key={opcao.value}
-              style={[
-                styles.selectorButton,
-                ativa && styles.selectorButtonActive,
-              ]}
-              onPress={() => onChange(opcao.value)}
-            >
-              <Text
-                style={[
-                  styles.selectorButtonText,
-                  ativa && styles.selectorButtonTextActive,
-                ]}
-              >
-                {opcao.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
+      <Pressable
+        style={[styles.selectorButton, styles.selectorButtonActive]}
+        onPress={onToggle}
+      >
+        <Text style={[styles.selectorButtonText, styles.selectorButtonTextActive]}>
+          {obterTextoCondicao(condicao)}
+        </Text>
+        <Text style={styles.errorText}>
+          Toque para alternar a condicao da entrega
+        </Text>
+      </Pressable>
     </View>
   );
 }
@@ -420,9 +402,9 @@ export function SeletorCondicao({
 
 ### O que este componente resolve
 
-- deixa explícita a escolha por toque;
-- mostra visualmente qual opção está ativa;
-- evita espalhar lógica de `Pressable` pelo `App.tsx`.
+- reduz a lógica do controle por toque;
+- mostra o status atual com clareza;
+- evita espalhar a troca de estado pelo `App.tsx`.
 
 ### Atualize o `App.tsx` imediatamente
 
@@ -439,6 +421,12 @@ import type { CondicaoEntrega } from './src/types';
 export default function App() {
   const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
 
+  function alternarCondicao() {
+    setCondicao((estadoAnterior) =>
+      estadoAnterior === 'integra' ? 'avaria' : 'integra'
+    );
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -448,7 +436,7 @@ export default function App() {
         />
 
         <View style={styles.card}>
-          <SeletorCondicao condicao={condicao} onChange={setCondicao} />
+          <SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -520,7 +508,7 @@ export default function App() {
         />
 
         <View style={styles.card}>
-          <SeletorCondicao condicao="integra" onChange={() => {}} />
+          <SeletorCondicao condicao="integra" onToggle={() => {}} />
 
           <View style={styles.buttonRow}>
             <BotaoAcao
@@ -668,6 +656,12 @@ import type { CondicaoEntrega } from './src/types';
 export default function App() {
   const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
 
+  function alternarCondicao() {
+    setCondicao((estadoAnterior) =>
+      estadoAnterior === 'integra' ? 'avaria' : 'integra'
+    );
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -677,7 +671,7 @@ export default function App() {
         />
 
         <View style={styles.card}>
-          <SeletorCondicao condicao={condicao} onChange={setCondicao} />
+          <SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
 
           <View style={styles.buttonRow}>
             <BotaoAcao label="Registrar vistoria" onPress={() => {}} />
@@ -883,20 +877,25 @@ export default function App() {
     atualizarCampo('quantidadeVolumes', apenasDigitos);
   }
 
-  function alterarCondicao(novaCondicao: CondicaoEntrega) {
-    setCondicao(novaCondicao);
+  function alternarCondicao() {
+    setCondicao((estadoAnterior) => {
+      const novaCondicao =
+        estadoAnterior === 'integra' ? 'avaria' : 'integra';
 
-    if (novaCondicao === 'integra') {
-      setErros((estadoAnterior) => {
-        if (!estadoAnterior.observacao) {
-          return estadoAnterior;
-        }
+      if (novaCondicao === 'integra') {
+        setErros((estadoAnteriorErros) => {
+          if (!estadoAnteriorErros.observacao) {
+            return estadoAnteriorErros;
+          }
 
-        const novosErros = { ...estadoAnterior };
-        delete novosErros.observacao;
-        return novosErros;
-      });
-    }
+          const novosErros = { ...estadoAnteriorErros };
+          delete novosErros.observacao;
+          return novosErros;
+        });
+      }
+
+      return novaCondicao;
+    });
   }
 
   function registrarVistoria() {
@@ -1017,7 +1016,7 @@ export default function App() {
 
           <SeletorCondicao
             condicao={condicao}
-            onChange={alterarCondicao}
+            onToggle={alternarCondicao}
           />
 
           <View style={styles.fieldGroup}>
@@ -1097,9 +1096,9 @@ Atualiza qualquer campo textual do formulário e remove o erro antigo daquele ca
 
 Limpa a entrada para manter apenas números em `quantidadeVolumes`.
 
-### `alterarCondicao`
+### `alternarCondicao`
 
-Troca a condição da entrega e remove o erro de observação quando a condição volta para `integra`.
+Troca a condição da entrega com um toque simples. Se a condição voltar para `integra`, o erro de observação é removido.
 
 ### `registrarVistoria`
 
@@ -1144,7 +1143,7 @@ Se a correção for feita ao vivo, a sequência mais didática é:
 - todos os componentes usam `props` tipadas;
 - o formulário é totalmente controlado por estado;
 - os campos foram montados diretamente no `App.tsx` de forma simples;
-- a condição da entrega muda por toque;
+- a condição da entrega muda por um toque simples;
 - a observação só é obrigatória em caso de avaria;
 - o resumo muda em tempo real;
 - o registro com sucesso funciona;
