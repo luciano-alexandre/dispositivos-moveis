@@ -400,6 +400,33 @@ export function SeletorCondicao({ condicao, onToggle }: SeletorCondicaoProps) {
 }
 ```
 
+### Observação sobre `onToggle: () => void;`
+
+Essa linha define o tipo da propriedade `onToggle`.
+
+- `onToggle`: é o nome da prop recebida pelo componente;
+- `() => void`: significa que essa prop deve ser uma função;
+- `()`: a função não recebe parâmetros;
+- `void`: a função não precisa retornar valor.
+
+Na prática, o componente espera receber algo assim:
+
+```tsx
+function alternarCondicao() {
+  setCondicao((estadoAnterior) =>
+    estadoAnterior === 'integra' ? 'avaria' : 'integra'
+  );
+}
+```
+
+Depois, essa função é passada para o componente:
+
+```tsx
+<SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
+```
+
+Quando o usuário toca no botão, o componente executa `onToggle()`, e quem realmente decide como trocar o estado é o `App.tsx`.
+
 ### O que este componente resolve
 
 - reduz a lógica do controle por toque;
