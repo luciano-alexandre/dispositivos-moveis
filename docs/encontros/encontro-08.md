@@ -336,16 +336,32 @@ export function CabecalhoApp({ titulo, subtitulo }: CabecalhoAppProps) {
 - usa `props` tipadas;
 - permite reutilização em outra tela, se necessário.
 
-## 7. Com o formulário direto no `App.tsx`
+### Atualize o `App.tsx` imediatamente
 
-Nesta correção, os campos serão construídos diretamente no componente principal. Isso deixa a explicação mais simples porque cada `label`, `TextInput` e mensagem de erro fica visível no mesmo arquivo em que o estado e a validação estão sendo trabalhados.
+Assim que o componente for criado, já podemos começar a usá-lo no arquivo principal:
 
-Essa escolha é útil principalmente em dois casos:
+```tsx
+import { SafeAreaView, ScrollView } from 'react-native';
+import { CabecalhoApp } from './src/components/CabecalhoApp';
+import { styles } from './src/styles';
 
-- quando a turma ainda está consolidando o básico de formulários controlados;
-- quando o objetivo da correção é destacar a lógica do app antes de abstrair a interface.
+export default function App() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <CabecalhoApp
+          titulo="Vistoria Rapida"
+          subtitulo="Registre rapidamente a condicao de entrega do pedido em campo."
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
 
-## 8. Arquivo `src/components/SeletorCondicao.tsx`
+Nesse ponto, o app já mostra o topo da interface enquanto os próximos blocos são construídos.
+
+## 7. Arquivo `src/components/SeletorCondicao.tsx`
 
 O enunciado exige um controle por toque para a condição da entrega.
 
@@ -408,7 +424,41 @@ export function SeletorCondicao({
 - mostra visualmente qual opção está ativa;
 - evita espalhar lógica de `Pressable` pelo `App.tsx`.
 
-## 9. Arquivo `src/components/BotaoAcao.tsx`
+### Atualize o `App.tsx` imediatamente
+
+Depois de criar o seletor, já vale conectar o estado da condição no `App.tsx`:
+
+```tsx
+import { useState } from 'react';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { CabecalhoApp } from './src/components/CabecalhoApp';
+import { SeletorCondicao } from './src/components/SeletorCondicao';
+import { styles } from './src/styles';
+import type { CondicaoEntrega } from './src/types';
+
+export default function App() {
+  const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <CabecalhoApp
+          titulo="Vistoria Rapida"
+          subtitulo="Registre rapidamente a condicao de entrega do pedido em campo."
+        />
+
+        <View style={styles.card}>
+          <SeletorCondicao condicao={condicao} onChange={setCondicao} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+Agora o aplicativo já responde ao toque para alternar a condição da entrega.
+
+## 8. Arquivo `src/components/BotaoAcao.tsx`
 
 Os botões da tela também podem ser reaproveitados.
 
@@ -449,7 +499,50 @@ export function BotaoAcao({
 - diferencia ação principal e secundária;
 - simplifica o bloco final do formulário.
 
-## 10. Arquivo `src/components/ResumoVistoria.tsx`
+### Atualize o `App.tsx` imediatamente
+
+Com os botões prontos, já podemos montar o rodapé de ações do formulário:
+
+```tsx
+import { Alert, SafeAreaView, ScrollView, View } from 'react-native';
+import { BotaoAcao } from './src/components/BotaoAcao';
+import { CabecalhoApp } from './src/components/CabecalhoApp';
+import { SeletorCondicao } from './src/components/SeletorCondicao';
+import { styles } from './src/styles';
+
+export default function App() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <CabecalhoApp
+          titulo="Vistoria Rapida"
+          subtitulo="Registre rapidamente a condicao de entrega do pedido em campo."
+        />
+
+        <View style={styles.card}>
+          <SeletorCondicao condicao="integra" onChange={() => {}} />
+
+          <View style={styles.buttonRow}>
+            <BotaoAcao
+              label="Registrar vistoria"
+              onPress={() => Alert.alert('Acao principal')}
+            />
+            <BotaoAcao
+              label="Limpar"
+              variant="secondary"
+              onPress={() => Alert.alert('Acao secundaria')}
+            />
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+Ainda é uma versão parcial, mas ela já mostra a estrutura visual do bloco principal da tela.
+
+## 9. Arquivo `src/components/ResumoVistoria.tsx`
 
 Este componente atende ao resumo em tempo real e ao resumo da vistoria registrada.
 
@@ -558,7 +651,57 @@ export function ResumoVistoria({
 - mantém visível o último registro válido;
 - evita poluir `App.tsx` com marcação repetitiva.
 
-## 11. Arquivo `src/components/Footer.tsx`
+### Atualize o `App.tsx` imediatamente
+
+Assim que o resumo estiver criado, ele já pode entrar abaixo do formulário:
+
+```tsx
+import { useState } from 'react';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { BotaoAcao } from './src/components/BotaoAcao';
+import { CabecalhoApp } from './src/components/CabecalhoApp';
+import { ResumoVistoria } from './src/components/ResumoVistoria';
+import { SeletorCondicao } from './src/components/SeletorCondicao';
+import { styles } from './src/styles';
+import type { CondicaoEntrega } from './src/types';
+
+export default function App() {
+  const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <CabecalhoApp
+          titulo="Vistoria Rapida"
+          subtitulo="Registre rapidamente a condicao de entrega do pedido em campo."
+        />
+
+        <View style={styles.card}>
+          <SeletorCondicao condicao={condicao} onChange={setCondicao} />
+
+          <View style={styles.buttonRow}>
+            <BotaoAcao label="Registrar vistoria" onPress={() => {}} />
+            <BotaoAcao label="Limpar" variant="secondary" onPress={() => {}} />
+          </View>
+        </View>
+
+        <ResumoVistoria
+          responsavel=""
+          codigoPedido=""
+          quantidadeVolumes=""
+          condicao={condicao}
+          situacaoGeral="Aguardando preenchimento"
+          resumoRegistrado={null}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+Nesse estágio, a tela já está dividida em três áreas: cabeçalho, formulário em construção e resumo.
+
+## 10. Arquivo `src/components/Footer.tsx`
 
 Agora criamos um componente específico para o rodapé do app.
 
@@ -589,9 +732,30 @@ export function Footer({ nomeAluno, matricula }: FooterProps) {
 - recebe nome e matrícula por `props`;
 - mantém o `App.tsx` mais organizado.
 
-## 12. Arquivo `App.tsx`
+### Atualize o `App.tsx` imediatamente
 
-Agora vem a parte principal: integrar os componentes e implementar os métodos da atividade.
+Logo após criar o componente, já podemos fechar a estrutura da tela:
+
+```tsx
+import { Footer } from './src/components/Footer';
+
+<Footer
+  nomeAluno="Seu Nome Aqui"
+  matricula="20250000000"
+/>
+```
+
+Com isso, o app já passa a atender também ao requisito do rodapé com identificação do aluno.
+
+## 11. Arquivo `App.tsx`
+
+Até aqui, o `App.tsx` foi crescendo aos poucos. Agora vamos consolidar a versão final, reunindo:
+
+- os componentes já criados;
+- os campos do formulário;
+- as funções de validação;
+- o fluxo de registrar e limpar;
+- o resumo em tempo real.
 
 ```tsx
 import { useState } from 'react';
@@ -904,7 +1068,7 @@ export default function App() {
 }
 ```
 
-## 13. Métodos principais implementados no `App.tsx`
+## 12. Métodos principais implementados no `App.tsx`
 
 ### `validar`
 
@@ -956,24 +1120,24 @@ Restaura o estado inicial do app:
 - volta a condição para `integra`;
 - remove o resumo registrado.
 
-## 14. Ordem sugerida para montar a solução em sala
+## 13. Ordem sugerida para montar a solução em sala
 
 Se a correção for feita ao vivo, a sequência mais didática é:
 
 1. criar `src/types.ts`;
 2. criar `src/styles.ts`;
-3. montar `CabecalhoApp`;
-4. montar `SeletorCondicao`;
-5. montar `BotaoAcao`;
-6. montar `ResumoVistoria`;
-7. montar `Footer`;
-8. construir o formulario diretamente no `App.tsx`;
+3. montar `CabecalhoApp` e já utilizá-lo no `App.tsx`;
+4. montar `SeletorCondicao` e já conectá-lo ao estado no `App.tsx`;
+5. montar `BotaoAcao` e já encaixar a área de ações no `App.tsx`;
+6. montar `ResumoVistoria` e já renderizá-lo abaixo do formulário;
+7. montar `Footer` e já fechar a estrutura da tela;
+8. construir os campos do formulario diretamente no `App.tsx`;
 9. implementar `validar`;
 10. implementar `registrarVistoria`;
 11. implementar `limparFormulario`;
 12. testar os cenários do enunciado.
 
-## 15. Checklist da correção funcional
+## 14. Checklist da correção funcional
 
 - `App.tsx` continua como ponto de entrada principal;
 - há pelo menos cinco componentes reutilizáveis;
@@ -987,7 +1151,7 @@ Se a correção for feita ao vivo, a sequência mais didática é:
 - o botão `Limpar` reseta toda a tela;
 - nome e matrícula aparecem no rodapé.
 
-## 16. Erros comuns que a correção evita
+## 15. Erros comuns que a correção evita
 
 ### Guardar lógica demais dentro do JSX
 
@@ -1009,6 +1173,6 @@ O estado `resumoRegistrado` garante esse comportamento pedido na atividade.
 
 O componente `Footer` garante que nome e matrícula do aluno apareçam de forma explícita na solução.
 
-## 17. Encerramento
+## 16. Encerramento
 
 Esta correção entrega uma resposta completa e funcional para a atividade avaliativa, com foco em organização, legibilidade e aderência ao enunciado. Depois deste encontro, a trilha da disciplina retorna ao conteúdo planejado com **formulários controlados e máscaras**, no encontro 09.
