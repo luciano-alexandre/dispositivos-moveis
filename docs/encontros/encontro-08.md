@@ -71,8 +71,6 @@ Nesta correção, vamos seguir a divisão abaixo:
 - `BotaoAcao`: padroniza os botões principais;
 - `Footer`: renderiza o rodapé com nome e matrícula do aluno.
 
-Nesta versão da correção, o formulário será escrito diretamente no `App.tsx`, de forma mais simples e mais próxima do que muitos alunos costumam produzir na primeira solução funcional.
-
 ## 4. Arquivo `src/types.ts`
 
 Comece definindo os tipos principais da aplicação.
@@ -136,7 +134,7 @@ Sem `Partial`, o TypeScript exigiria erro para **todos** os campos, mesmo quando
 
 ## 5. Arquivo `src/styles.ts`
 
-Agora crie um arquivo único de estilos para simplificar a correção.
+Agora crie um arquivo único de estilos para simplificar a implementação.
 
 ```tsx
 import { StyleSheet } from 'react-native';
