@@ -35,7 +35,7 @@ A solução final precisa atender ao enunciado da atividade:
 
 ## 2. Criação do projeto e da estrutura
 
-Se você estiver reconstruindo a atividade do zero, a sequência sugerida é:
+Para iniciar o projeto, a sequência sugerida é:
 
 ```bash
 npx create-expo-app vistoria-rapida --template blank-typescript
