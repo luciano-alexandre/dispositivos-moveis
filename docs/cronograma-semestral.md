@@ -10,9 +10,9 @@ Cada encontro corresponde a 2 aulas de 45 minutos (90 minutos por encontro).
 | [4](./encontros/encontro-04.md) | U1 | Props, estado e eventos | Prática 02 |
 | [5](./encontros/encontro-05.md) | U1 | Layout com Flexbox e estilos | Prática 03 |
 | [6](./encontros/encontro-06.md) | U1 | Interfaces em estilo formulário (TextInput, validação) | Prática 04 |
-| [7](./encontros/encontro-07.md) | U1 | Formulários controlados e máscaras | Exercício guiado |
-| [8](./encontros/encontro-08.md) | U1 | Listas (FlatList, SectionList, desempenho) | Prática 05 |
-| [9](./encontros/encontro-09.md) | U1 | Componentização e reutilização de UI | Checkpoint UI |
+| [7](./encontros/encontro-07.md) | U1 | Atividade avaliativa 01 - Vistoria Rápida | Avaliação 01 |
+| [8](./encontros/encontro-08.md) | U1 | Correção passo a passo da atividade avaliativa 01 | Correção guiada |
+| [9](./encontros/encontro-09.md) | U1 | Formulários controlados e máscaras | Exercício guiado |
 | [10](./encontros/encontro-10.md) | U1 | Navegação por pilha (stack navigation) | Prática 06 |
 | [11](./encontros/encontro-11.md) | U1 | Navegação por abas e drawer | Prática 07 |
 | [12](./encontros/encontro-12.md) | U1 | Parâmetros entre telas e fluxo multijanelas | Exercício de rotas |
