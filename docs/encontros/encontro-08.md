@@ -3,14 +3,14 @@
 ## Visão do encontro
 
 - **Objetivo central:** reconstruir uma solução completa e funcional para a atividade avaliativa do app **Vistoria Rápida**, mostrando a sequência de implementação e a responsabilidade de cada arquivo.
-- Ao final deste encontro, você deve ser capaz de montar uma tela única em React Native com componentes reutilizáveis, formulário controlado, validação condicional, resumo em tempo real e ações de registro e limpeza.
+- Ao final deste encontro, você deve ser capaz de montar uma tela única em React Native com formulário controlado, validação condicional, resumo em tempo real e ações de registro e limpeza, usando componentes apenas onde isso realmente simplifica a solução.
 
 ## Roteiro
 
 1. Relembrar o problema e os requisitos.
 2. Criar a estrutura de arquivos.
 3. Definir tipos compartilhados.
-4. Construir os componentes reutilizáveis.
+4. Construir os componentes necessários.
 5. Organizar os estilos centrais.
 6. Integrar tudo no `App.tsx`.
 7. Implementar os métodos principais.
@@ -51,7 +51,7 @@ src/
   components/
     BotaoAcao.tsx
     CabecalhoApp.tsx
-    CampoFormulario.tsx
+    Footer.tsx
     ResumoVistoria.tsx
     SeletorCondicao.tsx
   styles.ts
@@ -62,16 +62,16 @@ src/
 
 Nesta correção, vamos seguir a divisão abaixo:
 
-- `App.tsx`: concentra estado, validação e integração da tela;
+- `App.tsx`: concentra estado, validação, integração da tela e os campos do formulário;
 - `types.ts`: centraliza os tipos compartilhados;
 - `styles.ts`: centraliza a aparência;
 - `CabecalhoApp`: mostra o topo da tela;
-- `CampoFormulario`: reaproveita a lógica visual dos campos;
 - `SeletorCondicao`: alterna entre entrega íntegra e entrega com avaria;
 - `ResumoVistoria`: mostra o resumo em tempo real e o último registro salvo;
-- `BotaoAcao`: padroniza os botões principais.
+- `BotaoAcao`: padroniza os botões principais;
+- `Footer`: renderiza o rodapé com nome e matrícula do aluno.
 
-Essa organização mantém o código legível e atende ao requisito de componentização.
+Nesta versão da correção, o formulário será escrito diretamente no `App.tsx`, de forma mais simples e mais próxima do que muitos alunos costumam produzir na primeira solução funcional.
 
 ## 4. Arquivo `src/types.ts`
 
@@ -338,64 +338,14 @@ export function CabecalhoApp({ titulo, subtitulo }: CabecalhoAppProps) {
 - usa `props` tipadas;
 - permite reutilização em outra tela, se necessário.
 
-## 7. Arquivo `src/components/CampoFormulario.tsx`
+## 7. Com o formulário direto no `App.tsx`
 
-Agora criamos o componente mais reaproveitável da atividade.
+Nesta correção, os campos serão construídos diretamente no componente principal. Isso deixa a explicação mais simples porque cada `label`, `TextInput` e mensagem de erro fica visível no mesmo arquivo em que o estado e a validação estão sendo trabalhados.
 
-```tsx
-import { Text, TextInput, type TextInputProps, View } from 'react-native';
-import { styles } from '../styles';
+Essa escolha é útil principalmente em dois casos:
 
-type CampoFormularioProps = {
-  label: string;
-  value: string;
-  placeholder: string;
-  error?: string;
-  keyboardType?: TextInputProps['keyboardType'];
-  multiline?: boolean;
-  numberOfLines?: number;
-  onChangeText: (value: string) => void;
-};
-
-export function CampoFormulario({
-  label,
-  value,
-  placeholder,
-  error,
-  keyboardType = 'default',
-  multiline = false,
-  numberOfLines,
-  onChangeText,
-}: CampoFormularioProps) {
-  return (
-    <View style={styles.fieldGroup}>
-      <Text style={styles.label}>{label}</Text>
-
-      <TextInput
-        style={[
-          styles.input,
-          multiline && styles.multilineInput,
-          error && styles.inputError,
-        ]}
-        value={value}
-        placeholder={placeholder}
-        keyboardType={keyboardType}
-        multiline={multiline}
-        numberOfLines={numberOfLines}
-        onChangeText={onChangeText}
-      />
-
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
-    </View>
-  );
-}
-```
-
-### O que este componente resolve
-
-- reduz repetição de `TextInput`;
-- centraliza o comportamento visual de erro;
-- permite uso com campo simples ou multilinha.
+- quando a turma ainda está consolidando o básico de formulários controlados;
+- quando o objetivo da correção é destacar a lógica do app antes de abstrair a interface.
 
 ## 8. Arquivo `src/components/SeletorCondicao.tsx`
 
@@ -610,16 +560,54 @@ export function ResumoVistoria({
 - mantém visível o último registro válido;
 - evita poluir `App.tsx` com marcação repetitiva.
 
-## 11. Arquivo `App.tsx`
+## 11. Arquivo `src/components/Footer.tsx`
+
+Agora criamos um componente específico para o rodapé do app.
+
+```tsx
+import { Text, View } from 'react-native';
+import { styles } from '../styles';
+
+type FooterProps = {
+  nomeAluno: string;
+  matricula: string;
+};
+
+export function Footer({ nomeAluno, matricula }: FooterProps) {
+  return (
+    <View style={styles.card}>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Aluno: {nomeAluno}</Text>
+        <Text style={styles.footerText}>Matricula: {matricula}</Text>
+      </View>
+    </View>
+  );
+}
+```
+
+### O que este componente resolve
+
+- isola o rodapé em um arquivo próprio;
+- recebe nome e matrícula por `props`;
+- mantém o `App.tsx` mais organizado.
+
+## 12. Arquivo `App.tsx`
 
 Agora vem a parte principal: integrar os componentes e implementar os métodos da atividade.
 
 ```tsx
 import { useState } from 'react';
-import { Alert, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import {
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { BotaoAcao } from './src/components/BotaoAcao';
 import { CabecalhoApp } from './src/components/CabecalhoApp';
-import { CampoFormulario } from './src/components/CampoFormulario';
+import { Footer } from './src/components/Footer';
 import { ResumoVistoria } from './src/components/ResumoVistoria';
 import { SeletorCondicao } from './src/components/SeletorCondicao';
 import { styles } from './src/styles';
@@ -794,62 +782,100 @@ export default function App() {
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Formulario de vistoria</Text>
 
-          <CampoFormulario
-            label="Responsavel"
-            value={form.responsavel}
-            placeholder="Nome do responsavel"
-            error={erros.responsavel}
-            onChangeText={(texto) => atualizarCampo('responsavel', texto)}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>Responsavel</Text>
+            <TextInput
+              style={[styles.input, erros.responsavel && styles.inputError]}
+              value={form.responsavel}
+              placeholder="Nome do responsavel"
+              onChangeText={(texto) => atualizarCampo('responsavel', texto)}
+            />
+            {erros.responsavel ? (
+              <Text style={styles.errorText}>{erros.responsavel}</Text>
+            ) : null}
+          </View>
 
-          <CampoFormulario
-            label="E-mail"
-            value={form.email}
-            placeholder="responsavel@empresa.com"
-            keyboardType="email-address"
-            error={erros.email}
-            onChangeText={(texto) => atualizarCampo('email', texto)}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>E-mail</Text>
+            <TextInput
+              style={[styles.input, erros.email && styles.inputError]}
+              value={form.email}
+              placeholder="responsavel@empresa.com"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              onChangeText={(texto) => atualizarCampo('email', texto)}
+            />
+            {erros.email ? (
+              <Text style={styles.errorText}>{erros.email}</Text>
+            ) : null}
+          </View>
 
-          <CampoFormulario
-            label="Codigo do pedido"
-            value={form.codigoPedido}
-            placeholder="Ex.: PED12345"
-            error={erros.codigoPedido}
-            onChangeText={(texto) => atualizarCampo('codigoPedido', texto)}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>Codigo do pedido</Text>
+            <TextInput
+              style={[styles.input, erros.codigoPedido && styles.inputError]}
+              value={form.codigoPedido}
+              placeholder="Ex.: PED12345"
+              onChangeText={(texto) => atualizarCampo('codigoPedido', texto)}
+            />
+            {erros.codigoPedido ? (
+              <Text style={styles.errorText}>{erros.codigoPedido}</Text>
+            ) : null}
+          </View>
 
-          <CampoFormulario
-            label="Bairro de entrega"
-            value={form.bairroEntrega}
-            placeholder="Informe o bairro"
-            error={erros.bairroEntrega}
-            onChangeText={(texto) => atualizarCampo('bairroEntrega', texto)}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>Bairro de entrega</Text>
+            <TextInput
+              style={[styles.input, erros.bairroEntrega && styles.inputError]}
+              value={form.bairroEntrega}
+              placeholder="Informe o bairro"
+              onChangeText={(texto) => atualizarCampo('bairroEntrega', texto)}
+            />
+            {erros.bairroEntrega ? (
+              <Text style={styles.errorText}>{erros.bairroEntrega}</Text>
+            ) : null}
+          </View>
 
-          <CampoFormulario
-            label="Quantidade de volumes"
-            value={form.quantidadeVolumes}
-            placeholder="0"
-            keyboardType="numeric"
-            error={erros.quantidadeVolumes}
-            onChangeText={atualizarQuantidadeVolumes}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>Quantidade de volumes</Text>
+            <TextInput
+              style={[
+                styles.input,
+                erros.quantidadeVolumes && styles.inputError,
+              ]}
+              value={form.quantidadeVolumes}
+              placeholder="0"
+              keyboardType="numeric"
+              onChangeText={atualizarQuantidadeVolumes}
+            />
+            {erros.quantidadeVolumes ? (
+              <Text style={styles.errorText}>{erros.quantidadeVolumes}</Text>
+            ) : null}
+          </View>
 
           <SeletorCondicao
             condicao={condicao}
             onChange={alterarCondicao}
           />
 
-          <CampoFormulario
-            label="Observacao"
-            value={form.observacao}
-            placeholder="Descreva a avaria quando necessario"
-            multiline
-            numberOfLines={4}
-            error={erros.observacao}
-            onChangeText={(texto) => atualizarCampo('observacao', texto)}
-          />
+          <View style={styles.fieldGroup}>
+            <Text style={styles.label}>Observacao</Text>
+            <TextInput
+              style={[
+                styles.input,
+                styles.multilineInput,
+                erros.observacao && styles.inputError,
+              ]}
+              value={form.observacao}
+              placeholder="Descreva a avaria quando necessario"
+              multiline
+              numberOfLines={4}
+              onChangeText={(texto) => atualizarCampo('observacao', texto)}
+            />
+            {erros.observacao ? (
+              <Text style={styles.errorText}>{erros.observacao}</Text>
+            ) : null}
+          </View>
 
           <View style={styles.buttonRow}>
             <BotaoAcao label="Registrar vistoria" onPress={registrarVistoria} />
@@ -870,19 +896,17 @@ export default function App() {
           resumoRegistrado={resumoRegistrado}
         />
 
-        <View style={styles.card}>
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Aluno: Seu Nome Aqui</Text>
-            <Text style={styles.footerText}>Matricula: 20250000000</Text>
-          </View>
-        </View>
+        <Footer
+          nomeAluno="Seu Nome Aqui"
+          matricula="20250000000"
+        />
       </ScrollView>
     </SafeAreaView>
   );
 }
 ```
 
-## 12. Métodos principais implementados no `App.tsx`
+## 13. Métodos principais implementados no `App.tsx`
 
 ### `validar`
 
@@ -934,29 +958,30 @@ Restaura o estado inicial do app:
 - volta a condição para `integra`;
 - remove o resumo registrado.
 
-## 13. Ordem sugerida para montar a solução em sala
+## 14. Ordem sugerida para montar a solução em sala
 
 Se a correção for feita ao vivo, a sequência mais didática é:
 
 1. criar `src/types.ts`;
 2. criar `src/styles.ts`;
 3. montar `CabecalhoApp`;
-4. montar `CampoFormulario`;
-5. montar `SeletorCondicao`;
-6. montar `BotaoAcao`;
-7. montar `ResumoVistoria`;
-8. integrar no `App.tsx`;
+4. montar `SeletorCondicao`;
+5. montar `BotaoAcao`;
+6. montar `ResumoVistoria`;
+7. montar `Footer`;
+8. construir o formulario diretamente no `App.tsx`;
 9. implementar `validar`;
 10. implementar `registrarVistoria`;
 11. implementar `limparFormulario`;
 12. testar os cenários do enunciado.
 
-## 14. Checklist da correção funcional
+## 15. Checklist da correção funcional
 
 - `App.tsx` continua como ponto de entrada principal;
 - há pelo menos cinco componentes reutilizáveis;
 - todos os componentes usam `props` tipadas;
 - o formulário é totalmente controlado por estado;
+- os campos foram montados diretamente no `App.tsx` de forma simples;
 - a condição da entrega muda por toque;
 - a observação só é obrigatória em caso de avaria;
 - o resumo muda em tempo real;
@@ -964,15 +989,15 @@ Se a correção for feita ao vivo, a sequência mais didática é:
 - o botão `Limpar` reseta toda a tela;
 - nome e matrícula aparecem no rodapé.
 
-## 15. Erros comuns que a correção evita
+## 16. Erros comuns que a correção evita
 
 ### Guardar lógica demais dentro do JSX
 
 A correção separa a regra em funções nomeadas, o que torna a solução mais legível.
 
-### Repetir `TextInput` manualmente
+### Complicar o formulario antes da hora
 
-O componente `CampoFormulario` reduz repetição e melhora a manutenção.
+Nesta versão, o formulário fica direto no `App.tsx` para deixar a correção mais fácil de acompanhar.
 
 ### Validar apenas parte do enunciado
 
@@ -982,6 +1007,10 @@ Nesta correção, todas as regras principais foram cobertas.
 
 O estado `resumoRegistrado` garante esse comportamento pedido na atividade.
 
-## 16. Encerramento
+### Esquecer o rodape como parte da atividade
+
+O componente `Footer` garante que nome e matrícula do aluno apareçam de forma explícita na solução.
+
+## 17. Encerramento
 
 Esta correção entrega uma resposta completa e funcional para a atividade avaliativa, com foco em organização, legibilidade e aderência ao enunciado. Depois deste encontro, a trilha da disciplina retorna ao conteúdo planejado com **formulários controlados e máscaras**, no encontro 09.
