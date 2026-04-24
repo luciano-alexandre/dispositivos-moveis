@@ -361,9 +361,7 @@ export default function App() {
 
 Nesse ponto, o app já mostra o topo da interface enquanto os próximos blocos são construídos.
 
-### Observação sobre `SafeAreaView` e `ScrollView`
-
-Como esses componentes ainda não foram estudados formalmente, aqui basta entender o papel básico deles:
+### `SafeAreaView` e `ScrollView`
 
 - `SafeAreaView`: cria uma área mais segura para o conteúdo da tela, evitando sobreposição com bordas, barra superior ou recortes do aparelho;
 - `ScrollView`: permite rolar a tela quando o conteúdo fica maior do que a altura disponível.
