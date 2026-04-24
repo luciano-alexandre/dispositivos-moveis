@@ -449,11 +449,29 @@ import type { CondicaoEntrega } from './src/types';
 
 export default function App() {
   const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
+  const [form, setForm] = useState({
+    responsavel: '',
+    codigoPedido: '',
+    quantidadeVolumes: '',
+  });
 
   function alternarCondicao() {
     setCondicao((estadoAnterior) =>
       estadoAnterior === 'integra' ? 'avaria' : 'integra'
     );
+  }
+
+  function registrarVistoria() {
+    Alert.alert('Vistoria registrada', 'Registro simulado com sucesso.');
+  }
+
+  function limparFormulario() {
+    setForm({
+      responsavel: '',
+      codigoPedido: '',
+      quantidadeVolumes: '',
+    });
+    setCondicao('integra');
   }
 
   return (
@@ -475,19 +493,47 @@ export default function App() {
 
 Agora o aplicativo já responde ao toque para alternar a condição da entrega.
 
-## 8. Botões simples no `App.tsx`
+## 8. Botões no `App.tsx`
 
-Para manter a implementação mais direta, os botões serão criados diretamente no `App.tsx`, sem componente reaproveitável.
+Para manter a implementação mais direta, os botões serão criados diretamente no `App.tsx`.
 
 ### Atualize o `App.tsx`
 
 ```tsx
+import { useState } from 'react';
 import { Alert, Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { CabecalhoApp } from './src/components/CabecalhoApp';
 import { SeletorCondicao } from './src/components/SeletorCondicao';
 import { styles } from './src/styles';
+import type { CondicaoEntrega } from './src/types';
 
 export default function App() {
+  const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
+  const [form, setForm] = useState({
+    responsavel: '',
+    codigoPedido: '',
+    quantidadeVolumes: '',
+  });
+
+  function alternarCondicao() {
+    setCondicao((estadoAnterior) =>
+      estadoAnterior === 'integra' ? 'avaria' : 'integra'
+    );
+  }
+
+  function registrarVistoria() {
+    Alert.alert('Vistoria registrada', 'Registro simulado com sucesso.');
+  }
+
+  function limparFormulario() {
+    setForm({
+      responsavel: '',
+      codigoPedido: '',
+      quantidadeVolumes: '',
+    });
+    setCondicao('integra');
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -497,19 +543,19 @@ export default function App() {
         />
 
         <View style={styles.card}>
-          <SeletorCondicao condicao="integra" onToggle={() => {}} />
+          <SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
 
           <View style={styles.buttonRow}>
             <Pressable
               style={[styles.button, styles.buttonPrimary]}
-              onPress={() => Alert.alert('Acao principal')}
+              onPress={registrarVistoria}
             >
               <Text style={styles.buttonTextPrimary}>Registrar vistoria</Text>
             </Pressable>
 
             <Pressable
               style={[styles.button, styles.buttonSecondary]}
-              onPress={() => Alert.alert('Acao secundaria')}
+              onPress={limparFormulario}
             >
               <Text style={styles.buttonTextSecondary}>Limpar</Text>
             </Pressable>
@@ -521,7 +567,10 @@ export default function App() {
 }
 ```
 
-Essa abordagem deixa o código mais próximo do que a turma já viu até aqui, sem adicionar mais uma camada de abstração.
+Nesse estágio, os botões já têm comportamento básico:
+
+- `registrarVistoria`: simula o registro com `Alert.alert`;
+- `limparFormulario`: limpa o estado do formulário usado até aqui e volta a condição para `integra`.
 
 ## 9. Arquivo `src/components/ResumoVistoria.tsx`
 
@@ -666,10 +715,10 @@ export default function App() {
           <SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
 
           <View style={styles.buttonRow}>
-            <Pressable style={[styles.button, styles.buttonPrimary]} onPress={() => {}}>
+            <Pressable style={[styles.button, styles.buttonPrimary]} onPress={registrarVistoria}>
               <Text style={styles.buttonTextPrimary}>Registrar vistoria</Text>
             </Pressable>
-            <Pressable style={[styles.button, styles.buttonSecondary]} onPress={() => {}}>
+            <Pressable style={[styles.button, styles.buttonSecondary]} onPress={limparFormulario}>
               <Text style={styles.buttonTextSecondary}>Limpar</Text>
             </Pressable>
           </View>
@@ -739,7 +788,7 @@ Com isso, o app já passa a atender também ao requisito do rodapé com identifi
 
 ## 11. Arquivo `App.tsx`
 
-Até aqui, o `App.tsx` foi crescendo aos poucos. Agora vamos consolidar a versão final, reunindo:
+Até aqui, o `App.tsx` foi crescendo aos poucos. Agora vamos consolidar a versão final, mas em partes menores para ficar mais didático.
 
 - os componentes já criados;
 - os campos do formulário;
@@ -753,6 +802,10 @@ No código final, esses dois componentes continuam com a mesma ideia:
 
 - `SafeAreaView`: envolve a tela inteira;
 - `ScrollView`: permite que o formulário e o resumo possam ser rolados no celular.
+
+### Parte 1: imports
+
+Esta parte fica no topo do arquivo.
 
 ```tsx
 import { useState } from 'react';
@@ -776,6 +829,13 @@ import type {
   FormErrors,
   ResumoRegistrado,
 } from './src/types';
+```
+
+### Parte 2: estado inicial do formulário
+
+Coloque logo abaixo dos imports.
+
+```tsx
 
 const initialForm: FormData = {
   responsavel: '',
@@ -785,6 +845,13 @@ const initialForm: FormData = {
   quantidadeVolumes: '',
   observacao: '',
 };
+```
+
+### Parte 3: função `validar`
+
+Coloque abaixo de `initialForm` e antes do componente `App`.
+
+```tsx
 
 function validar(dados: FormData, condicao: CondicaoEntrega): FormErrors {
   const erros: FormErrors = {};
@@ -821,6 +888,13 @@ function validar(dados: FormData, condicao: CondicaoEntrega): FormErrors {
 
   return erros;
 }
+```
+
+### Parte 4: função `obterSituacaoGeral`
+
+Coloque logo abaixo da função `validar`.
+
+```tsx
 
 function obterSituacaoGeral(
   dados: FormData,
@@ -846,6 +920,13 @@ function obterSituacaoGeral(
 
   return 'Vistoria pronta para envio';
 }
+```
+
+### Parte 5: início do componente principal
+
+Agora começa o `export default function App() {`.
+
+```tsx
 
 export default function App() {
   const [form, setForm] = useState<FormData>(initialForm);
@@ -853,6 +934,13 @@ export default function App() {
   const [condicao, setCondicao] = useState<CondicaoEntrega>('integra');
   const [resumoRegistrado, setResumoRegistrado] =
     useState<ResumoRegistrado | null>(null);
+```
+
+### Parte 6: funções auxiliares de atualização
+
+Essas funções ficam dentro do `App`, logo após os `useState`.
+
+```tsx
 
   function limparErroDoCampo(campo: keyof FormData) {
     setErros((estadoAnterior) => {
@@ -879,6 +967,13 @@ export default function App() {
     const apenasDigitos = valor.replace(/\D/g, '');
     atualizarCampo('quantidadeVolumes', apenasDigitos);
   }
+```
+
+### Parte 7: ações principais da tela
+
+Ainda dentro do `App`, depois das funções auxiliares.
+
+```tsx
 
   function alternarCondicao() {
     setCondicao((estadoAnterior) => {
@@ -928,9 +1023,23 @@ export default function App() {
     setCondicao('integra');
     setResumoRegistrado(null);
   }
+```
+
+### Parte 8: valores calculados antes do retorno
+
+Coloque logo antes do `return`.
+
+```tsx
 
   const errosAtuais = validar(form, condicao);
   const situacaoGeral = obterSituacaoGeral(form, condicao, errosAtuais);
+```
+
+### Parte 9: estrutura geral do `return`
+
+Agora começa a interface principal da tela.
+
+```tsx
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -942,6 +1051,13 @@ export default function App() {
           titulo="Vistoria Rapida"
           subtitulo="Registre rapidamente a condicao de entrega do pedido em campo."
         />
+```
+
+### Parte 10: bloco do formulário
+
+Este bloco fica dentro do `return`, logo abaixo do cabeçalho.
+
+```tsx
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Formulario de vistoria</Text>
@@ -1016,6 +1132,13 @@ export default function App() {
               <Text style={styles.errorText}>{erros.quantidadeVolumes}</Text>
             ) : null}
           </View>
+```
+
+### Parte 11: seletor, observação e botões
+
+Essa continuação ainda faz parte do mesmo card do formulário.
+
+```tsx
 
           <SeletorCondicao
             condicao={condicao}
@@ -1057,6 +1180,13 @@ export default function App() {
             </Pressable>
           </View>
         </View>
+```
+
+### Parte 12: resumo e rodapé
+
+Esses dois blocos ficam depois do formulário e antes do fechamento do `ScrollView`.
+
+```tsx
 
         <ResumoVistoria
           responsavel={form.responsavel}
@@ -1076,6 +1206,21 @@ export default function App() {
   );
 }
 ```
+
+### Ordem final dentro do arquivo
+
+No `App.tsx`, a organização completa fica assim:
+
+1. imports;
+2. `initialForm`;
+3. `validar`;
+4. `obterSituacaoGeral`;
+5. `export default function App()`;
+6. `useState`;
+7. funções auxiliares;
+8. funções de ação;
+9. valores calculados;
+10. `return` com cabeçalho, formulário, resumo e rodapé.
 
 ## 12. Métodos principais implementados no `App.tsx`
 
