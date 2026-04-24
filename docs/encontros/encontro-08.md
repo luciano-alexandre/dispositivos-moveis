@@ -361,6 +361,15 @@ export default function App() {
 
 Nesse ponto, o app já mostra o topo da interface enquanto os próximos blocos são construídos.
 
+### Observação sobre `SafeAreaView` e `ScrollView`
+
+Como esses componentes ainda não foram estudados formalmente, aqui basta entender o papel básico deles:
+
+- `SafeAreaView`: cria uma área mais segura para o conteúdo da tela, evitando sobreposição com bordas, barra superior ou recortes do aparelho;
+- `ScrollView`: permite rolar a tela quando o conteúdo fica maior do que a altura disponível.
+
+Nesta correção, eles aparecem apenas para melhorar o comportamento visual do app completo.
+
 ## 7. Arquivo `src/components/SeletorCondicao.tsx`
 
 O controle da condição será feito com **um único botão de alternância**. Cada toque muda o estado entre `integra` e `avaria`.
@@ -774,6 +783,13 @@ Até aqui, o `App.tsx` foi crescendo aos poucos. Agora vamos consolidar a versã
 - as funções de validação;
 - o fluxo de registrar e limpar;
 - o resumo em tempo real.
+
+### Lembrete sobre `SafeAreaView` e `ScrollView`
+
+No código final, esses dois componentes continuam com a mesma ideia:
+
+- `SafeAreaView`: envolve a tela inteira;
+- `ScrollView`: permite que o formulário e o resumo possam ser rolados no celular.
 
 ```tsx
 import { useState } from 'react';
