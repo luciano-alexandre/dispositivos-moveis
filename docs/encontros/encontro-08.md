@@ -102,6 +102,31 @@ export type ResumoRegistrado = {
 };
 ```
 
+### Observação sobre `FormErrors`
+
+Na linha abaixo:
+
+```tsx
+export type FormErrors = Partial<Record<keyof FormData, string>>;
+```
+
+o tipo foi montado em partes:
+
+- `keyof FormData`: pega todas as chaves de `FormData`, ou seja, `responsavel`, `email`, `codigoPedido`, `bairroEntrega`, `quantidadeVolumes` e `observacao`;
+- `Record<keyof FormData, string>`: cria um objeto em que cada uma dessas chaves teria valor do tipo `string`;
+- `Partial<...>`: torna todas essas chaves opcionais.
+
+Na prática, isso permite criar objetos de erro como:
+
+```tsx
+const erros: FormErrors = {
+  email: 'Informe um e-mail valido.',
+  observacao: 'Descreva a avaria com pelo menos 10 caracteres.',
+};
+```
+
+Sem `Partial`, o TypeScript exigiria erro para **todos** os campos, mesmo quando apenas um ou dois estivessem inválidos.
+
 ### Leitura do Código
 
 1. `CondicaoEntrega`: limita os valores possíveis para a condição da entrega.
