@@ -49,7 +49,6 @@ Depois disso, crie os seguintes arquivos:
 App.tsx
 src/
   components/
-    BotaoAcao.tsx
     CabecalhoApp.tsx
     Footer.tsx
     ResumoVistoria.tsx
@@ -68,7 +67,6 @@ Nesta correção, vamos seguir a divisão abaixo:
 - `CabecalhoApp`: mostra o topo da tela;
 - `SeletorCondicao`: alterna a condição da entrega com um toque simples;
 - `ResumoVistoria`: mostra o resumo em tempo real e o último registro salvo;
-- `BotaoAcao`: padroniza os botões principais;
 - `Footer`: renderiza o rodapé com nome e matrícula do aluno.
 
 ## 4. Arquivo `src/types.ts`
@@ -477,54 +475,14 @@ export default function App() {
 
 Agora o aplicativo já responde ao toque para alternar a condição da entrega.
 
-## 8. Arquivo `src/components/BotaoAcao.tsx`
+## 8. Botões simples no `App.tsx`
 
-Os botões da tela também podem ser reaproveitados.
+Para manter a implementação mais direta, os botões serão criados diretamente no `App.tsx`, sem componente reaproveitável.
 
-```tsx
-import { Pressable, Text } from 'react-native';
-import { styles } from '../styles';
-
-type BotaoAcaoProps = {
-  label: string;
-  variant?: 'primary' | 'secondary';
-  onPress: () => void;
-};
-
-export function BotaoAcao({
-  label,
-  variant = 'primary',
-  onPress,
-}: BotaoAcaoProps) {
-  const buttonStyle =
-    variant === 'primary' ? styles.buttonPrimary : styles.buttonSecondary;
-
-  const textStyle =
-    variant === 'primary'
-      ? styles.buttonTextPrimary
-      : styles.buttonTextSecondary;
-
-  return (
-    <Pressable style={[styles.button, buttonStyle]} onPress={onPress}>
-      <Text style={textStyle}>{label}</Text>
-    </Pressable>
-  );
-}
-```
-
-### O que este componente resolve
-
-- padroniza botões da tela;
-- diferencia ação principal e secundária;
-- simplifica o bloco final do formulário.
-
-### Atualize o `App.tsx` imediatamente
-
-Com os botões prontos, já podemos montar o rodapé de ações do formulário:
+### Atualize o `App.tsx`
 
 ```tsx
-import { Alert, SafeAreaView, ScrollView, View } from 'react-native';
-import { BotaoAcao } from './src/components/BotaoAcao';
+import { Alert, Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { CabecalhoApp } from './src/components/CabecalhoApp';
 import { SeletorCondicao } from './src/components/SeletorCondicao';
 import { styles } from './src/styles';
@@ -542,15 +500,19 @@ export default function App() {
           <SeletorCondicao condicao="integra" onToggle={() => {}} />
 
           <View style={styles.buttonRow}>
-            <BotaoAcao
-              label="Registrar vistoria"
+            <Pressable
+              style={[styles.button, styles.buttonPrimary]}
               onPress={() => Alert.alert('Acao principal')}
-            />
-            <BotaoAcao
-              label="Limpar"
-              variant="secondary"
+            >
+              <Text style={styles.buttonTextPrimary}>Registrar vistoria</Text>
+            </Pressable>
+
+            <Pressable
+              style={[styles.button, styles.buttonSecondary]}
               onPress={() => Alert.alert('Acao secundaria')}
-            />
+            >
+              <Text style={styles.buttonTextSecondary}>Limpar</Text>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
@@ -559,7 +521,7 @@ export default function App() {
 }
 ```
 
-Ainda é uma versão parcial, mas ela já mostra a estrutura visual do bloco principal da tela.
+Essa abordagem deixa o código mais próximo do que a turma já viu até aqui, sem adicionar mais uma camada de abstração.
 
 ## 9. Arquivo `src/components/ResumoVistoria.tsx`
 
@@ -676,8 +638,7 @@ Assim que o resumo estiver criado, ele já pode entrar abaixo do formulário:
 
 ```tsx
 import { useState } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
-import { BotaoAcao } from './src/components/BotaoAcao';
+import { Pressable, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { CabecalhoApp } from './src/components/CabecalhoApp';
 import { ResumoVistoria } from './src/components/ResumoVistoria';
 import { SeletorCondicao } from './src/components/SeletorCondicao';
@@ -705,8 +666,12 @@ export default function App() {
           <SeletorCondicao condicao={condicao} onToggle={alternarCondicao} />
 
           <View style={styles.buttonRow}>
-            <BotaoAcao label="Registrar vistoria" onPress={() => {}} />
-            <BotaoAcao label="Limpar" variant="secondary" onPress={() => {}} />
+            <Pressable style={[styles.button, styles.buttonPrimary]} onPress={() => {}}>
+              <Text style={styles.buttonTextPrimary}>Registrar vistoria</Text>
+            </Pressable>
+            <Pressable style={[styles.button, styles.buttonSecondary]} onPress={() => {}}>
+              <Text style={styles.buttonTextSecondary}>Limpar</Text>
+            </Pressable>
           </View>
         </View>
 
@@ -793,13 +758,13 @@ No código final, esses dois componentes continuam com a mesma ideia:
 import { useState } from 'react';
 import {
   Alert,
+  Pressable,
   SafeAreaView,
   ScrollView,
   Text,
   TextInput,
   View,
 } from 'react-native';
-import { BotaoAcao } from './src/components/BotaoAcao';
 import { CabecalhoApp } from './src/components/CabecalhoApp';
 import { Footer } from './src/components/Footer';
 import { ResumoVistoria } from './src/components/ResumoVistoria';
@@ -1077,12 +1042,19 @@ export default function App() {
           </View>
 
           <View style={styles.buttonRow}>
-            <BotaoAcao label="Registrar vistoria" onPress={registrarVistoria} />
-            <BotaoAcao
-              label="Limpar"
-              variant="secondary"
+            <Pressable
+              style={[styles.button, styles.buttonPrimary]}
+              onPress={registrarVistoria}
+            >
+              <Text style={styles.buttonTextPrimary}>Registrar vistoria</Text>
+            </Pressable>
+
+            <Pressable
+              style={[styles.button, styles.buttonSecondary]}
               onPress={limparFormulario}
-            />
+            >
+              <Text style={styles.buttonTextSecondary}>Limpar</Text>
+            </Pressable>
           </View>
         </View>
 
@@ -1165,7 +1137,7 @@ Se a correção for feita ao vivo, a sequência mais didática é:
 2. criar `src/styles.ts`;
 3. montar `CabecalhoApp` e já utilizá-lo no `App.tsx`;
 4. montar `SeletorCondicao` e já conectá-lo ao estado no `App.tsx`;
-5. montar `BotaoAcao` e já encaixar a área de ações no `App.tsx`;
+5. criar os botões simples diretamente no `App.tsx`;
 6. montar `ResumoVistoria` e já renderizá-lo abaixo do formulário;
 7. montar `Footer` e já fechar a estrutura da tela;
 8. construir os campos do formulario diretamente no `App.tsx`;
@@ -1177,7 +1149,7 @@ Se a correção for feita ao vivo, a sequência mais didática é:
 ## 14. Checklist da correção funcional
 
 - `App.tsx` continua como ponto de entrada principal;
-- há pelo menos cinco componentes reutilizáveis;
+- há quatro componentes reutilizáveis;
 - todos os componentes usam `props` tipadas;
 - o formulário é totalmente controlado por estado;
 - os campos foram montados diretamente no `App.tsx` de forma simples;
@@ -1197,6 +1169,10 @@ A correção separa a regra em funções nomeadas, o que torna a solução mais 
 ### Complicar o formulario antes da hora
 
 Nesta versão, o formulário fica direto no `App.tsx` para deixar a correção mais fácil de acompanhar.
+
+### Criar componente para tudo
+
+Os botões também foram mantidos diretamente no `App.tsx` para evitar abstrações desnecessárias neste momento.
 
 ### Validar apenas parte do enunciado
 
