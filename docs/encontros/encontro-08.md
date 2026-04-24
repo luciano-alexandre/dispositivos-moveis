@@ -405,9 +405,6 @@ export function SeletorCondicao({ condicao, onToggle }: SeletorCondicaoProps) {
 Essa linha define o tipo da propriedade `onToggle`.
 
 - `onToggle`: é o nome da prop recebida pelo componente;
-- `() => void`: significa que essa prop deve ser uma função;
-- `()`: a função não recebe parâmetros;
-- `void`: a função não precisa retornar valor.
 
 Na prática, o componente espera receber algo assim:
 
