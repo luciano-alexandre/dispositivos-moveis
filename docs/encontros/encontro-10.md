@@ -22,13 +22,6 @@
 
 Até o encontro 09, o foco foi construir telas robustas com formulário controlado, validação e máscara. Agora o próximo passo natural é conectar telas e criar fluxo real de aplicativo.
 
-Progressão recente:
-
-- encontro 06: formulário e validação básica;
-- encontro 07: atividade avaliativa;
-- encontro 08: correção guiada da atividade;
-- encontro 09: formulários com máscaras;
-- encontro 10: navegação por pilha entre telas.
 
 ## 2. O que é navegação por pilha
 
@@ -37,24 +30,6 @@ Navegação por pilha funciona como estrutura `LIFO` (Last In, First Out):
 - ao abrir uma nova tela, ela entra no topo da pilha;
 - ao voltar, removemos a tela do topo;
 - a tela anterior reaparece automaticamente.
-
-Fluxo mental:
-
-```mermaid
-flowchart LR
-  A[Inicio] --> B[Cadastro]
-  B --> C[Confirmacao]
-  C --> D[goBack]
-  D --> B
-  B --> E[popToTop]
-  E --> A
-```
-
-Vantagens no início:
-
-- simples de entender;
-- combina bem com fluxos lineares;
-- facilita apps com etapas (inicio -> formulario -> confirmação).
 
 ## 3. Instalação e preparação do projeto
 
