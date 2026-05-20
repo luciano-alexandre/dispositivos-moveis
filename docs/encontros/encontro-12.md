@@ -13,7 +13,7 @@
 4. Enviando parâmetros com `navigate` e `push`.
 5. Lendo parâmetros com `route.params`.
 6. Parâmetros opcionais, `initialParams` e `setParams`.
-7. Exemplo completo (continuação do app do encontro 11).
+7. Tutorial prático: evolução do app do encontro 11.
 8. Estratégias para retorno de dados no fluxo.
 9. Exercício guiado.
 10. Revisão e exercícios de fixação.
@@ -159,453 +159,128 @@ navigation.setParams({ prioridade: 'alta' });
 1. `initialParams` cobre abertura sem parâmetro opcional.
 2. `setParams` faz merge dos parâmetros atuais sem recriar a tela.
 
-## 7. Exemplo completo: continuação do app do encontro 11
+## 7. Tutorial prático: evolua sozinho o app do encontro 11
 
-Estrutura usada:
+Neste tópico, você **não vai copiar um bloco pronto**. A ideia é evoluir, por conta própria, o projeto final do encontro 11 e adicionar os conceitos novos deste encontro.
+
+### Regra do tutorial
+
+- mantenha `tabs + drawer` como base;
+- implemente um `stack` somente dentro da aba `Atendimentos`;
+- use tipagem, `navigate`, `push`, `route.params`, `initialParams` e `setParams`;
+- ao final, a lista de atendimentos deve receber um resumo da última operação.
+
+### Estrutura-alvo (para você montar)
 
 ```text
 src/
   navigation/
-    RootNavigator.tsx
-    AppDrawer.tsx
-    AppTabs.tsx
-    AtendimentosStack.tsx
+    RootNavigator.tsx        (já existe do encontro 11)
+    AppDrawer.tsx            (já existe do encontro 11)
+    AppTabs.tsx              (ajustar)
+    AtendimentosStack.tsx    (criar)
   screens/
-    DashboardScreen.tsx
-    AtendimentosListaScreen.tsx
-    DetalhesAtendimentoScreen.tsx
-    FinalizacaoAtendimentoScreen.tsx
-    RelatoriosScreen.tsx
-    ConfiguracoesScreen.tsx
-  styles.ts
-App.tsx
+    DashboardScreen.tsx      (já existe do encontro 11)
+    AtendimentosListaScreen.tsx         (criar)
+    DetalhesAtendimentoScreen.tsx       (criar)
+    FinalizacaoAtendimentoScreen.tsx    (criar)
+    RelatoriosScreen.tsx     (já existe do encontro 11)
+    ConfiguracoesScreen.tsx  (já existe do encontro 11)
+  styles.ts                  (reaproveitar e ampliar)
 ```
 
-`RootNavigator.tsx`, `AppDrawer.tsx`, `DashboardScreen.tsx`, `RelatoriosScreen.tsx` e `ConfiguracoesScreen.tsx` permanecem como no encontro 11. A evolução acontece na aba de atendimentos.
+### Passo 1 - Criar o `AtendimentosStack` com tipagem
 
-`App.tsx`
+Crie `src/navigation/AtendimentosStack.tsx` e implemente:
 
-```tsx
-import { RootNavigator } from './src/navigation/RootNavigator';
+1. tipo `AtendimentosStackParamList` com três rotas: `AtendimentosLista` (params opcionais de retorno), `DetalhesAtendimento` (exige `chamadoId` e `cliente`) e `FinalizacaoAtendimento` (exige `chamadoId`, `tecnico` e `status`).
+2. `createNativeStackNavigator<AtendimentosStackParamList>()`.
+3. `initialParams` em `DetalhesAtendimento` com `prioridade: 'normal'`.
 
-export default function App() {
-  return <RootNavigator />;
-}
-```
+Checklist do passo:
 
-`src/navigation/AppTabs.tsx`
+- o arquivo compila sem `any`;
+- as três rotas estão registradas no stack.
 
-```tsx
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { NavigatorScreenParams } from '@react-navigation/native';
-import type { AtendimentosStackParamList } from './AtendimentosStack';
-import { AtendimentosStack } from './AtendimentosStack';
-import { DashboardScreen } from '../screens/DashboardScreen';
-import { RelatoriosScreen } from '../screens/RelatoriosScreen';
+### Passo 2 - Ligar o stack na aba `Atendimentos`
 
-export type RootTabParamList = {
-  Dashboard: undefined;
-  Atendimentos: NavigatorScreenParams<AtendimentosStackParamList> | undefined;
-  Relatorios: undefined;
-};
+No `AppTabs.tsx` do encontro 11:
 
-const Tab = createBottomTabNavigator<RootTabParamList>();
+1. importe `NavigatorScreenParams` e o novo `AtendimentosStack`;
+2. troque o tipo da aba `Atendimentos` para `NavigatorScreenParams<AtendimentosStackParamList> | undefined`;
+3. use `component={AtendimentosStack}` na aba `Atendimentos`;
+4. adicione `headerShown: false` nessa aba.
 
-function obterIcone(nomeRota: keyof RootTabParamList, focused: boolean) {
-  if (nomeRota === 'Dashboard') return focused ? 'home' : 'home-outline';
-  if (nomeRota === 'Atendimentos') return focused ? 'list' : 'list-outline';
-  return focused ? 'bar-chart' : 'bar-chart-outline';
-}
+Checkpoint:
 
-export function AppTabs() {
-  return (
-    <Tab.Navigator
-      initialRouteName="Dashboard"
-      screenOptions={({ route }) => ({
-        headerStyle: { backgroundColor: '#0f172a' },
-        headerTintColor: '#f8fafc',
-        tabBarActiveTintColor: '#0f766e',
-        tabBarInactiveTintColor: '#64748b',
-        tabBarStyle: { height: 62, paddingBottom: 8, paddingTop: 6 },
-        tabBarIcon: ({ focused, color, size }) => (
-          <Ionicons
-            name={obterIcone(route.name as keyof RootTabParamList, focused)}
-            color={color}
-            size={size}
-          />
-        ),
-      })}
-    >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Painel' }} />
-      <Tab.Screen
-        name="Atendimentos"
-        component={AtendimentosStack}
-        options={{ title: 'Atendimentos', headerShown: false }}
-      />
-      <Tab.Screen name="Relatorios" component={RelatoriosScreen} options={{ title: 'Relatórios' }} />
-    </Tab.Navigator>
-  );
-}
-```
+- abrir a aba `Atendimentos` deve mostrar a primeira tela do stack, sem cabeçalho duplicado.
 
-### Leitura do código
+### Passo 3 - Montar `AtendimentosListaScreen`
 
-1. A aba `Atendimentos` agora aponta para um `stack` interno.
-2. O app mantém `tabs + drawer`, mas ganha fluxo sequencial dentro da aba.
+Crie uma lista de chamados e implemente:
 
-`src/navigation/AtendimentosStack.tsx`
+1. tipagem com `NativeStackScreenProps<AtendimentosStackParamList, 'AtendimentosLista'>`;
+2. leitura de `route.params?.ultimoChamadoId` e `route.params?.ultimaAcao`;
+3. botão/item que faz `navigate('DetalhesAtendimento', { chamadoId, cliente, prioridade })`.
 
-```tsx
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AtendimentosListaScreen } from '../screens/AtendimentosListaScreen';
-import { DetalhesAtendimentoScreen } from '../screens/DetalhesAtendimentoScreen';
-import { FinalizacaoAtendimentoScreen } from '../screens/FinalizacaoAtendimentoScreen';
+Checkpoint:
 
-export type AtendimentosStackParamList = {
-  AtendimentosLista:
-    | {
-        ultimoChamadoId?: string;
-        ultimaAcao?: 'concluido' | 'pendente';
-      }
-    | undefined;
-  DetalhesAtendimento: {
-    chamadoId: string;
-    cliente: string;
-    prioridade?: 'alta' | 'normal';
-  };
-  FinalizacaoAtendimento: {
-    chamadoId: string;
-    tecnico: string;
-    status: 'concluido' | 'pendente';
-    observacao?: string;
-  };
-};
+- tocar em um chamado abre detalhes com parâmetros corretos.
 
-const Stack = createNativeStackNavigator<AtendimentosStackParamList>();
+### Passo 4 - Montar `DetalhesAtendimentoScreen`
 
-export function AtendimentosStack() {
-  return (
-    <Stack.Navigator
-      initialRouteName="AtendimentosLista"
-      screenOptions={{
-        headerStyle: { backgroundColor: '#0f172a' },
-        headerTintColor: '#f8fafc',
-        contentStyle: { backgroundColor: '#f8fafc' },
-      }}
-    >
-      <Stack.Screen
-        name="AtendimentosLista"
-        component={AtendimentosListaScreen}
-        options={{ title: 'Atendimentos do dia' }}
-      />
-      <Stack.Screen
-        name="DetalhesAtendimento"
-        component={DetalhesAtendimentoScreen}
-        options={{ title: 'Detalhes do Atendimento' }}
-        initialParams={{ prioridade: 'normal' }}
-      />
-      <Stack.Screen
-        name="FinalizacaoAtendimento"
-        component={FinalizacaoAtendimentoScreen}
-        options={{ title: 'Finalização' }}
-      />
-    </Stack.Navigator>
-  );
-}
-```
+Implemente a tela intermediária:
 
-### Leitura do código
+1. leia `chamadoId`, `cliente` e `prioridade` de `route.params`;
+2. crie estado local para `tecnico` e `status`;
+3. valide técnico antes de avançar;
+4. faça `navigate('FinalizacaoAtendimento', ...)` enviando dados finais;
+5. adicione um botão com `setParams({ prioridade: 'alta' })`;
+6. adicione uma ação de teste com `push('DetalhesAtendimento', ...)`.
 
-1. `AtendimentosStackParamList` concentra o contrato de parâmetros.
-2. `initialParams` evita tela sem valor de prioridade.
+Checkpoint:
 
-`src/screens/AtendimentosListaScreen.tsx`
+- `setParams` atualiza a prioridade exibida;
+- `push` cria nova instância da mesma tela.
 
-```tsx
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Pressable, Text, View } from 'react-native';
-import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
-import { styles } from '../styles';
+### Passo 5 - Montar `FinalizacaoAtendimentoScreen`
 
-type Props = NativeStackScreenProps<AtendimentosStackParamList, 'AtendimentosLista'>;
+Implemente a tela final:
 
-const chamados = [
-  { id: 'CH-101', cliente: 'Ana Souza', prioridade: 'alta' as const },
-  { id: 'CH-102', cliente: 'Bruno Lima', prioridade: 'normal' as const },
-  { id: 'CH-103', cliente: 'Cecilia Paiva', prioridade: 'normal' as const },
-];
+1. tipagem com `NativeStackScreenProps<AtendimentosStackParamList, 'FinalizacaoAtendimento'>`;
+2. exibição do resumo usando `route.params`;
+3. botão para `navigate('AtendimentosLista', { ultimoChamadoId, ultimaAcao })`.
 
-export function AtendimentosListaScreen({ navigation, route }: Props) {
-  const ultimoChamado = route.params?.ultimoChamadoId;
-  const ultimaAcao = route.params?.ultimaAcao;
+Checkpoint:
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Fila de atendimentos</Text>
-      <Text style={styles.subtitulo}>Toque em um chamado para abrir os detalhes com parâmetros.</Text>
+- ao concluir, a lista exibe o resumo da última operação.
 
-      {ultimoChamado ? (
-        <View style={styles.alerta}>
-          <Text style={styles.alertaTexto}>
-            Último retorno: {ultimoChamado} ({ultimaAcao})
-          </Text>
-        </View>
-      ) : null}
+### Passo 6 - Ajustar estilos sem quebrar o encontro 11
 
-      {chamados.map((chamado) => (
-        <Pressable
-          key={chamado.id}
-          style={styles.item}
-          onPress={() =>
-            navigation.navigate('DetalhesAtendimento', {
-              chamadoId: chamado.id,
-              cliente: chamado.cliente,
-              prioridade: chamado.prioridade,
-            })
-          }
-        >
-          <Text style={styles.itemTitulo}>{chamado.id}</Text>
-          <Text style={styles.itemSubtitulo}>{chamado.cliente}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
-}
-```
+No `styles.ts`, adicione apenas o necessário para:
 
-### Leitura do código
+- lista de chamados (`item`, `itemTitulo`, `itemSubtitulo`);
+- alerta de retorno (`alerta`, `alertaTexto`);
+- input e variações de botões (`input`, `linhaBotoes`, etc.).
 
-1. `route.params?.ultimoChamadoId` recebe retorno opcional da finalização.
-2. Cada item usa `navigate` enviando contexto do chamado.
+Mantenha a paleta e padrão visual já usados no encontro 11.
 
-`src/screens/DetalhesAtendimentoScreen.tsx`
+### Passo 7 - Teste guiado (obrigatório)
 
-```tsx
-import { useState } from 'react';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Alert, Pressable, Text, TextInput, View } from 'react-native';
-import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
-import { styles } from '../styles';
+Execute este roteiro manual:
 
-type Props = NativeStackScreenProps<AtendimentosStackParamList, 'DetalhesAtendimento'>;
+1. abra `Atendimentos` e selecione um chamado;
+2. confira se `chamadoId` e `cliente` aparecem corretamente;
+3. use `setParams` e valide mudança da prioridade em tela;
+4. avance para finalização e confirme os dados;
+5. conclua e verifique o retorno na lista com `ultimoChamadoId`;
+6. use a ação com `push` e confira múltiplas telas no histórico de navegação.
 
-export function DetalhesAtendimentoScreen({ navigation, route }: Props) {
-  const { chamadoId, cliente, prioridade = 'normal' } = route.params;
-  const [tecnico, setTecnico] = useState('');
-  const [status, setStatus] = useState<'concluido' | 'pendente'>('concluido');
+Se algum teste falhar, volte ao passo correspondente e corrija antes de seguir.
 
-  function avancar() {
-    if (!tecnico.trim()) {
-      Alert.alert('Atenção', 'Informe o nome do técnico para continuar.');
-      return;
-    }
+### Resultado esperado do tutorial
 
-    navigation.navigate('FinalizacaoAtendimento', {
-      chamadoId,
-      tecnico: tecnico.trim(),
-      status,
-      observacao: prioridade === 'alta' ? 'Chamado de prioridade alta tratado.' : undefined,
-    });
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Detalhes do atendimento</Text>
-      <Text style={styles.subtitulo}>Chamado: {chamadoId}</Text>
-      <Text style={styles.subtitulo}>Cliente: {cliente}</Text>
-      <Text style={styles.subtitulo}>Prioridade: {prioridade}</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Técnico responsável"
-        value={tecnico}
-        onChangeText={setTecnico}
-      />
-
-      <View style={styles.linhaBotoes}>
-        <Pressable style={styles.botaoSecundario} onPress={() => setStatus('concluido')}>
-          <Text style={styles.botaoSecundarioTexto}>Concluído</Text>
-        </Pressable>
-        <Pressable style={styles.botaoSecundario} onPress={() => setStatus('pendente')}>
-          <Text style={styles.botaoSecundarioTexto}>Pendente</Text>
-        </Pressable>
-      </View>
-
-      <Pressable
-        style={styles.botaoSecundario}
-        onPress={() => navigation.setParams({ prioridade: 'alta' })}
-      >
-        <Text style={styles.botaoSecundarioTexto}>Marcar prioridade alta (setParams)</Text>
-      </Pressable>
-
-      <Pressable style={styles.botaoPrimario} onPress={avancar}>
-        <Text style={styles.botaoPrimarioTexto}>Avançar para finalização</Text>
-      </Pressable>
-
-      <Pressable
-        style={styles.botaoTexto}
-        onPress={() =>
-          navigation.push('DetalhesAtendimento', {
-            chamadoId: 'CH-999',
-            cliente: 'Novo chamado em campo',
-          })
-        }
-      >
-        <Text style={styles.botaoTextoLabel}>Simular próximo chamado (push)</Text>
-      </Pressable>
-    </View>
-  );
-}
-```
-
-### Leitura do código
-
-1. `route.params` chega tipado com os dados do chamado.
-2. `setParams` altera a prioridade da rota atual sem remontar a tela.
-3. `push` empilha uma nova instância de detalhes para demonstrar fluxo repetido.
-
-`src/screens/FinalizacaoAtendimentoScreen.tsx`
-
-```tsx
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Pressable, Text, View } from 'react-native';
-import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
-import { styles } from '../styles';
-
-type Props = NativeStackScreenProps<AtendimentosStackParamList, 'FinalizacaoAtendimento'>;
-
-export function FinalizacaoAtendimentoScreen({ navigation, route }: Props) {
-  const { chamadoId, tecnico, status, observacao } = route.params;
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Resumo final</Text>
-      <Text style={styles.subtitulo}>Chamado: {chamadoId}</Text>
-      <Text style={styles.subtitulo}>Técnico: {tecnico}</Text>
-      <Text style={styles.subtitulo}>Status: {status}</Text>
-      {observacao ? <Text style={styles.subtitulo}>{observacao}</Text> : null}
-
-      <Pressable
-        style={styles.botaoPrimario}
-        onPress={() =>
-          navigation.navigate('AtendimentosLista', {
-            ultimoChamadoId: chamadoId,
-            ultimaAcao: status,
-          })
-        }
-      >
-        <Text style={styles.botaoPrimarioTexto}>Concluir e voltar para a lista</Text>
-      </Pressable>
-    </View>
-  );
-}
-```
-
-### Leitura do código
-
-1. A tela final recebe os parâmetros consolidados.
-2. O botão retorna para a lista com contexto da última operação.
-
-`src/styles.ts` (adições para o fluxo de atendimentos)
-
-```tsx
-import { StyleSheet } from 'react-native';
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8fafc',
-    padding: 16,
-    justifyContent: 'center',
-    gap: 10,
-  },
-  titulo: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#0f172a',
-  },
-  subtitulo: {
-    fontSize: 14,
-    lineHeight: 20,
-    color: '#475569',
-  },
-  alerta: {
-    backgroundColor: '#dcfce7',
-    borderRadius: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#16a34a',
-  },
-  alertaTexto: {
-    color: '#166534',
-    fontWeight: '600',
-  },
-  item: {
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#cbd5e1',
-    padding: 12,
-    gap: 2,
-  },
-  itemTitulo: {
-    color: '#0f172a',
-    fontWeight: '700',
-  },
-  itemSubtitulo: {
-    color: '#475569',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#cbd5e1',
-    borderRadius: 10,
-    backgroundColor: '#ffffff',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-  },
-  linhaBotoes: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  botaoPrimario: {
-    marginTop: 8,
-    backgroundColor: '#0f766e',
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  botaoPrimarioTexto: {
-    color: '#ffffff',
-    fontWeight: '700',
-  },
-  botaoSecundario: {
-    borderWidth: 1,
-    borderColor: '#0f766e',
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  botaoSecundarioTexto: {
-    color: '#0f766e',
-    fontWeight: '700',
-  },
-  botaoTexto: {
-    marginTop: 6,
-    alignItems: 'center',
-  },
-  botaoTextoLabel: {
-    color: '#0f766e',
-    textDecorationLine: 'underline',
-    fontWeight: '600',
-  },
-});
-```
-
-### Leitura do código
-
-1. O padrão visual do encontro 11 foi mantido.
-2. Apenas foram adicionados estilos para lista, alerta e ações do fluxo multijanelas.
+No final, seu app deve continuar com `tabs + drawer`, mas com fluxo de atendimento em três telas tipadas, passagem de parâmetros em ida e volta e uso explícito de `navigate`, `push`, `route.params`, `initialParams` e `setParams`.
 
 ## 8. Estratégias para retorno de dados no fluxo
 
