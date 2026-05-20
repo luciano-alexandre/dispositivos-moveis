@@ -2,8 +2,8 @@
 
 ## Visão do encontro
 
-- **Objetivo central:** implementar troca de dados entre telas com parâmetros tipados no React Navigation, mantendo previsibilidade no fluxo e melhorando a comunicação entre etapas do app.
-- Ao final deste encontro, você deve ser capaz de enviar e ler parâmetros com segurança, definir parâmetros opcionais, atualizar `route.params` e organizar um fluxo multijanelas coerente.
+- **Objetivo central:** evoluir o app do encontro 11 (tabs + drawer) para um fluxo multijanelas com troca de dados por parâmetros tipados no React Navigation.
+- Ao final deste encontro, você deve ser capaz de enviar e ler parâmetros com segurança, definir parâmetros opcionais, atualizar `route.params` e manter um fluxo coerente dentro da navegação já existente.
 
 ## Roteiro
 
@@ -13,59 +13,67 @@
 4. Enviando parâmetros com `navigate` e `push`.
 5. Lendo parâmetros com `route.params`.
 6. Parâmetros opcionais, `initialParams` e `setParams`.
-7. Exemplo completo de fluxo multijanelas com parâmetros.
+7. Exemplo completo (continuação do app do encontro 11).
 8. Estratégias para retorno de dados no fluxo.
-9. Exercício de rotas guiado.
+9. Exercício guiado.
 10. Revisão e exercícios de fixação.
 
 ## 1. Retomada dos encontros 10 e 11
 
 Progressão até aqui:
 
-- encontro 10: navegação por pilha (`stack`) para fluxo sequencial;
-- encontro 11: menus por abas e drawer para acesso estrutural.
+- encontro 10: navegação sequencial com `stack`;
+- encontro 11: navegação estrutural com `Bottom Tabs` + `Drawer`.
 
-Agora vamos adicionar contexto às telas: além de navegar, cada etapa passa dados para a próxima.
+Agora vamos combinar as duas ideias no mesmo projeto: manter `tabs + drawer` como estrutura principal e criar um fluxo em pilha dentro da aba **Atendimentos** para passar dados entre telas.
 
 ## 2. O que são parâmetros de rota e por que usar
 
-Parâmetros de rota são dados enviados no momento da navegação, por exemplo:
+Parâmetros de rota são dados enviados no momento da navegação. Exemplo:
 
 ```tsx
-navigation.navigate('DetalhesPedido', { pedidoId: 'PED-103', cliente: 'Ana' });
+navigation.navigate('DetalhesAtendimento', {
+  chamadoId: 'CH-103',
+  cliente: 'Ana Souza',
+});
 ```
 
 ### Leitura do código
 
-1. O primeiro argumento (`'DetalhesPedido'`) é o nome exato da rota de destino.
-2. O segundo argumento é um objeto com os parâmetros que a tela de destino irá consumir.
+1. O primeiro argumento (`'DetalhesAtendimento'`) é o nome da rota de destino.
+2. O segundo argumento é o objeto de dados que a próxima tela vai consumir.
 
 Uso recomendado:
 
-- identificar o que a próxima tela deve mostrar (ex.: `id`, `filtro`, `modo`);
-- carregar dados específicos com base nesses identificadores;
-- manter fluxo explícito e legível.
+- identificar o que a próxima tela deve mostrar (`id`, `filtro`, `modo`);
+- carregar dados específicos por identificador;
+- manter fluxo explícito e previsível.
 
 Boa prática:
 
-- prefira dados pequenos e serializáveis em JSON;
-- passe identificadores em vez de objetos gigantes;
-- mantenha consistência na tipagem entre origem e destino.
+- prefira dados pequenos e serializáveis;
+- passe identificadores em vez de objetos grandes;
+- mantenha consistência de nomes entre origem e destino.
 
 ## 3. Tipagem de parâmetros com TypeScript
 
-Crie a lista de rotas com seus parâmetros:
+No fluxo de atendimentos, defina uma lista de rotas tipada:
 
 ```tsx
-export type RootStackParamList = {
-  ListaPedidos: { ultimoPedidoId?: string; ultimaAcao?: 'concluido' | 'pendente' } | undefined;
-  DetalhesPedido: {
-    pedidoId: string;
+export type AtendimentosStackParamList = {
+  AtendimentosLista:
+    | {
+        ultimoChamadoId?: string;
+        ultimaAcao?: 'concluido' | 'pendente';
+      }
+    | undefined;
+  DetalhesAtendimento: {
+    chamadoId: string;
     cliente: string;
     prioridade?: 'alta' | 'normal';
   };
-  Finalizacao: {
-    pedidoId: string;
+  FinalizacaoAtendimento: {
+    chamadoId: string;
     tecnico: string;
     status: 'concluido' | 'pendente';
     observacao?: string;
@@ -75,52 +83,45 @@ export type RootStackParamList = {
 
 ### Leitura do código
 
-1. `ListaPedidos`: rota inicial, podendo receber retorno opcional.
-2. `DetalhesPedido`: exige `pedidoId` e `cliente`.
-3. `Finalizacao`: exige dados de fechamento da operação.
-4. Campos opcionais (`?`) permitem flexibilidade sem quebrar contrato.
-
-Com isso, o TypeScript acusa erro se você tentar navegar sem os parâmetros obrigatórios.
+1. `AtendimentosLista` aceita retorno opcional do fechamento.
+2. `DetalhesAtendimento` exige `chamadoId` e `cliente`.
+3. `FinalizacaoAtendimento` exige dados finais do processo.
+4. Campos opcionais (`?`) dão flexibilidade sem perder contrato.
 
 ## 4. Enviando parâmetros com `navigate` e `push`
 
-Exemplos práticos:
+Exemplos no mesmo fluxo:
 
 ```tsx
-navigation.navigate('DetalhesPedido', {
-  pedidoId: 'PED-204',
+navigation.navigate('DetalhesAtendimento', {
+  chamadoId: 'CH-204',
   cliente: 'Carlos Menezes',
   prioridade: 'alta',
 });
 
-navigation.push('DetalhesPedido', {
-  pedidoId: 'PED-205',
+navigation.push('DetalhesAtendimento', {
+  chamadoId: 'CH-205',
   cliente: 'Marina F.',
 });
 ```
 
 ### Leitura do código
 
-1. `navigate` reutiliza a rota quando possível e direciona para ela.
-2. `push` sempre cria uma nova instância da mesma tela na pilha.
-
-Diferença prática:
-
-- `navigate`: tenta ir para a rota já existente no fluxo;
-- `push`: sempre empilha nova instância da mesma tela.
+1. `navigate` tenta reutilizar rota existente.
+2. `push` sempre cria nova instância da tela na pilha.
 
 ## 5. Lendo parâmetros com `route.params`
 
-Dentro da tela de destino:
+Dentro da tela de detalhes:
 
 ```tsx
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '../navigation/AppStack';
+import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'DetalhesPedido'>;
+type Props = NativeStackScreenProps<AtendimentosStackParamList, 'DetalhesAtendimento'>;
 
-export function DetalhesPedidoScreen({ route }: Props) {
-  const { pedidoId, cliente, prioridade } = route.params;
+export function DetalhesAtendimentoScreen({ route }: Props) {
+  const { chamadoId, cliente, prioridade } = route.params;
 
   return (
     <>
@@ -132,24 +133,22 @@ export function DetalhesPedidoScreen({ route }: Props) {
 
 ### Leitura do código
 
-1. `NativeStackScreenProps` injeta tipagem de `navigation` e `route`.
-2. `route.params` passa a ter contrato explícito, sem necessidade de `any`.
-
-Como as props já estão tipadas, o editor oferece autocompletar e alerta caso você use um campo inexistente.
+1. `NativeStackScreenProps` tipa `navigation` e `route`.
+2. `route.params` fica com contrato explícito, sem `any`.
 
 ## 6. Parâmetros opcionais, `initialParams` e `setParams`
 
-Você pode definir parâmetros padrão no `Screen`:
+Definindo valor padrão da rota:
 
 ```tsx
 <Stack.Screen
-  name="DetalhesPedido"
-  component={DetalhesPedidoScreen}
+  name="DetalhesAtendimento"
+  component={DetalhesAtendimentoScreen}
   initialParams={{ prioridade: 'normal' }}
 />
 ```
 
-Também é possível atualizar parâmetros da tela atual:
+Atualizando parâmetros da tela atual:
 
 ```tsx
 navigation.setParams({ prioridade: 'alta' });
@@ -157,156 +156,217 @@ navigation.setParams({ prioridade: 'alta' });
 
 ### Leitura do código
 
-1. `initialParams` define valor padrão quando a rota abre sem parâmetros.
-2. `setParams` atualiza os parâmetros da rota atual sem recriar a tela.
+1. `initialParams` cobre abertura sem parâmetro opcional.
+2. `setParams` faz merge dos parâmetros atuais sem recriar a tela.
 
-Pontos de atenção:
-
-- `setParams` faz mesclagem (`merge`) com parâmetros atuais;
-- use parâmetros para estado de rota, não para dados pesados da aplicação;
-- evite nomes reservados como `screen`, `params`, `initial` e `state`.
-
-## 7. Exemplo completo: fluxo multijanelas com parâmetros
+## 7. Exemplo completo: continuação do app do encontro 11
 
 Estrutura usada:
 
 ```text
 src/
   navigation/
-    AppStack.tsx
+    RootNavigator.tsx
+    AppDrawer.tsx
+    AppTabs.tsx
+    AtendimentosStack.tsx
   screens/
-    ListaPedidosScreen.tsx
-    DetalhesPedidoScreen.tsx
-    FinalizacaoScreen.tsx
+    DashboardScreen.tsx
+    AtendimentosListaScreen.tsx
+    DetalhesAtendimentoScreen.tsx
+    FinalizacaoAtendimentoScreen.tsx
+    RelatoriosScreen.tsx
+    ConfiguracoesScreen.tsx
   styles.ts
 App.tsx
 ```
 
+`RootNavigator.tsx`, `AppDrawer.tsx`, `DashboardScreen.tsx`, `RelatoriosScreen.tsx` e `ConfiguracoesScreen.tsx` permanecem como no encontro 11. A evolução acontece na aba de atendimentos.
+
 `App.tsx`
 
 ```tsx
-import { AppStack } from './src/navigation/AppStack';
+import { RootNavigator } from './src/navigation/RootNavigator';
 
 export default function App() {
-  return <AppStack />;
+  return <RootNavigator />;
 }
 ```
 
-### Leitura do código
-
-1. `App.tsx` delega toda a navegação para um único componente de stack.
-2. Isso evita acoplamento da regra de rotas com a tela inicial do projeto.
-
-`src/navigation/AppStack.tsx`
+`src/navigation/AppTabs.tsx`
 
 ```tsx
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { DetalhesPedidoScreen } from '../screens/DetalhesPedidoScreen';
-import { FinalizacaoScreen } from '../screens/FinalizacaoScreen';
-import { ListaPedidosScreen } from '../screens/ListaPedidosScreen';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import type { NavigatorScreenParams } from '@react-navigation/native';
+import type { AtendimentosStackParamList } from './AtendimentosStack';
+import { AtendimentosStack } from './AtendimentosStack';
+import { DashboardScreen } from '../screens/DashboardScreen';
+import { RelatoriosScreen } from '../screens/RelatoriosScreen';
 
-export type RootStackParamList = {
-  ListaPedidos: { ultimoPedidoId?: string; ultimaAcao?: 'concluido' | 'pendente' } | undefined;
-  DetalhesPedido: {
-    pedidoId: string;
-    cliente: string;
-    prioridade?: 'alta' | 'normal';
-  };
-  Finalizacao: {
-    pedidoId: string;
-    tecnico: string;
-    status: 'concluido' | 'pendente';
-    observacao?: string;
-  };
+export type RootTabParamList = {
+  Dashboard: undefined;
+  Atendimentos: NavigatorScreenParams<AtendimentosStackParamList> | undefined;
+  Relatorios: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
-export function AppStack() {
+function obterIcone(nomeRota: keyof RootTabParamList, focused: boolean) {
+  if (nomeRota === 'Dashboard') return focused ? 'home' : 'home-outline';
+  if (nomeRota === 'Atendimentos') return focused ? 'list' : 'list-outline';
+  return focused ? 'bar-chart' : 'bar-chart-outline';
+}
+
+export function AppTabs() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="ListaPedidos"
-        screenOptions={{
-          headerStyle: { backgroundColor: '#0f172a' },
-          headerTintColor: '#f8fafc',
-          contentStyle: { backgroundColor: '#f8fafc' },
-        }}
-      >
-        <Stack.Screen name="ListaPedidos" component={ListaPedidosScreen} options={{ title: 'Pedidos' }} />
-        <Stack.Screen
-          name="DetalhesPedido"
-          component={DetalhesPedidoScreen}
-          options={{ title: 'Detalhes do Pedido' }}
-          initialParams={{ prioridade: 'normal' }}
-        />
-        <Stack.Screen
-          name="Finalizacao"
-          component={FinalizacaoScreen}
-          options={{ title: 'Finalização' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={({ route }) => ({
+        headerStyle: { backgroundColor: '#0f172a' },
+        headerTintColor: '#f8fafc',
+        tabBarActiveTintColor: '#0f766e',
+        tabBarInactiveTintColor: '#64748b',
+        tabBarStyle: { height: 62, paddingBottom: 8, paddingTop: 6 },
+        tabBarIcon: ({ focused, color, size }) => (
+          <Ionicons
+            name={obterIcone(route.name as keyof RootTabParamList, focused)}
+            color={color}
+            size={size}
+          />
+        ),
+      })}
+    >
+      <Tab.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Painel' }} />
+      <Tab.Screen
+        name="Atendimentos"
+        component={AtendimentosStack}
+        options={{ title: 'Atendimentos', headerShown: false }}
+      />
+      <Tab.Screen name="Relatorios" component={RelatoriosScreen} options={{ title: 'Relatórios' }} />
+    </Tab.Navigator>
   );
 }
 ```
 
 ### Leitura do código
 
-1. `RootStackParamList` concentra o contrato de dados entre telas.
-2. `createNativeStackNavigator<...>()` aplica esse contrato em toda a pilha.
-3. `initialParams` em `DetalhesPedido` garante prioridade padrão (`normal`).
+1. A aba `Atendimentos` agora aponta para um `stack` interno.
+2. O app mantém `tabs + drawer`, mas ganha fluxo sequencial dentro da aba.
 
-`src/screens/ListaPedidosScreen.tsx`
+`src/navigation/AtendimentosStack.tsx`
+
+```tsx
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AtendimentosListaScreen } from '../screens/AtendimentosListaScreen';
+import { DetalhesAtendimentoScreen } from '../screens/DetalhesAtendimentoScreen';
+import { FinalizacaoAtendimentoScreen } from '../screens/FinalizacaoAtendimentoScreen';
+
+export type AtendimentosStackParamList = {
+  AtendimentosLista:
+    | {
+        ultimoChamadoId?: string;
+        ultimaAcao?: 'concluido' | 'pendente';
+      }
+    | undefined;
+  DetalhesAtendimento: {
+    chamadoId: string;
+    cliente: string;
+    prioridade?: 'alta' | 'normal';
+  };
+  FinalizacaoAtendimento: {
+    chamadoId: string;
+    tecnico: string;
+    status: 'concluido' | 'pendente';
+    observacao?: string;
+  };
+};
+
+const Stack = createNativeStackNavigator<AtendimentosStackParamList>();
+
+export function AtendimentosStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="AtendimentosLista"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#0f172a' },
+        headerTintColor: '#f8fafc',
+        contentStyle: { backgroundColor: '#f8fafc' },
+      }}
+    >
+      <Stack.Screen
+        name="AtendimentosLista"
+        component={AtendimentosListaScreen}
+        options={{ title: 'Atendimentos do dia' }}
+      />
+      <Stack.Screen
+        name="DetalhesAtendimento"
+        component={DetalhesAtendimentoScreen}
+        options={{ title: 'Detalhes do Atendimento' }}
+        initialParams={{ prioridade: 'normal' }}
+      />
+      <Stack.Screen
+        name="FinalizacaoAtendimento"
+        component={FinalizacaoAtendimentoScreen}
+        options={{ title: 'Finalização' }}
+      />
+    </Stack.Navigator>
+  );
+}
+```
+
+### Leitura do código
+
+1. `AtendimentosStackParamList` concentra o contrato de parâmetros.
+2. `initialParams` evita tela sem valor de prioridade.
+
+`src/screens/AtendimentosListaScreen.tsx`
 
 ```tsx
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Pressable, Text, View } from 'react-native';
-import type { RootStackParamList } from '../navigation/AppStack';
+import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
 import { styles } from '../styles';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'ListaPedidos'>;
+type Props = NativeStackScreenProps<AtendimentosStackParamList, 'AtendimentosLista'>;
 
-const pedidos = [
-  { id: 'PED-101', cliente: 'Ana Souza', prioridade: 'alta' as const },
-  { id: 'PED-102', cliente: 'Bruno Lima', prioridade: 'normal' as const },
-  { id: 'PED-103', cliente: 'Cecilia Paiva', prioridade: 'normal' as const },
+const chamados = [
+  { id: 'CH-101', cliente: 'Ana Souza', prioridade: 'alta' as const },
+  { id: 'CH-102', cliente: 'Bruno Lima', prioridade: 'normal' as const },
+  { id: 'CH-103', cliente: 'Cecilia Paiva', prioridade: 'normal' as const },
 ];
 
-export function ListaPedidosScreen({ navigation, route }: Props) {
-  const ultimoPedido = route.params?.ultimoPedidoId;
+export function AtendimentosListaScreen({ navigation, route }: Props) {
+  const ultimoChamado = route.params?.ultimoChamadoId;
   const ultimaAcao = route.params?.ultimaAcao;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Fila de pedidos</Text>
-      <Text style={styles.subtitulo}>
-        Toque em um item para abrir detalhes com parâmetros da rota.
-      </Text>
+      <Text style={styles.titulo}>Fila de atendimentos</Text>
+      <Text style={styles.subtitulo}>Toque em um chamado para abrir os detalhes com parâmetros.</Text>
 
-      {ultimoPedido ? (
+      {ultimoChamado ? (
         <View style={styles.alerta}>
           <Text style={styles.alertaTexto}>
-            Último retorno: {ultimoPedido} ({ultimaAcao})
+            Último retorno: {ultimoChamado} ({ultimaAcao})
           </Text>
         </View>
       ) : null}
 
-      {pedidos.map((pedido) => (
+      {chamados.map((chamado) => (
         <Pressable
-          key={pedido.id}
+          key={chamado.id}
           style={styles.item}
           onPress={() =>
-            navigation.navigate('DetalhesPedido', {
-              pedidoId: pedido.id,
-              cliente: pedido.cliente,
-              prioridade: pedido.prioridade,
+            navigation.navigate('DetalhesAtendimento', {
+              chamadoId: chamado.id,
+              cliente: chamado.cliente,
+              prioridade: chamado.prioridade,
             })
           }
         >
-          <Text style={styles.itemTitulo}>{pedido.id}</Text>
-          <Text style={styles.itemSubtitulo}>{pedido.cliente}</Text>
+          <Text style={styles.itemTitulo}>{chamado.id}</Text>
+          <Text style={styles.itemSubtitulo}>{chamado.cliente}</Text>
         </Pressable>
       ))}
     </View>
@@ -316,23 +376,22 @@ export function ListaPedidosScreen({ navigation, route }: Props) {
 
 ### Leitura do código
 
-1. `route.params?.ultimoPedidoId` lê retorno opcional sem quebrar renderização.
-2. `pedidos.map(...)` cria a lista de botões de navegação dinamicamente.
-3. Cada `navigate('DetalhesPedido', ...)` envia contexto do item selecionado.
+1. `route.params?.ultimoChamadoId` recebe retorno opcional da finalização.
+2. Cada item usa `navigate` enviando contexto do chamado.
 
-`src/screens/DetalhesPedidoScreen.tsx`
+`src/screens/DetalhesAtendimentoScreen.tsx`
 
 ```tsx
 import { useState } from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Alert, Pressable, Text, TextInput, View } from 'react-native';
-import type { RootStackParamList } from '../navigation/AppStack';
+import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
 import { styles } from '../styles';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'DetalhesPedido'>;
+type Props = NativeStackScreenProps<AtendimentosStackParamList, 'DetalhesAtendimento'>;
 
-export function DetalhesPedidoScreen({ navigation, route }: Props) {
-  const { pedidoId, cliente, prioridade = 'normal' } = route.params;
+export function DetalhesAtendimentoScreen({ navigation, route }: Props) {
+  const { chamadoId, cliente, prioridade = 'normal' } = route.params;
   const [tecnico, setTecnico] = useState('');
   const [status, setStatus] = useState<'concluido' | 'pendente'>('concluido');
 
@@ -342,18 +401,18 @@ export function DetalhesPedidoScreen({ navigation, route }: Props) {
       return;
     }
 
-    navigation.navigate('Finalizacao', {
-      pedidoId,
+    navigation.navigate('FinalizacaoAtendimento', {
+      chamadoId,
       tecnico: tecnico.trim(),
       status,
-      observacao: prioridade === 'alta' ? 'Prioridade alta atendida.' : undefined,
+      observacao: prioridade === 'alta' ? 'Chamado de prioridade alta tratado.' : undefined,
     });
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Detalhes do atendimento</Text>
-      <Text style={styles.subtitulo}>Pedido: {pedidoId}</Text>
+      <Text style={styles.subtitulo}>Chamado: {chamadoId}</Text>
       <Text style={styles.subtitulo}>Cliente: {cliente}</Text>
       <Text style={styles.subtitulo}>Prioridade: {prioridade}</Text>
 
@@ -373,8 +432,27 @@ export function DetalhesPedidoScreen({ navigation, route }: Props) {
         </Pressable>
       </View>
 
+      <Pressable
+        style={styles.botaoSecundario}
+        onPress={() => navigation.setParams({ prioridade: 'alta' })}
+      >
+        <Text style={styles.botaoSecundarioTexto}>Marcar prioridade alta (setParams)</Text>
+      </Pressable>
+
       <Pressable style={styles.botaoPrimario} onPress={avancar}>
         <Text style={styles.botaoPrimarioTexto}>Avançar para finalização</Text>
+      </Pressable>
+
+      <Pressable
+        style={styles.botaoTexto}
+        onPress={() =>
+          navigation.push('DetalhesAtendimento', {
+            chamadoId: 'CH-999',
+            cliente: 'Novo chamado em campo',
+          })
+        }
+      >
+        <Text style={styles.botaoTextoLabel}>Simular próximo chamado (push)</Text>
       </Pressable>
     </View>
   );
@@ -383,27 +461,27 @@ export function DetalhesPedidoScreen({ navigation, route }: Props) {
 
 ### Leitura do código
 
-1. `useState` controla técnico e status antes de avançar no fluxo.
-2. A função `avancar()` valida os campos e bloqueia envio inválido.
-3. `navigation.navigate('Finalizacao', ...)` encaminha os dados consolidados.
+1. `route.params` chega tipado com os dados do chamado.
+2. `setParams` altera a prioridade da rota atual sem remontar a tela.
+3. `push` empilha uma nova instância de detalhes para demonstrar fluxo repetido.
 
-`src/screens/FinalizacaoScreen.tsx`
+`src/screens/FinalizacaoAtendimentoScreen.tsx`
 
 ```tsx
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Pressable, Text, View } from 'react-native';
-import type { RootStackParamList } from '../navigation/AppStack';
+import type { AtendimentosStackParamList } from '../navigation/AtendimentosStack';
 import { styles } from '../styles';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Finalizacao'>;
+type Props = NativeStackScreenProps<AtendimentosStackParamList, 'FinalizacaoAtendimento'>;
 
-export function FinalizacaoScreen({ navigation, route }: Props) {
-  const { pedidoId, tecnico, status, observacao } = route.params;
+export function FinalizacaoAtendimentoScreen({ navigation, route }: Props) {
+  const { chamadoId, tecnico, status, observacao } = route.params;
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Resumo final</Text>
-      <Text style={styles.subtitulo}>Pedido: {pedidoId}</Text>
+      <Text style={styles.subtitulo}>Chamado: {chamadoId}</Text>
       <Text style={styles.subtitulo}>Técnico: {tecnico}</Text>
       <Text style={styles.subtitulo}>Status: {status}</Text>
       {observacao ? <Text style={styles.subtitulo}>{observacao}</Text> : null}
@@ -411,13 +489,13 @@ export function FinalizacaoScreen({ navigation, route }: Props) {
       <Pressable
         style={styles.botaoPrimario}
         onPress={() =>
-          navigation.navigate('ListaPedidos', {
-            ultimoPedidoId: pedidoId,
+          navigation.navigate('AtendimentosLista', {
+            ultimoChamadoId: chamadoId,
             ultimaAcao: status,
           })
         }
       >
-        <Text style={styles.botaoPrimarioTexto}>Concluir e voltar para lista</Text>
+        <Text style={styles.botaoPrimarioTexto}>Concluir e voltar para a lista</Text>
       </Pressable>
     </View>
   );
@@ -426,10 +504,10 @@ export function FinalizacaoScreen({ navigation, route }: Props) {
 
 ### Leitura do código
 
-1. A tela lê os parâmetros finais para montar o resumo.
-2. O botão retorna para `ListaPedidos` já enviando dados da última operação.
+1. A tela final recebe os parâmetros consolidados.
+2. O botão retorna para a lista com contexto da última operação.
 
-`src/styles.ts`
+`src/styles.ts` (adições para o fluxo de atendimentos)
 
 ```tsx
 import { StyleSheet } from 'react-native';
@@ -502,7 +580,6 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   botaoSecundario: {
-    flex: 1,
     borderWidth: 1,
     borderColor: '#0f766e',
     borderRadius: 10,
@@ -513,93 +590,100 @@ export const styles = StyleSheet.create({
     color: '#0f766e',
     fontWeight: '700',
   },
+  botaoTexto: {
+    marginTop: 6,
+    alignItems: 'center',
+  },
+  botaoTextoLabel: {
+    color: '#0f766e',
+    textDecorationLine: 'underline',
+    fontWeight: '600',
+  },
 });
 ```
 
 ### Leitura do código
 
-1. Estilos de lista, alerta e botões ficam centralizados e reutilizáveis.
-2. A separação visual reduz repetição e deixa as telas mais legíveis.
-
-Com esse fluxo, cada tela recebe apenas o contexto necessário para continuar o processo.
+1. O padrão visual do encontro 11 foi mantido.
+2. Apenas foram adicionados estilos para lista, alerta e ações do fluxo multijanelas.
 
 ## 8. Estratégias para retorno de dados no fluxo
 
-Há duas estratégias simples no início:
+Duas estratégias úteis neste momento:
 
-1. voltar com `goBack()` quando não precisa enviar nada;
-2. voltar navegando para a tela anterior com parâmetros (como no exemplo de `Finalizacao` -> `ListaPedidos`).
+1. `goBack()` quando não há dado para retornar;
+2. `navigate('AtendimentosLista', params)` quando você precisa atualizar contexto da tela anterior.
 
-Isso evita estado global desnecessário quando o dado é local ao fluxo.
+Assim, você evita estado global quando o dado pertence somente a esse fluxo.
 
-## 9. Exercício de rotas
+## 9. Exercício guiado
 
 ### Objetivo
 
-Montar o app **Fluxo de Chamados** com três telas e passagem de parâmetros tipados.
+Evoluir o app **Central de Campo** do encontro 11, tornando a aba `Atendimentos` um fluxo com três telas e parâmetros tipados.
 
 ### Requisitos mínimos
 
-1. Tela `Chamados` com lista de ao menos 4 itens.
-2. Tela `DetalhesChamado` recebendo `id`, `solicitante` e `prioridade`.
-3. Tela `Encerramento` recebendo dados da etapa anterior.
-4. Uso de `navigate` com parâmetros obrigatórios corretamente tipados.
-5. Pelo menos um campo opcional nos parâmetros de rota.
-6. Retorno para tela inicial com resumo da última operação.
-7. Validação de ao menos um campo antes do avanço para a tela final.
+1. Manter `tabs + drawer` funcionando como no encontro 11.
+2. Criar `AtendimentosStack` com `AtendimentosLista`, `DetalhesAtendimento` e `FinalizacaoAtendimento`.
+3. Usar `navigate` com parâmetros obrigatórios tipados.
+4. Demonstrar `push` em ao menos uma ação da tela de detalhes.
+5. Usar `initialParams` em campo opcional da rota.
+6. Atualizar um parâmetro da rota atual com `setParams`.
+7. Retornar para lista com resumo da última operação.
 
 ### Entrega esperada
 
-- parâmetros chegam corretamente em todas as telas;
-- tipagem acusa erros ao remover parâmetros obrigatórios;
 - fluxo completo sem navegação quebrada;
-- código organizado por `navigation/`, `screens/` e `styles.ts`.
+- parâmetros chegando corretamente em todas as telas;
+- tipagem acusando erro ao remover campo obrigatório;
+- estrutura de arquivos organizada por `navigation/`, `screens/` e `styles.ts`.
 
 ## 10. Checklist de validação do aluno
 
-- `RootStackParamList` está definido e coerente;
-- todas as telas usam `NativeStackScreenProps` com tipo correto;
-- `navigate` envia os parâmetros esperados;
-- `route.params` é lido sem usar `any`;
-- parâmetros opcionais são tratados com fallback quando necessário;
-- retorno final atualiza contexto da tela inicial.
+- `AtendimentosStackParamList` está definido e coerente;
+- telas do fluxo usam `NativeStackScreenProps` corretamente;
+- `navigate`/`push` enviam dados esperados;
+- `route.params` é lido sem `any`;
+- parâmetro opcional possui fallback (`initialParams` ou tratamento local);
+- retorno final atualiza contexto na lista de atendimentos.
 
 ## 11. Erros comuns
 
-### Passar objeto grande inteiro em vez de identificador
+### Quebrar a continuidade do encontro 11
 
-Isso aumenta acoplamento e dificulta manutenção.
+Trocar toda a navegação para stack puro faz perder `tabs + drawer` já implementados.
 
-### Usar nome de campo diferente entre origem e destino
+### Esquecer `headerShown: false` na aba que contém stack
 
-Exemplo: enviar `clienteNome` e tentar ler `cliente`.
+Pode gerar cabeçalho duplicado (`tabs` + `stack`) na mesma tela.
 
-### Ignorar possibilidade de parâmetro opcional ausente
+### Usar nomes de campos diferentes entre origem e destino
 
-Sempre trate com `?`, fallback ou `initialParams`.
+Exemplo: enviar `clienteNome` e ler `cliente`.
 
-### Misturar `navigate` e `push` sem entender o efeito na pilha
+### Ignorar parâmetros opcionais
 
-Pode gerar duplicação de tela ou comportamento inesperado de volta.
+Sempre trate ausência com `?`, `initialParams` ou fallback local.
 
 ## 12. Exercícios de revisão
 
-1. Qual diferença prática entre `navigate` e `push` ao enviar parâmetros?
-2. Quando usar `initialParams`?
-3. O que `setParams` faz com os parâmetros existentes?
-4. Por que preferir `pedidoId` em vez de enviar todo o objeto do pedido?
-5. Como tratar parâmetros opcionais com segurança?
+1. Por que colocar `stack` apenas dentro da aba `Atendimentos` neste cenário?
+2. Qual diferença prática entre `navigate` e `push` no fluxo de chamados?
+3. Quando faz sentido usar `setParams`?
+4. Como `FinalizacaoAtendimento` devolve contexto para `AtendimentosLista`?
+5. Qual ganho de manter `tabs + drawer` e adicionar `stack` de forma localizada?
 
 ## 13. Exercícios de estudo
 
-- Adicione filtro por status na tela inicial usando parâmetro de rota.
-- Crie um botão para atualizar prioridade da rota atual via `setParams`.
-- Implemente uma quarta tela de histórico recebendo parâmetros do encerramento.
-- Escreva um parágrafo explicando riscos de usar `any` na tipagem de rotas.
+- Adicione uma tela `HistoricoAtendimento` no mesmo stack recebendo parâmetros da finalização.
+- Faça um filtro por prioridade na lista usando parâmetro de rota.
+- Adicione botão no `Dashboard` para abrir diretamente o fluxo de atendimentos.
+- Explique em um parágrafo por que `any` é arriscado na tipagem de rotas.
 
 ## 14. Resumo do encontro
 
-Neste encontro, você passou de uma navegação apenas estrutural para uma navegação orientada a dados, usando parâmetros tipados entre telas. A prática mostrou como enviar, ler e atualizar `route.params` de forma previsível, além de fechar ciclos multijanelas com retorno de contexto para a tela inicial. Essa base prepara o próximo bloco de conteúdos sobre persistência local, onde os dados deixam de ser apenas transitórios no fluxo de navegação.
+Neste encontro, você evoluiu o app do encontro 11 sem recomeçar do zero: manteve a navegação estrutural (`tabs + drawer`) e adicionou um fluxo multijanelas tipado na aba de atendimentos. Com isso, o projeto passa a combinar navegação por menu e navegação orientada a dados, usando parâmetros de rota de forma previsível. Essa base prepara o próximo bloco sobre persistência local, onde o contexto do fluxo deixa de ser apenas transitório.
 
 ## Materiais complementares
 
