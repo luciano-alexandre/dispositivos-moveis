@@ -265,7 +265,7 @@ No `styles.ts`, adicione apenas o necessário para:
 
 Mantenha a paleta e padrão visual já usados no encontro 11.
 
-### Passo 7 - Teste guiado (obrigatório)
+### Passo 7 - Teste 
 
 Execute este roteiro manual:
 
@@ -291,72 +291,7 @@ Duas estratégias úteis neste momento:
 
 Assim, você evita estado global quando o dado pertence somente a esse fluxo.
 
-## 9. Exercício guiado
-
-### Objetivo
-
-Evoluir o app **Central de Campo** do encontro 11, tornando a aba `Atendimentos` um fluxo com três telas e parâmetros tipados.
-
-### Requisitos mínimos
-
-1. Manter `tabs + drawer` funcionando como no encontro 11.
-2. Criar `AtendimentosStack` com `AtendimentosLista`, `DetalhesAtendimento` e `FinalizacaoAtendimento`.
-3. Usar `navigate` com parâmetros obrigatórios tipados.
-4. Demonstrar `push` em ao menos uma ação da tela de detalhes.
-5. Usar `initialParams` em campo opcional da rota.
-6. Atualizar um parâmetro da rota atual com `setParams`.
-7. Retornar para lista com resumo da última operação.
-
-### Entrega esperada
-
-- fluxo completo sem navegação quebrada;
-- parâmetros chegando corretamente em todas as telas;
-- tipagem acusando erro ao remover campo obrigatório;
-- estrutura de arquivos organizada por `navigation/`, `screens/` e `styles.ts`.
-
-## 10. Checklist de validação do aluno
-
-- `AtendimentosStackParamList` está definido e coerente;
-- telas do fluxo usam `NativeStackScreenProps` corretamente;
-- `navigate`/`push` enviam dados esperados;
-- `route.params` é lido sem `any`;
-- parâmetro opcional possui fallback (`initialParams` ou tratamento local);
-- retorno final atualiza contexto na lista de atendimentos.
-
-## 11. Erros comuns
-
-### Quebrar a continuidade do encontro 11
-
-Trocar toda a navegação para stack puro faz perder `tabs + drawer` já implementados.
-
-### Esquecer `headerShown: false` na aba que contém stack
-
-Pode gerar cabeçalho duplicado (`tabs` + `stack`) na mesma tela.
-
-### Usar nomes de campos diferentes entre origem e destino
-
-Exemplo: enviar `clienteNome` e ler `cliente`.
-
-### Ignorar parâmetros opcionais
-
-Sempre trate ausência com `?`, `initialParams` ou fallback local.
-
-## 12. Exercícios de revisão
-
-1. Por que colocar `stack` apenas dentro da aba `Atendimentos` neste cenário?
-2. Qual diferença prática entre `navigate` e `push` no fluxo de chamados?
-3. Quando faz sentido usar `setParams`?
-4. Como `FinalizacaoAtendimento` devolve contexto para `AtendimentosLista`?
-5. Qual ganho de manter `tabs + drawer` e adicionar `stack` de forma localizada?
-
-## 13. Exercícios de estudo
-
-- Adicione uma tela `HistoricoAtendimento` no mesmo stack recebendo parâmetros da finalização.
-- Faça um filtro por prioridade na lista usando parâmetro de rota.
-- Adicione botão no `Dashboard` para abrir diretamente o fluxo de atendimentos.
-- Explique em um parágrafo por que `any` é arriscado na tipagem de rotas.
-
-## 14. Resumo do encontro
+## 9. Resumo do encontro
 
 Neste encontro, você evoluiu o app do encontro 11 sem recomeçar do zero: manteve a navegação estrutural (`tabs + drawer`) e adicionou um fluxo multijanelas tipado na aba de atendimentos. Com isso, o projeto passa a combinar navegação por menu e navegação orientada a dados, usando parâmetros de rota de forma previsível. Essa base prepara o próximo bloco sobre persistência local, onde o contexto do fluxo deixa de ser apenas transitório.
 
