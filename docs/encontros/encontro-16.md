@@ -20,7 +20,7 @@
 11. Exercícios de estudo.
 12. Resumo do encontro.
 
-## 1. Retomada do encontro 15
+## 1. Retomada do encontro anterior
 
 No encontro anterior, construímos uma lista de rascunhos usando apenas `useState`.
 
